@@ -94,18 +94,22 @@
 
 
 
-<meta name="description" content="本博客仅作为分享本人学习rdma技术过程中一些经验和资料分享，若有错误之处，还请指教。如有侵犯版权问题,请立即通知本人,本人立即删除.特此_声明_! 简介–什么是rdmaRDMA%28Remote%20Direct%20Memory%20Access%29%u6280%u672F%u5168%u79F0%u8FDC%u7A0B%u76F4%u63A5%u6570%u636E%u5B58%u53D6">
+<meta name="description" content="本博客仅作为分享本人学习rdma技术过程中一些经验和资料分享，若有错误之处，还请指教。如有侵犯版权问题,请立即通知本人,本人立即删除.特此_声明_! 简介–什么是rdmaRDMA(Remote Direct Memory Access)技术全称远程直接数据存取。  RDMA (Remote DMA) is the ability of accessing (i.e. reading from or">
 <meta name="keywords" content="rdma, libibverbs, librdmacm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RDMA学习路线总结">
 <meta property="og:url" content="http://yoursite.com/2018/06/08/RDMA学习路线总结/index.html">
 <meta property="og:site_name" content="胡宇辉">
-<meta property="og:description" content="本博客仅作为分享本人学习rdma技术过程中一些经验和资料分享，若有错误之处，还请指教。如有侵犯版权问题,请立即通知本人,本人立即删除.特此_声明_! 简介–什么是rdmaRDMA%28Remote%20Direct%20Memory%20Access%29%u6280%u672F%u5168%u79F0%u8FDC%u7A0B%u76F4%u63A5%u6570%u636E%u5B58%u53D6">
+<meta property="og:description" content="本博客仅作为分享本人学习rdma技术过程中一些经验和资料分享，若有错误之处，还请指教。如有侵犯版权问题,请立即通知本人,本人立即删除.特此_声明_! 简介–什么是rdmaRDMA(Remote Direct Memory Access)技术全称远程直接数据存取。  RDMA (Remote DMA) is the ability of accessing (i.e. reading from or">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://static.oschina.net/uploads/space/2017/0221/134614_HM8L_2447368.png">
+<meta property="og:image" content="https://static.oschina.net/uploads/space/2017/0221/135017_3yru_2447368.png">
+<meta property="og:image" content="https://static.oschina.net/uploads/space/2017/0221/135032_aJF2_2447368.png">
 <meta property="og:updated_time" content="2018-06-08T03:55:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RDMA学习路线总结">
-<meta name="twitter:description" content="本博客仅作为分享本人学习rdma技术过程中一些经验和资料分享，若有错误之处，还请指教。如有侵犯版权问题,请立即通知本人,本人立即删除.特此_声明_! 简介–什么是rdmaRDMA%28Remote%20Direct%20Memory%20Access%29%u6280%u672F%u5168%u79F0%u8FDC%u7A0B%u76F4%u63A5%u6570%u636E%u5B58%u53D6">
+<meta name="twitter:description" content="本博客仅作为分享本人学习rdma技术过程中一些经验和资料分享，若有错误之处，还请指教。如有侵犯版权问题,请立即通知本人,本人立即删除.特此_声明_! 简介–什么是rdmaRDMA(Remote Direct Memory Access)技术全称远程直接数据存取。  RDMA (Remote DMA) is the ability of accessing (i.e. reading from or">
+<meta name="twitter:image" content="https://static.oschina.net/uploads/space/2017/0221/134614_HM8L_2447368.png">
 
 
 
@@ -393,22 +397,34 @@
 
       
         <p>本博客仅作为分享本人学习rdma技术过程中一些经验和资料分享，若有错误之处，还请指教。如有侵犯版权问题,请立即通知本人,本人立即删除.特此_声明_!</p>
-<h1 id="简介–什么是rdma"><a href="#简介–什么是rdma" class="headerlink" title="简介–什么是rdma"></a>简介–什么是rdma</h1><!--code__3--><pre><code>RDMA%28Remote%20Direct%20Memory%20Access%29%u6280%u672F%u5168%u79F0%u8FDC%u7A0B%u76F4%u63A5%u6570%u636E%u5B58%u53D6%u3002%0A%0ARDMA%20%28Remote%20DMA%29%20is%20the%20ability%20of%20accessing%20%28i.e.%20reading%20from%20or%20writing%20to%29%20memory%20on%20a%20remote%20machine%20withoutinterrupting%20the%20processing%20of%20the%20CPU%28s%29%20on%20that%20system.
-</code></pre><!--//code__3--><p>RDMA的好处与优势：</p>
-<!--code__4--><pre><code>1、零拷贝(zero-copy) RDMA transfers data directly from user virtual memory on one node to user virtual memory on another node, tcp copies into/out of system buffers on both nodes.
-</code></pre><!--//code__4--><p><img src="" data-echo="https://static.oschina.net/uploads/space/2017/0221/134614_HM8L_2447368.png" alt=""></p>
-<!--code__5--><pre><code>2%u3001CPU%u5360%u6709%u7387%28%20Low%20CPU%20utilization%29%20%u9274%u4E8Ezero-copy%u7684%u5B58%u5728%uFF0C%u4F7F%u5F97%u673A%u5668%u7684cpu%u5360%u6709%u7387%u4E0B%u964D%uFF0C%u8BA9cpu%u66F4%u591A%u7684%u6267%u884C%u5176%u4ED6%u903B%u8F91%u8BA1%u7B97%u6307%u4EE4%u3002%0A%0A%203%u3001%u5F02%u6B65%u4E8B%u4EF6%28Asynchronous%20operation%29%20rdma%u5728io%u64CD%u4F5C%u8FC7%u7A0B%u4E2D%u5E76%u4E0D%u963B%u585E%u76F8%u5173%u7EBF%u7A0B%uFF0Ctcp/ip%u786E%u662F%u963B%u585E%u65B9%u5F0F%uFF08%u6B64%u5904%u6240%u8BF4%u7684%u963B%u585E%uFF0C%u662F%u6307tcp%u5C06%u6570%u636E%u53D1%u9001%u5230%u5185%u6838%u7F13%u51B2%u533A%u662F%u963B%u585E%u7684%uFF0C%u4E0D%u540C%u4E8Etcp%u7684noblocking%u7684%u6982%u5FF5%uFF09%0A%0A%20%20%20%20%20%20RDMA%u662Fasynchronous%u7684%uFF0C%u5373no%20blocking%20during%20a%20transfer%2C%20which%20%u2013%20starts%20when%20metadata%20added%20to%20%u201Cwork%20queue%u201D%20%u2013%20finishes%20when%20status%20available%20in%20%u201Ccompletion%20queue%u201D%0A%0A%20%20%20tcp/ip%u4E2D%u662Fsynchronous%u7684%uFF0C%u5373send%28%29%2C%20recv%28%29%20block%20until%20data%20copied%20%u2013%20O%5C_NONBLOCK%2C%20MSG%5C_DONTWAIT%20are%20not%20asynchronous%2Cthey%20are%20%u201Ctry%u201D%20and%20get%20error
-</code></pre><!--//code__5--><p><img src="" data-echo="https://static.oschina.net/uploads/space/2017/0221/135017_3yru_2447368.png" alt=""></p>
-<p><img src="" data-echo="https://static.oschina.net/uploads/space/2017/0221/135032_aJF2_2447368.png" alt=""> </p>
-<!--code__6--><pre><code>4、Message boundaties preserved. rdma是基于消息模式的，本身保留了消息边界，不同于tcp/ip流传输方式，需要做拆包解包操作。 
-</code></pre><!--//code__6--><p>rdma对于高性能的网络通讯来说，优势很多，但学习成本以及相关推广成本也是蛮高的，后面分享下本人摸索过程中的一些资料。</p>
-<h2 id="编程环境"><a href="#编程环境" class="headerlink" title="编程环境"></a>编程环境</h2><!--code__7--><pre><code>%u7F51%u7EDC%u73AF%u5883%u5206%u4E3A%u4E00%u4E0B%u51E0%u79CD%uFF1A%20InfiniBand%u73AF%u5883%uFF0CiWarp%28internet%20Wide%20Area%20RMDA%20Protocol%29%u73AF%u5883%uFF0C%20RoCE%28RDMA%20over%20Converged%20Ethernet%29%u73AF%u5883%uFF0CSoftRoCE%u73AF%u5883%u3002%0A%0A%u5728%u6CA1%u6709%u786C%u4EF6%u8BBE%u5907%u7684%u652F%u6301%u4E0B%uFF0C%u6211%u4EEC%u53EF%u4EE5%u642D%u4E00%u5957%u8F6F%u73AF%u5883%u6765%u719F%u6089%u76F8%u5173rdma%u7F16%u7A0B%u7684%u77E5%u8BC6%u70B9%uFF0C%u81F3%u4E8E%u5982%u4F55%u642D%u5EFA%u4E00%u5957SoftRoCE%u73AF%u5883%uFF0C%u8BF7%u53C2%u89C1%u672C%u4EBA%u548C%u5C0F%u4F19%u4F34%u901A%u8FC7%u6478%u7D22%u4EB2%u6D4B%u6709%u6548%u7684%u535A%u5BA2
-</code></pre><!--//code__7--><p><a href="https://my.oschina.net/SysuHuyh5LoveHqq/blog/798275" target="_blank" rel="noopener">https://my.oschina.net/SysuHuyh5LoveHqq/blog/798275</a></p>
-<h2 id="推荐编程库"><a href="#推荐编程库" class="headerlink" title="推荐编程库"></a>推荐编程库</h2><!--code__8--><pre><code>MLNX_OFED%204.0%20%2C%20%u4E00%u822C%u6765%u8BF4%uFF0C%u5C31%u672C%u4EBA%u4E2A%u4EBA%u7ECF%u9A8C%u6765%u770B%uFF0Crdma%u7F16%u7A0B%u6700%u597D%u8FD8%u662F%u4F7F%u7528%u786C%u4EF6%u5382%u5546%u7684%u76F8%u5173%u5E93%uFF0C%u4E00%u822CIB%u7F51%u7EDC%u6211%u4EEC%u4F7F%u7528Mellanox%u7684%u786C%u4EF6%28%u7F51%u5361%uFF0C%u4EA4%u6362%u673A%u7B49%u7B49%29%uFF0C%u56E0%u6B64%u7F16%u7A0B%u6240%u7528%u9A71%u52A8%u3001%u4EE3%u7801%u5E93%u8FD8%u662F%u63A8%u8350%u8FC8%u7EDC%u601DOFED%uFF0C%u76EE%u524D%u4E3A%u6B624.0%u662F%u6700%u65B0%u7248%u672C%uFF0C%u8BE6%u60C5%u53C2%u8003%uFF1A
-</code></pre><!--//code__8--><p><a href="http://www.mellanox.com/page/products_dyn?product_family=26&amp;mtag=linux_sw_drivers" target="_blank" rel="noopener">http://www.mellanox.com/page/products_dyn?product_family=26&amp;mtag=linux_sw_drivers</a> ，</p>
-<!--code__9--><pre><code>%u9664%u4E86%u5B89%u88C5%u7248%u672C%uFF0C%u6700%u597D%u4E0B%u8F7D%u76F8%u5173%u6E90%u7801%uFF0C%u91CC%u9762%u6709%u76F8%u5173%u53C2%u8003demo%u4F9B%u5927%u5BB6%u5B66%u4E60%u7406%u89E3rdma%u7F16%u7A0B%u3002%0A%0A%u4E3B%u8981%u719F%u6089libibverbs%u548Clibrdmacm%u5E93%uFF0C%u5176%u4E2Dlibrdmacm%u5728libibverbs%u4E0A%u5C01%u88C5%u4E86%u4E00%u5C42%uFF0C%u4E2A%u4EBA%u63A8%u8350%u76F4%u63A5%u4F7F%u7528libibverbs%u4F5C%u4E3A%u521D%u671F%u5B66%u4E60%u4E4B%u7528%uFF0C%u8FD9%u6837%u66F4%u597D%u4E86%u89E3%u6574%u4E2A%u4E8B%u4EF6%u7684%u6765%u9F99%u53BB%u8109%u3002
-</code></pre><!--//code__9--><h2 id="编程参考手册"><a href="#编程参考手册" class="headerlink" title="编程参考手册"></a>编程参考手册</h2><!--code__10--><pre><code>RDMA%20Aware%20Networks%20Programming%20User%20Manual%201.7%2C%20%u76EE%u524D%u6700%u65B0%u7248%u5C31%u662F1.7%u7248%u672C%uFF0C%u6B64%u624B%u518C%u53EF%u7814%u8BFB%u591A%u6B21%uFF0C%u5BF9%u57FA%u672C%u6982%u5FF5%u6027%u4E86%u89E3%u5F88%u6709%u5E2E%u52A9
-</code></pre><!--//code__10--><p><a href="http://www.mellanox.com/related-docs/prod_software/RDMA_Aware_Programming_user_manual.pdf" target="_blank" rel="noopener">http://www.mellanox.com/related-docs/prod_software/RDMA_Aware_Programming_user_manual.pdf</a></p>
+<h1 id="简介–什么是rdma"><a href="#简介–什么是rdma" class="headerlink" title="简介–什么是rdma"></a>简介–什么是rdma</h1><pre><code>RDMA(Remote Direct Memory Access)技术全称远程直接数据存取。
+
+RDMA (Remote DMA) is the ability of accessing (i.e. reading from or writing to) memory on a remote machine withoutinterrupting the processing of the CPU(s) on that system.
+</code></pre><p>RDMA的好处与优势：</p>
+<pre><code>1、零拷贝(zero-copy) RDMA transfers data directly from user virtual memory on one node to user virtual memory on another node, tcp copies into/out of system buffers on both nodes.
+</code></pre><p><img src="https://static.oschina.net/uploads/space/2017/0221/134614_HM8L_2447368.png" alt=""></p>
+<pre><code>2、CPU占有率( Low CPU utilization) 鉴于zero-copy的存在，使得机器的cpu占有率下降，让cpu更多的执行其他逻辑计算指令。
+
+ 3、异步事件(Asynchronous operation) rdma在io操作过程中并不阻塞相关线程，tcp/ip确是阻塞方式（此处所说的阻塞，是指tcp将数据发送到内核缓冲区是阻塞的，不同于tcp的noblocking的概念）
+
+      RDMA是asynchronous的，即no blocking during a transfer, which – starts when metadata added to “work queue” – finishes when status available in “completion queue”
+
+   tcp/ip中是synchronous的，即send(), recv() block until data copied – O\_NONBLOCK, MSG\_DONTWAIT are not asynchronous,they are “try” and get error
+</code></pre><p><img src="https://static.oschina.net/uploads/space/2017/0221/135017_3yru_2447368.png" alt=""></p>
+<p><img src="https://static.oschina.net/uploads/space/2017/0221/135032_aJF2_2447368.png" alt=""> </p>
+<pre><code>4、Message boundaties preserved. rdma是基于消息模式的，本身保留了消息边界，不同于tcp/ip流传输方式，需要做拆包解包操作。 
+</code></pre><p>rdma对于高性能的网络通讯来说，优势很多，但学习成本以及相关推广成本也是蛮高的，后面分享下本人摸索过程中的一些资料。</p>
+<h2 id="编程环境"><a href="#编程环境" class="headerlink" title="编程环境"></a>编程环境</h2><pre><code>网络环境分为一下几种： InfiniBand环境，iWarp(internet Wide Area RMDA Protocol)环境， RoCE(RDMA over Converged Ethernet)环境，SoftRoCE环境。
+
+在没有硬件设备的支持下，我们可以搭一套软环境来熟悉相关rdma编程的知识点，至于如何搭建一套SoftRoCE环境，请参见本人和小伙伴通过摸索亲测有效的博客
+</code></pre><p><a href="https://my.oschina.net/SysuHuyh5LoveHqq/blog/798275" target="_blank" rel="noopener">https://my.oschina.net/SysuHuyh5LoveHqq/blog/798275</a></p>
+<h2 id="推荐编程库"><a href="#推荐编程库" class="headerlink" title="推荐编程库"></a>推荐编程库</h2><pre><code>MLNX_OFED 4.0 , 一般来说，就本人个人经验来看，rdma编程最好还是使用硬件厂商的相关库，一般IB网络我们使用Mellanox的硬件(网卡，交换机等等)，因此编程所用驱动、代码库还是推荐迈络思OFED，目前为止4.0是最新版本，详情参考：
+</code></pre><p><a href="http://www.mellanox.com/page/products_dyn?product_family=26&amp;mtag=linux_sw_drivers" target="_blank" rel="noopener">http://www.mellanox.com/page/products_dyn?product_family=26&amp;mtag=linux_sw_drivers</a> ，</p>
+<pre><code>除了安装版本，最好下载相关源码，里面有相关参考demo供大家学习理解rdma编程。
+
+主要熟悉libibverbs和librdmacm库，其中librdmacm在libibverbs上封装了一层，个人推荐直接使用libibverbs作为初期学习之用，这样更好了解整个事件的来龙去脉。
+</code></pre><h2 id="编程参考手册"><a href="#编程参考手册" class="headerlink" title="编程参考手册"></a>编程参考手册</h2><pre><code>RDMA Aware Networks Programming User Manual 1.7, 目前最新版就是1.7版本，此手册可研读多次，对基本概念性了解很有帮助
+</code></pre><p><a href="http://www.mellanox.com/related-docs/prod_software/RDMA_Aware_Programming_user_manual.pdf" target="_blank" rel="noopener">http://www.mellanox.com/related-docs/prod_software/RDMA_Aware_Programming_user_manual.pdf</a></p>
 <h2 id="相关资料和代码参考"><a href="#相关资料和代码参考" class="headerlink" title="相关资料和代码参考"></a>相关资料和代码参考</h2><p><a href="http://www.mellanox.com/" target="_blank" rel="noopener">www.mellanox.com/</a></p>
 <p><a href="http://www.rdmamojo.com/" target="_blank" rel="noopener">http://www.rdmamojo.com/</a></p>
 <p>samplecode： <a href="https://github.com/tarickb/the-geek-in-the-corner" target="_blank" rel="noopener">https://github.com/tarickb/the-geek-in-the-corner</a> </p>

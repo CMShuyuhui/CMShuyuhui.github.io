@@ -102,10 +102,15 @@
 <meta property="og:site_name" content="胡宇辉">
 <meta property="og:description" content="[TOC] 从毕业到现在，差不多已经工作三年了，在招商一直从事的是接入平台的开发，解决原有网关在可靠性、稳定性、效率、扩展性上的不足。为了锻炼自己的编码能力，多动手，现在想参照京东京麦TCP网关(链接：http://www.linkedkeeper.com/detail/blog.action?bid=1065 )，用erlang语言重写一遍，用来激励自己主动学习用吧。 关于京东京麦的资料介绍也比">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1ft72fv1krvj30og06q3yu.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1ft72fx20skj30tm0l440m.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1ft72fsjpxaj30x00hm3zt.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1ft72fynnekj312y0iydhi.jpg">
 <meta property="og:updated_time" content="2018-07-12T06:46:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="项目简介">
 <meta name="twitter:description" content="[TOC] 从毕业到现在，差不多已经工作三年了，在招商一直从事的是接入平台的开发，解决原有网关在可靠性、稳定性、效率、扩展性上的不足。为了锻炼自己的编码能力，多动手，现在想参照京东京麦TCP网关(链接：http://www.linkedkeeper.com/detail/blog.action?bid=1065 )，用erlang语言重写一遍，用来激励自己主动学习用吧。 关于京东京麦的资料介绍也比">
+<meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1ft72fv1krvj30og06q3yu.jpg">
 
 
 
@@ -394,12 +399,12 @@
       
         <p>[TOC]</p>
 <p>从毕业到现在，差不多已经工作三年了，在招商一直从事的是接入平台的开发，解决原有网关在可靠性、稳定性、效率、扩展性上的不足。为了锻炼自己的编码能力，多动手，现在想参照京东京麦TCP网关(链接：<a href="http://www.linkedkeeper.com/detail/blog.action?bid=1065" target="_blank" rel="noopener">http://www.linkedkeeper.com/detail/blog.action?bid=1065</a> )，用erlang语言重写一遍，用来激励自己主动学习用吧。 关于京东京麦的资料介绍也比较少，权且就按照他们所描述的自我猜测来模拟实现吧。</p>
-<h2 id="为什么需要网关？"><a href="#为什么需要网关？" class="headerlink" title="为什么需要网关？"></a>为什么需要网关？</h2><p>其实从刚毕业之初，我也没搞清楚，为什么需要一个网关来做一个数据通道，因为从学校，书本里我们基本都是接触到的是c/s模式，即client端通过tcp协议connect后端server，整个数据通道就已经打通了，即如下图所示：<br><img src="" data-echo="https://ws3.sinaimg.cn/large/006tKfTcgy1ft72fv1krvj30og06q3yu.jpg" alt="client-serve"></p>
+<h2 id="为什么需要网关？"><a href="#为什么需要网关？" class="headerlink" title="为什么需要网关？"></a>为什么需要网关？</h2><p>其实从刚毕业之初，我也没搞清楚，为什么需要一个网关来做一个数据通道，因为从学校，书本里我们基本都是接触到的是c/s模式，即client端通过tcp协议connect后端server，整个数据通道就已经打通了，即如下图所示：<br><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1ft72fv1krvj30og06q3yu.jpg" alt="client-serve"></p>
 <p>但是上诉直连的模式，仔细想想有很多需要改进的地方，这也是为什么需要一个接入系统的原因，主要分为以下几点：<br>1、一般来说，server服务器都是部署在公司内部机房的，处于安全考虑，很多情况下，其并不希望外部client知道它具体的ip，port或者部署模式。一般情况下，公司机房内部的server都会存在白名单，只允许白名单内的机器对其进行网络访问。</p>
-<p>2、抛却安全网络访问权限的限制，如果让server端直接对接外部成千上万的client连接过来的tcp连接，那有一个问题是逃不掉的，即优雅正确处理c10k问题（链接：<a href="https://segmentfault.com/a/1190000007240744" target="_blank" rel="noopener">https://segmentfault.com/a/1190000007240744</a> ）。这样一来，每个后台server就必须花费部分精力在处理同样的大量链接的情况，造成了公司开发人员的资源浪费。好的系统接入应该是只要求后台server关注于具体业务逻辑处理即可，如下图所示：<br><img src="" data-echo="https://ws2.sinaimg.cn/large/006tKfTcgy1ft72fx20skj30tm0l440m.jpg" alt="n_client-1_serve"></p>
-<p>3、同样的，对于客户端来说，当后台server的功能细分后，即客户端享受的服务功能并非后台一个server就能提供的，那么client端则就需要去连接不同的后台server。如果每个server都有自己的一套接入方式，比如connect成功后，有一系列握手过程，例如邮件发送smtp等。这种情况客户端也就需要根据他需要享受的不同的服务去以不同的方式去创建不同的socket，这个工作量对于客户端来说，也是很痛苦的，如下图所示：<br><img src="" data-echo="https://ws4.sinaimg.cn/large/006tKfTcgy1ft72fsjpxaj30x00hm3zt.jpg" alt="1_client_n_serve"></p>
+<p>2、抛却安全网络访问权限的限制，如果让server端直接对接外部成千上万的client连接过来的tcp连接，那有一个问题是逃不掉的，即优雅正确处理c10k问题（链接：<a href="https://segmentfault.com/a/1190000007240744" target="_blank" rel="noopener">https://segmentfault.com/a/1190000007240744</a> ）。这样一来，每个后台server就必须花费部分精力在处理同样的大量链接的情况，造成了公司开发人员的资源浪费。好的系统接入应该是只要求后台server关注于具体业务逻辑处理即可，如下图所示：<br><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1ft72fx20skj30tm0l440m.jpg" alt="n_client-1_serve"></p>
+<p>3、同样的，对于客户端来说，当后台server的功能细分后，即客户端享受的服务功能并非后台一个server就能提供的，那么client端则就需要去连接不同的后台server。如果每个server都有自己的一套接入方式，比如connect成功后，有一系列握手过程，例如邮件发送smtp等。这种情况客户端也就需要根据他需要享受的不同的服务去以不同的方式去创建不同的socket，这个工作量对于客户端来说，也是很痛苦的，如下图所示：<br><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1ft72fsjpxaj30x00hm3zt.jpg" alt="1_client_n_serve"></p>
 <p>4、不同协议的转发。比如说，client是采用http的协议发送数据包过来，而后端server是处理tcp协议的。那么原始直连的方式是解决不了不同协议的接入。这个概念就是代理、网关、隧道等区别，可自行查询其区别。</p>
-<p>既然直连模式有上诉一些痛点需要我们解决，这些痛点是我们可以加入一个接入网关来一定程度上得以解决的，如下图所示：<br><img src="" data-echo="https://ws3.sinaimg.cn/large/006tKfTcgy1ft72fynnekj312y0iydhi.jpg" alt="uap"><br>通过上诉接入模式，server端的部署就可以对客户端屏蔽了，客户端完全无感知server的存在；同样的，客户端只需要做到他们按照统一接入网关规定的接入方式连上统一接入网关即可，不需要考虑其他的接入模式。所有的c10k问题，http接入，tcp接入，websocket接入等都可以在统一接入网关来做。或者更多的，例如流控，服务升降级，不同协议的互相转化等，数据包统计等功能。</p>
+<p>既然直连模式有上诉一些痛点需要我们解决，这些痛点是我们可以加入一个接入网关来一定程度上得以解决的，如下图所示：<br><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1ft72fynnekj312y0iydhi.jpg" alt="uap"><br>通过上诉接入模式，server端的部署就可以对客户端屏蔽了，客户端完全无感知server的存在；同样的，客户端只需要做到他们按照统一接入网关规定的接入方式连上统一接入网关即可，不需要考虑其他的接入模式。所有的c10k问题，http接入，tcp接入，websocket接入等都可以在统一接入网关来做。或者更多的，例如流控，服务升降级，不同协议的互相转化等，数据包统计等功能。</p>
 <p>##网关需要做到什么？<br>加入网关后，就跟加入消息队列一样，带来了好处，同样也会带来不足之处，可以参考链接：<a href="https://mp.weixin.qq.com/s/KgdDnlr97-t7wZZFcJo2yA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/KgdDnlr97-t7wZZFcJo2yA</a> 。总的来说，就是加了一层访问，网络通讯就多了一次，未知的因素就多了一些。所以网关必须要做到，性能上有保障，网关一定要健壮，不能随意就dump掉，随时都可以提供服务，即要做到：高性能，高稳定性，可扩展等特性。</p>
 <p>&lt;未完待续&gt;</p>
 
