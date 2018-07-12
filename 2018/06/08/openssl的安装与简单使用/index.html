@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="openssl," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="openssl是一个功能丰富且自包含的开源安全工具箱。它提供的主要功能有：SSL协议实现 (包括SSLv2、SSLv3和TLSv1)、大量软算法(对称/非对称/摘要)、大数运算、非对称算法密钥生成、ASN.1编解码库、证书请求 (PKCS10)编解码、数字证书编解码、CRL编解码、OCSP协议、数字证书验证、PKCS7标准实现和PKCS12个人数字证书格式实现等功能。上述知识各位可以去官网看看，或">
+<meta name="keywords" content="openssl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="openssl的安装与简单使用">
+<meta property="og:url" content="http://yoursite.com/2018/06/08/openssl的安装与简单使用/index.html">
+<meta property="og:site_name" content="胡宇辉">
+<meta property="og:description" content="openssl是一个功能丰富且自包含的开源安全工具箱。它提供的主要功能有：SSL协议实现 (包括SSLv2、SSLv3和TLSv1)、大量软算法(对称/非对称/摘要)、大数运算、非对称算法密钥生成、ASN.1编解码库、证书请求 (PKCS10)编解码、数字证书编解码、CRL编解码、OCSP协议、数字证书验证、PKCS7标准实现和PKCS12个人数字证书格式实现等功能。上述知识各位可以去官网看看，或">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-23T02:40:47.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="openssl的安装与简单使用">
+<meta name="twitter:description" content="openssl是一个功能丰富且自包含的开源安全工具箱。它提供的主要功能有：SSL协议实现 (包括SSLv2、SSLv3和TLSv1)、大量软算法(对称/非对称/摘要)、大数运算、非对称算法密钥生成、ASN.1编解码库、证书请求 (PKCS10)编解码、数字证书编解码、CRL编解码、OCSP协议、数字证书验证、PKCS7标准实现和PKCS12个人数字证书格式实现等功能。上述知识各位可以去官网看看，或">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/08/openssl的安装与简单使用/"/>
+
+
+
+
+
+  <title>openssl的安装与简单使用 | 胡宇辉</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+    <a href="https://github.com/CMShuyuhui"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">胡宇辉</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Done is better than perfect</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-something">
+          <a href="/something" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            有料
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/08/openssl的安装与简单使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CMS_huyuhui">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/huyuhui.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="胡宇辉">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">openssl的安装与简单使用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-08T11:25:05+08:00">
+                2018-06-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/c-c/" itemprop="url" rel="index">
+                    <span itemprop="name">c/c++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <pre><code>openssl是一个功能丰富且自包含的开源安全工具箱。它提供的主要功能有：SSL协议实现 (包括SSLv2、SSLv3和TLSv1)、大量软算法(对称/非对称/摘要)、大数运算、非对称算法密钥生成、ASN.1编解码库、证书请求 (PKCS10)编解码、数字证书编解码、CRL编解码、OCSP协议、数字证书验证、PKCS7标准实现和PKCS12个人数字证书格式实现等功能。上述知识各位可以去官网看看，或参考网上资料。
+
+本文只针对本人实践过的openssl的安装过程以及关于RSA、AES的两种加解密算法的简单使用实例
+</code></pre><h2 id="一、Linux下安装过程（本人是Centos-64bit系统）"><a href="#一、Linux下安装过程（本人是Centos-64bit系统）" class="headerlink" title="一、Linux下安装过程（本人是Centos 64bit系统）"></a>一、Linux下安装过程（本人是Centos 64bit系统）</h2><p>1、 官方下载相应的源码，相应的安装教程，网上应该能找到很多的，这里就不在累赘了。</p>
+<pre><code>需要提醒的是，安装完openssl后，发现程序编译提示-lcrypto 无法链接，表示缺少crypto库，此时参照该篇帖子[http://blog.chinaunix.net/uid-14704264-id-4204452.html](http://blog.chinaunix.net/uid-14704264-id-4204452.html) 完成即可。本人选择直接yum安装openssl-devel
+</code></pre><p>即 yum install openssl-devel</p>
+<h2 id="二、Windows7-64bit-操作系统下编译openssl过程"><a href="#二、Windows7-64bit-操作系统下编译openssl过程" class="headerlink" title="二、Windows7 64bit 操作系统下编译openssl过程"></a>二、<strong>Windows7 64bit 操作系统</strong>下编译openssl过程</h2><p>（仅讲述本人机器环境下，编译成功的一些步骤，若有偏差，请动脑筋自己找解决方案）</p>
+<pre><code>在windows下，我们可以选择要编译openssl为32bit还是64bit，以便后期VS2010开发时候，既可以WIN32程序使用，也可以X64程序使用。安装openssl之前，我们需要先下载安装Windows版本的Perl，因为后期需要使用它来进行编译链接。 **（PS:如果你想看看原始的INSTALL文件，那么请打开OpenSSL的解压缩目录，下面有两个文件INSTALL.W32和INSTALL.W64，用记事本方式打开，你可以看到详细的关于安装的解释，这也是最正规的学习方式咯哦，下面只是我们实践之后，帮您快速安装的指南而已）**
+</code></pre><p>1、好了，现在开始先讲解下win64位下的openssl编译安装步骤</p>
+<pre><code>1.1 安装好perl后，进入perl目录下的eg文件夹下，执行example.pl，安装成功会显示出来相应的信息
+
+1.2 打开vs2010的工具中命令提示行，运行C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\bin\\amd64下的vcvars64.bat, ‍此步骤主要是完成vs的64bit的环境变量配置
+
+1.3 进入openssl的目录下，依次执行如下命令即可
+
+ \&gt; perl Configure VC-WIN64A  
+     \&gt; ms\\do_win64a  
+     \&gt; nmake -f ms\\ntdll.mak        （）
+
+     \&gt; nmake -f ms\\ntdll.mak test   检查上一步编译是否成功  
+     \&gt; nmake -f ms\\ntdll.mak install  安装编译后的openssl到指定目录
+
+说明：编译分两种情况，生成静态库和动态库  
+</code></pre><p>　　(1) 如果是编译OpenSSL动态库，则在命令行键入 nmake -f ms\ntdll.mak<br>　　　　编译成功课在文件夹out32dll里面查看输出的文件，包括应用程序的exe文件、lib文件、dll文件。<br>　　(2) 如果是编译OpenSSL静态库，则在命令行键入 nmake -f ms\nt.mak<br>　　　　编译成功课在文件夹out32里面查看输出的文件，包括应用程序的exe文件、lib文件。</p>
+<p>2、下面介绍32bit下的openssl安装配置</p>
+<pre><code>2.1 首先设定好环境变量
+
+    设定环境变量：桌面计算机图标右键-&gt;属性-&gt;高级系统设置-&gt;环境变量-&gt;在系统变量当中找到变量名称为path的变量 （如果没有找到这新建）点击编辑-&gt;在变量名称中填入&quot;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\bin;C:\\Perl64\\bin;c:\\windows\\system32&quot;-&gt;点击确定完成设定。（说明：C: \\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\bin路径是VS2010的路径。C:\\Perl64\\bin是运行perl的路径，不若不设定那么perl命令将找不到。c: \\windows\\system32这个路径很少提到但是很重要，如果不设置那么会造成后面vcvars32.bat环境变量执行出错。）到此环境变量路 径设置好之后重启下电脑才能生效。
+
+
+
+2.2 使用Visual Studio命令提示（2010）进入控制台模式:开始菜单-&gt;所有程序-&gt;Microsoft Visual Studio 2010-&gt;Visual Studio Tools-&gt;Visual Studio命令提示（2010）,(PS:以管理员身份运行)， 使用cd命令将目录指向C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\bin（PS:自己的VC安装路径）, 命令行键入vcvars32，运行vcvars32.bat..完成后进入OpenSSL源码的 目录（C:\\openssl）
+
+
+
+2.3 执行Configure命令（配置编译参数）(需将目录跳到OpenSSL源码目录下)
+
+        在命令行中键入&quot;perl configure VC-WIN32 no-asm --prefix=c:\\openssl&quot;  
+
+        (PS:--prefix=c:\\openssl命令为指定安装位置)
+
+
+
+2.4 运行ms\\do_ms命令(需将目录跳到OpenSSL源码目录下)
+
+        在命令行中键入”ms\\do_nasm“。
+
+
+
+2.5 运行“nmake -f ms\\ntdll.mak -a”命令进行代码编译（需将目录跳到OpenSSL源码目录下）
+
+
+
+2.6 测试使用命令“nmake -f ms\\ntdll.mak test”（若安装成功则可以使用此命令来验证）
+</code></pre><h2 id="三、RSA与AES的简单代码示例"><a href="#三、RSA与AES的简单代码示例" class="headerlink" title="三、RSA与AES的简单代码示例"></a>三、RSA与AES的简单代码示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br></pre></td><td class="code"><pre><span class="line">//AES加密,不足128位的需要在前面补0，再加上128bit来表示补零的长度</span><br><span class="line">std::string EncodeAES( const std::string&amp; password, const std::string&amp; data )</span><br><span class="line">&#123;</span><br><span class="line">    unsigned char Iv[17]=&quot;12345678abcdefgh&quot;;</span><br><span class="line">    AES_KEY aes_key;</span><br><span class="line">    if(AES_set_encrypt_key( (const unsigned char*)password.c_str(), password.length() * 8,</span><br><span class="line">        &amp;aes_key) &lt; 0)</span><br><span class="line">    &#123;</span><br><span class="line">        assert(false);</span><br><span class="line">        return &quot;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    std::string strRet;</span><br><span class="line">    std::string data_bak(data);</span><br><span class="line"></span><br><span class="line">    unsigned int data_length = data_bak.length();</span><br><span class="line">    int padding = 0;</span><br><span class="line">    if (data_bak.length() % AES_BLOCK_SIZE &gt; 0)</span><br><span class="line">    &#123;</span><br><span class="line">        padding =  AES_BLOCK_SIZE - data_bak.length() % AES_BLOCK_SIZE;</span><br><span class="line">    &#125;</span><br><span class="line">    data_length += padding;</span><br><span class="line"></span><br><span class="line">    //此函数在p0处插入n个字符c(前补零)</span><br><span class="line">    data_bak.insert(0, padding, &apos;\0&apos;);</span><br><span class="line"></span><br><span class="line">    //用128位告知补了多少个0</span><br><span class="line">    char* padding_zero_length = new char[AES_BLOCK_SIZE];</span><br><span class="line">    memset(padding_zero_length, 0, AES_BLOCK_SIZE-1);</span><br><span class="line">    padding_zero_length[AES_BLOCK_SIZE-1] = padding * 8 ;</span><br><span class="line"></span><br><span class="line">    std::string num_head(padding_zero_length, AES_BLOCK_SIZE);</span><br><span class="line">    delete[] padding_zero_length;</span><br><span class="line">    data_bak.insert(0,num_head);</span><br><span class="line">    data_length +=AES_BLOCK_SIZE;</span><br><span class="line"></span><br><span class="line">    //加密的明文一定要是AES_BLOCK_SIZE的整数倍</span><br><span class="line">    for(unsigned int i = 0; i &lt; data_length/AES_BLOCK_SIZE; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        std::string str16 = data_bak.substr(i*AES_BLOCK_SIZE, AES_BLOCK_SIZE);</span><br><span class="line">        unsigned char out[AES_BLOCK_SIZE];</span><br><span class="line">        memset(out, 0, AES_BLOCK_SIZE);</span><br><span class="line">        AES_cbc_encrypt((const unsigned char*)str16.c_str(),out,AES_BLOCK_SIZE,</span><br><span class="line">            &amp;aes_key,Iv,AES_ENCRYPT);</span><br><span class="line"></span><br><span class="line">        strRet += std::string((const char*)out, AES_BLOCK_SIZE);</span><br><span class="line">    &#125;</span><br><span class="line">    return strRet;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//AES解密</span><br><span class="line">std::string DecodeAES( const std::string&amp; strPassword, const std::string&amp; strData )</span><br><span class="line">&#123;</span><br><span class="line">    //双方指定就好</span><br><span class="line">    unsigned char Iv[17]=&quot;12345678abcdefgh&quot;;</span><br><span class="line">    AES_KEY aes_key;</span><br><span class="line">    if(AES_set_decrypt_key( (const unsigned char*)strPassword.c_str(), </span><br><span class="line">                          strPassword.length() * 8, &amp;aes_key )  &lt; 0 )</span><br><span class="line">    &#123;</span><br><span class="line">        assert(false);</span><br><span class="line">        return &quot;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    std::string strRet;</span><br><span class="line">    for(unsigned int i = 0; i &lt; strData.length()/AES_BLOCK_SIZE; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        std::string str16 = strData.substr(i*AES_BLOCK_SIZE, AES_BLOCK_SIZE);</span><br><span class="line">        unsigned char out[AES_BLOCK_SIZE];</span><br><span class="line">        memset(out, 0, AES_BLOCK_SIZE);</span><br><span class="line">        AES_cbc_encrypt((const unsigned char*)str16.c_str(),out,AES_BLOCK_SIZE,</span><br><span class="line">          &amp;aes_key,Iv,AES_DECRYPT);</span><br><span class="line"></span><br><span class="line">        strRet += std::string((const char*)out, AES_BLOCK_SIZE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 解密后跳过补零的长度</span><br><span class="line">    unsigned char num_head = strRet[AES_BLOCK_SIZE-1];</span><br><span class="line">    int len=num_head/8;</span><br><span class="line"></span><br><span class="line">    strRet = strRet.substr(AES_BLOCK_SIZE+len);</span><br><span class="line">    return strRet;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//RSA加密，加解密使用的都是公钥</span><br><span class="line">std::string EncodeRSAKeyFile( const std::string&amp; strRsaPubkey, const std::string&amp; strData )</span><br><span class="line">&#123;</span><br><span class="line">    if (strRsaPubkey.empty() || strData.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        assert(false);</span><br><span class="line">        return &quot;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    std::string strRet;</span><br><span class="line">    RSA* pRSAPublicKey = NULL;</span><br><span class="line">    BIO    *bio = NULL;</span><br><span class="line"></span><br><span class="line">    /* 从内存数据读 */</span><br><span class="line">    bio = BIO_new(BIO_s_mem());</span><br><span class="line">    BIO_puts(bio, strRsaPubkey.c_str());</span><br><span class="line"></span><br><span class="line">    pRSAPublicKey = PEM_read_bio_RSA_PUBKEY(bio, &amp;pRSAPublicKey, NULL, NULL);</span><br><span class="line">    if (pRSAPublicKey == NULL) </span><br><span class="line">    &#123;</span><br><span class="line">        return NULL;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    int nLen = RSA_size(pRSAPublicKey);</span><br><span class="line">    int iblock_size = nLen - 11;</span><br><span class="line">    int oblock_size = nLen ;</span><br><span class="line">    int nblocks = (strData.length() / iblock_size) + </span><br><span class="line">         ((strData.length() % iblock_size == 0) ? 0 : 1);  </span><br><span class="line"></span><br><span class="line">    char* pEncode = new char[nblocks*nLen + 1];</span><br><span class="line">    for (int i = 0; i &lt; nblocks ; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        int ret=0;</span><br><span class="line">        if (i == nblocks - 1) </span><br><span class="line">        &#123; </span><br><span class="line">          ret = RSA_public_encrypt(strData.length() % iblock_size,</span><br><span class="line">                 (const unsigned char*)(strData.c_str()+(i * iblock_size)),</span><br><span class="line">                 (unsigned char*)(&amp;pEncode[i*oblock_size]),</span><br><span class="line">                  pRSAPublicKey, </span><br><span class="line">                  RSA_PKCS1_PADDING); </span><br><span class="line">        &#125; </span><br><span class="line">        else </span><br><span class="line">        &#123;</span><br><span class="line">          ret = RSA_public_encrypt(iblock_size,</span><br><span class="line">                  (const unsigned char*)(strData.c_str()+(i * iblock_size)), </span><br><span class="line">                  (unsigned char*)(&amp;pEncode[i*oblock_size]), </span><br><span class="line">                  pRSAPublicKey, </span><br><span class="line">                  RSA_PKCS1_PADDING); </span><br><span class="line">        &#125; </span><br><span class="line">        strRet = strRet + std::string(&amp;pEncode[i*oblock_size], ret);</span><br><span class="line">    &#125;</span><br><span class="line">    delete[] pEncode;</span><br><span class="line">    BIO_free(bio);</span><br><span class="line">    RSA_free(pRSAPublicKey);</span><br><span class="line">    CRYPTO_cleanup_all_ex_data(); </span><br><span class="line">    return strRet;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//RSA解密，加解密使用的都是公钥</span><br><span class="line">std::string DecodeRSAKeyFile( const std::string&amp; strRsaPubkey, const std::string&amp; strData )</span><br><span class="line">&#123;</span><br><span class="line">    if (strRsaPubkey.empty() || strData.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        assert(false);</span><br><span class="line">        return &quot;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    std::string strRet;</span><br><span class="line">    RSA* pRSAPublicKey = NULL;</span><br><span class="line">    BIO    *bio = NULL;</span><br><span class="line"></span><br><span class="line">    /* 从内存数据读秘钥 */</span><br><span class="line">    bio = BIO_new(BIO_s_mem());</span><br><span class="line">    BIO_puts(bio, strRsaPubkey.c_str());</span><br><span class="line"></span><br><span class="line">    pRSAPublicKey = PEM_read_bio_RSA_PUBKEY(bio, &amp;pRSAPublicKey, NULL, NULL);</span><br><span class="line">    if (pRSAPublicKey == NULL) </span><br><span class="line">    &#123;</span><br><span class="line">        return NULL;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int nLen = RSA_size(pRSAPublicKey);</span><br><span class="line">    int block_size = nLen; </span><br><span class="line">    int nblocks =  strData.length() / block_size; </span><br><span class="line">    char* pDecode = new char[nLen+1];</span><br><span class="line">    for (int i= 0; i &lt; nblocks; i++) </span><br><span class="line">    &#123; </span><br><span class="line">        //加解密使用的都是公钥</span><br><span class="line">        int ret = RSA_public_decrypt(block_size, </span><br><span class="line">                        (const unsigned char*)(strData.c_str()+(i * block_size)),</span><br><span class="line">                         (unsigned char*)pDecode, </span><br><span class="line">                         pRSAPublicKey, </span><br><span class="line">                         RSA_PKCS1_PADDING); </span><br><span class="line">        if(ret &gt;= 0)</span><br><span class="line">        &#123;</span><br><span class="line">            strRet = strRet + std::string((char*)pDecode, ret);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">    delete [] pDecode;</span><br><span class="line">    BIO_free(bio);</span><br><span class="line">    RSA_free(pRSAPublicKey);</span><br><span class="line">    CRYPTO_cleanup_all_ex_data(); </span><br><span class="line">    return strRet;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中例子中rsa加解密都是用公钥来加解密的哦，至于如何按私钥来，自主思考或查阅资料吧</p>
+<p>linux编译选项需要加上： -lcrypto -lssl</p>
+<p>windows下需要在VS2010中配置相应的项目属性，即</p>
+<p>项目-&gt;属性-&gt;配置属性-&gt;vc++目录-&gt;包含目录</p>
+<p>项目-&gt;属性-&gt;配置属性-&gt;vc++目录-&gt;库目录</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢您的赞赏,赚点辛苦奶粉钱</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat_pay.jpg" alt="CMS_huyuhui WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/ali_pay.jpg" alt="CMS_huyuhui Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/openssl/" rel="tag"># openssl</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/08/RDMA学习路线总结/" rel="next" title="RDMA学习路线总结">
+                <i class="fa fa-chevron-left"></i> RDMA学习路线总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/08/Linux下线程pthread以及锁的一些总结和代码参考/" rel="prev" title="Linux下线程pthread以及锁的一些总结和代码参考">
+                Linux下线程pthread以及锁的一些总结和代码参考 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/huyuhui.jpg"
+               alt="CMS_huyuhui" />
+          <p class="site-author-name" itemprop="name">CMS_huyuhui</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Linux下安装过程（本人是Centos-64bit系统）"><span class="nav-number">1.</span> <span class="nav-text">一、Linux下安装过程（本人是Centos 64bit系统）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、Windows7-64bit-操作系统下编译openssl过程"><span class="nav-number">2.</span> <span class="nav-text">二、Windows7 64bit 操作系统下编译openssl过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、RSA与AES的简单代码示例"><span class="nav-number">3.</span> <span class="nav-text">三、RSA与AES的简单代码示例</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">胡宇辉CMS_huyuhui</span>
+</div>
+
+
+<div class="powered-by">
+  由  强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+</div>
+
+<div class="powered-by">
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/love.js"></script>
