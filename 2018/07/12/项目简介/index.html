@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="网关，tcp， http， websocket， 代理," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="[TOC] 从毕业到现在，差不多已经工作三年了，在招商一直从事的是接入平台的开发，解决原有网关在可靠性、稳定性、效率、扩展性上的不足。为了锻炼自己的编码能力，多动手，现在想参照京东京麦TCP网关(链接：http://www.linkedkeeper.com/detail/blog.action?bid=1065 )，用erlang语言重写一遍，用来激励自己主动学习用吧。 关于京东京麦的资料介绍也比">
+<meta name="keywords" content="网关，tcp， http， websocket， 代理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="项目简介">
+<meta property="og:url" content="http://yoursite.com/2018/07/12/项目简介/index.html">
+<meta property="og:site_name" content="胡宇辉">
+<meta property="og:description" content="[TOC] 从毕业到现在，差不多已经工作三年了，在招商一直从事的是接入平台的开发，解决原有网关在可靠性、稳定性、效率、扩展性上的不足。为了锻炼自己的编码能力，多动手，现在想参照京东京麦TCP网关(链接：http://www.linkedkeeper.com/detail/blog.action?bid=1065 )，用erlang语言重写一遍，用来激励自己主动学习用吧。 关于京东京麦的资料介绍也比">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-12T06:46:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="项目简介">
+<meta name="twitter:description" content="[TOC] 从毕业到现在，差不多已经工作三年了，在招商一直从事的是接入平台的开发，解决原有网关在可靠性、稳定性、效率、扩展性上的不足。为了锻炼自己的编码能力，多动手，现在想参照京东京麦TCP网关(链接：http://www.linkedkeeper.com/detail/blog.action?bid=1065 )，用erlang语言重写一遍，用来激励自己主动学习用吧。 关于京东京麦的资料介绍也比">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/12/项目简介/"/>
+
+
+
+
+
+  <title>项目简介 | 胡宇辉</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+    <a href="https://github.com/CMShuyuhui"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">胡宇辉</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Done is better than perfect</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-something">
+          <a href="/something" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            有料
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/12/项目简介/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CMS_huyuhui">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/huyuhui.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="胡宇辉">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">项目简介</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-12T08:47:45+08:00">
+                2018-07-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/开源网关/" itemprop="url" rel="index">
+                    <span itemprop="name">开源网关</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[TOC]</p>
+<p>从毕业到现在，差不多已经工作三年了，在招商一直从事的是接入平台的开发，解决原有网关在可靠性、稳定性、效率、扩展性上的不足。为了锻炼自己的编码能力，多动手，现在想参照京东京麦TCP网关(链接：<a href="http://www.linkedkeeper.com/detail/blog.action?bid=1065" target="_blank" rel="noopener">http://www.linkedkeeper.com/detail/blog.action?bid=1065</a> )，用erlang语言重写一遍，用来激励自己主动学习用吧。 关于京东京麦的资料介绍也比较少，权且就按照他们所描述的自我猜测来模拟实现吧。</p>
+<h2 id="为什么需要网关？"><a href="#为什么需要网关？" class="headerlink" title="为什么需要网关？"></a>为什么需要网关？</h2><p>其实从刚毕业之初，我也没搞清楚，为什么需要一个网关来做一个数据通道，因为从学校，书本里我们基本都是接触到的是c/s模式，即client端通过tcp协议connect后端server，整个数据通道就已经打通了，即如下图所示：<br><img src="" data-echo="https://ws3.sinaimg.cn/large/006tKfTcgy1ft72fv1krvj30og06q3yu.jpg" alt="client-serve"></p>
+<p>但是上诉直连的模式，仔细想想有很多需要改进的地方，这也是为什么需要一个接入系统的原因，主要分为以下几点：<br>1、一般来说，server服务器都是部署在公司内部机房的，处于安全考虑，很多情况下，其并不希望外部client知道它具体的ip，port或者部署模式。一般情况下，公司机房内部的server都会存在白名单，只允许白名单内的机器对其进行网络访问。</p>
+<p>2、抛却安全网络访问权限的限制，如果让server端直接对接外部成千上万的client连接过来的tcp连接，那有一个问题是逃不掉的，即优雅正确处理c10k问题（链接：<a href="https://segmentfault.com/a/1190000007240744" target="_blank" rel="noopener">https://segmentfault.com/a/1190000007240744</a> ）。这样一来，每个后台server就必须花费部分精力在处理同样的大量链接的情况，造成了公司开发人员的资源浪费。好的系统接入应该是只要求后台server关注于具体业务逻辑处理即可，如下图所示：<br><img src="" data-echo="https://ws2.sinaimg.cn/large/006tKfTcgy1ft72fx20skj30tm0l440m.jpg" alt="n_client-1_serve"></p>
+<p>3、同样的，对于客户端来说，当后台server的功能细分后，即客户端享受的服务功能并非后台一个server就能提供的，那么client端则就需要去连接不同的后台server。如果每个server都有自己的一套接入方式，比如connect成功后，有一系列握手过程，例如邮件发送smtp等。这种情况客户端也就需要根据他需要享受的不同的服务去以不同的方式去创建不同的socket，这个工作量对于客户端来说，也是很痛苦的，如下图所示：<br><img src="" data-echo="https://ws4.sinaimg.cn/large/006tKfTcgy1ft72fsjpxaj30x00hm3zt.jpg" alt="1_client_n_serve"></p>
+<p>4、不同协议的转发。比如说，client是采用http的协议发送数据包过来，而后端server是处理tcp协议的。那么原始直连的方式是解决不了不同协议的接入。这个概念就是代理、网关、隧道等区别，可自行查询其区别。</p>
+<p>既然直连模式有上诉一些痛点需要我们解决，这些痛点是我们可以加入一个接入网关来一定程度上得以解决的，如下图所示：<br><img src="" data-echo="https://ws3.sinaimg.cn/large/006tKfTcgy1ft72fynnekj312y0iydhi.jpg" alt="uap"><br>通过上诉接入模式，server端的部署就可以对客户端屏蔽了，客户端完全无感知server的存在；同样的，客户端只需要做到他们按照统一接入网关规定的接入方式连上统一接入网关即可，不需要考虑其他的接入模式。所有的c10k问题，http接入，tcp接入，websocket接入等都可以在统一接入网关来做。或者更多的，例如流控，服务升降级，不同协议的互相转化等，数据包统计等功能。</p>
+<p>##网关需要做到什么？<br>加入网关后，就跟加入消息队列一样，带来了好处，同样也会带来不足之处，可以参考链接：<a href="https://mp.weixin.qq.com/s/KgdDnlr97-t7wZZFcJo2yA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/KgdDnlr97-t7wZZFcJo2yA</a> 。总的来说，就是加了一层访问，网络通讯就多了一次，未知的因素就多了一些。所以网关必须要做到，性能上有保障，网关一定要健壮，不能随意就dump掉，随时都可以提供服务，即要做到：高性能，高稳定性，可扩展等特性。</p>
+<p>&lt;未完待续&gt;</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢您的赞赏,赚点辛苦奶粉钱</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat_pay.jpg" alt="CMS_huyuhui WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/ali_pay.jpg" alt="CMS_huyuhui Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/网关，tcp，-http，-websocket，-代理/" rel="tag"># 网关，tcp， http， websocket， 代理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/29/得到学习笔记3/" rel="next" title="得到学习笔记3">
+                <i class="fa fa-chevron-left"></i> 得到学习笔记3
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/huyuhui.jpg"
+               alt="CMS_huyuhui" />
+          <p class="site-author-name" itemprop="name">CMS_huyuhui</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么需要网关？"><span class="nav-number">1.</span> <span class="nav-text">为什么需要网关？</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">胡宇辉CMS_huyuhui</span>
+</div>
+
+
+<div class="powered-by">
+  由  强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+</div>
+
+<div class="powered-by">
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/love.js"></script>
