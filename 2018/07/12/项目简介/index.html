@@ -106,7 +106,7 @@
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1ft72fx20skj30tm0l440m.jpg">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1ft72fsjpxaj30x00hm3zt.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1ft72fynnekj312y0iydhi.jpg">
-<meta property="og:updated_time" content="2018-07-12T06:46:29.000Z">
+<meta property="og:updated_time" content="2018-07-15T03:55:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="项目简介">
 <meta name="twitter:description" content="[TOC] 从毕业到现在，差不多已经工作三年了，在招商一直从事的是接入平台的开发，解决原有网关在可靠性、稳定性、效率、扩展性上的不足。为了锻炼自己的编码能力，多动手，现在想参照京东京麦TCP网关(链接：http://www.linkedkeeper.com/detail/blog.action?bid=1065 )，用erlang语言重写一遍，用来激励自己主动学习用吧。 关于京东京麦的资料介绍也比">
@@ -406,7 +406,9 @@
 <p>4、不同协议的转发。比如说，client是采用http的协议发送数据包过来，而后端server是处理tcp协议的。那么原始直连的方式是解决不了不同协议的接入。这个概念就是代理、网关、隧道等区别，可自行查询其区别。</p>
 <p>既然直连模式有上诉一些痛点需要我们解决，这些痛点是我们可以加入一个接入网关来一定程度上得以解决的，如下图所示：<br><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1ft72fynnekj312y0iydhi.jpg" alt="uap"><br>通过上诉接入模式，server端的部署就可以对客户端屏蔽了，客户端完全无感知server的存在；同样的，客户端只需要做到他们按照统一接入网关规定的接入方式连上统一接入网关即可，不需要考虑其他的接入模式。所有的c10k问题，http接入，tcp接入，websocket接入等都可以在统一接入网关来做。或者更多的，例如流控，服务升降级，不同协议的互相转化等，数据包统计等功能。</p>
 <p>##网关需要做到什么？<br>加入网关后，就跟加入消息队列一样，带来了好处，同样也会带来不足之处，可以参考链接：<a href="https://mp.weixin.qq.com/s/KgdDnlr97-t7wZZFcJo2yA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/KgdDnlr97-t7wZZFcJo2yA</a> 。总的来说，就是加了一层访问，网络通讯就多了一次，未知的因素就多了一些。所以网关必须要做到，性能上有保障，网关一定要健壮，不能随意就dump掉，随时都可以提供服务，即要做到：高性能，高稳定性，可扩展等特性。</p>
-<p>&lt;未完待续&gt;</p>
+<p>##网关tcp协议内容<br>网关使用什么协议是需要针对不同的业务场景，最好由公司统一设计出一个统一的数据交换协议，基本模式都是header+body的模式，其中header中包含了网关需要的某些字段，body则是具体业务逻辑所需要关心的。我就准备随意从互联网上找一份协议模式来实现吧，其proto文件描述为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">message TcpProtocol </span><br><span class="line">&#123;</span><br><span class="line">    required string version         = 1;    //接口版本号</span><br><span class="line">    required string deviceId        = 2;    //设备uuid</span><br><span class="line">    required uint32 cmd             = 3;    //请求接口命令字</span><br><span class="line">    required uint64 seq             = 4;    //请求序列号，保障唯一性，建议使用uuid</span><br><span class="line">    required uint32 format          = 5;    //请求1，应答2，通知3，响应4</span><br><span class="line">    required uint32 flag            = 6;    //body部分的加密方式：1 rsa加密 2 aes_cbc加密</span><br><span class="line">    required string platform        = 7;    //mobile-ios mobile-android pc-windows pc-mac</span><br><span class="line">    required string platformVersion = 8;    //客户端版本号</span><br><span class="line">    required string token           = 9;    //客户端凭证</span><br><span class="line">    required string appKey          = 10;   //客户端key</span><br><span class="line">    required string timeStamp       = 11;   //时间戳</span><br><span class="line">    required string sign            = 12;   //签名 md5((body base64)++(timeStamp))</span><br><span class="line"></span><br><span class="line">    required uint32 bodyLen         = 13;   //body长度</span><br><span class="line">    optional bytes body             = 14;   //请求数据</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接下来就准备开干吧，祝玩的愉快<br>&lt;未完待续&gt;</p>
 
       
     </div>
