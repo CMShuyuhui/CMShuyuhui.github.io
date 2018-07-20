@@ -106,7 +106,7 @@
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1ft72fx20skj30tm0l440m.jpg">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1ft72fsjpxaj30x00hm3zt.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1ft72fynnekj312y0iydhi.jpg">
-<meta property="og:updated_time" content="2018-07-20T03:12:11.000Z">
+<meta property="og:updated_time" content="2018-07-20T03:13:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="项目简介">
 <meta name="twitter:description" content="[TOC] 从毕业到现在，差不多已经工作三年了，在招商一直从事的是接入平台的开发，解决原有网关在可靠性、稳定性、效率、扩展性上的不足。为了锻炼自己的编码能力，多动手，现在想参照京东京麦TCP网关(链接：http://www.linkedkeeper.com/detail/blog.action?bid=1065 )，用erlang语言重写一遍，用来激励自己主动学习用吧。 关于京东京麦的资料介绍也比">
@@ -399,7 +399,7 @@
       
         <p>[TOC]</p>
 <p>从毕业到现在，差不多已经工作三年了，在招商一直从事的是接入平台的开发，解决原有网关在可靠性、稳定性、效率、扩展性上的不足。为了锻炼自己的编码能力，多动手，现在想参照京东京麦TCP网关(链接：<a href="http://www.linkedkeeper.com/detail/blog.action?bid=1065" target="_blank" rel="noopener">http://www.linkedkeeper.com/detail/blog.action?bid=1065</a> )，用erlang语言重写一遍，用来激励自己主动学习用吧。 关于京东京麦的资料介绍也比较少，权且就按照他们所描述的自我猜测来模拟实现吧。</p>
-<p>##什么是api网关？<br>网上说api网关的文章很多，大家可以自己去参考，我觉得这篇文章不错： <a href="https://mp.weixin.qq.com/s/RuN5RfQfksQZRPACloqHEg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/RuN5RfQfksQZRPACloqHEg</a> 。<br>我这三年工作的，其实也差不多是一个网关，不过功能没有文章中说的那么丰富，不同的业务场景和公司技术投入的前提下，能有效解决公司业务瓶颈就好了。所以参考做网关的话，能做到什么样就看自己的投入了，实现的过程中就是学习的过程，架构不是设计出来的，是在演变中实现出来的。</p>
+<h2 id="什么是api网关？"><a href="#什么是api网关？" class="headerlink" title="什么是api网关？"></a>什么是api网关？</h2><p>网上说api网关的文章很多，大家可以自己去参考，我觉得这篇文章不错： <a href="https://mp.weixin.qq.com/s/RuN5RfQfksQZRPACloqHEg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/RuN5RfQfksQZRPACloqHEg</a> 。<br>我这三年工作的，其实也差不多是一个网关，不过功能没有文章中说的那么丰富，不同的业务场景和公司技术投入的前提下，能有效解决公司业务瓶颈就好了。所以参考做网关的话，能做到什么样就看自己的投入了，实现的过程中就是学习的过程，架构不是设计出来的，是在演变中实现出来的。</p>
 <h2 id="为什么需要网关？"><a href="#为什么需要网关？" class="headerlink" title="为什么需要网关？"></a>为什么需要网关？</h2><p>其实从刚毕业之初，我也没搞清楚，为什么需要一个网关来做一个数据通道，因为从学校，书本里我们基本都是接触到的是c/s模式，即client端通过tcp协议connect后端server，整个数据通道就已经打通了，即如下图所示：<br><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1ft72fv1krvj30og06q3yu.jpg" alt="client-serve"></p>
 <p>但是上诉直连的模式，仔细想想有很多需要改进的地方，这也是为什么需要一个接入系统的原因，主要分为以下几点：<br>1、一般来说，server服务器都是部署在公司内部机房的，处于安全考虑，很多情况下，其并不希望外部client知道它具体的ip，port或者部署模式。一般情况下，公司机房内部的server都会存在白名单，只允许白名单内的机器对其进行网络访问。</p>
 <p>2、抛却安全网络访问权限的限制，如果让server端直接对接外部成千上万的client连接过来的tcp连接，那有一个问题是逃不掉的，即优雅正确处理c10k问题（链接：<a href="https://segmentfault.com/a/1190000007240744" target="_blank" rel="noopener">https://segmentfault.com/a/1190000007240744</a> ）。这样一来，每个后台server就必须花费部分精力在处理同样的大量链接的情况，造成了公司开发人员的资源浪费。好的系统接入应该是只要求后台server关注于具体业务逻辑处理即可，如下图所示：<br><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1ft72fx20skj30tm0l440m.jpg" alt="n_client-1_serve"></p>
@@ -611,7 +611,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么需要网关？"><span class="nav-number">1.</span> <span class="nav-text">为什么需要网关？</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是api网关？"><span class="nav-number">1.</span> <span class="nav-text">什么是api网关？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么需要网关？"><span class="nav-number">2.</span> <span class="nav-text">为什么需要网关？</span></a></li></ol></div>
             
 
           </div>
