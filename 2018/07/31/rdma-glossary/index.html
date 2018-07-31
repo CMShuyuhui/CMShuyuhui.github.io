@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="网关，tcp， http， websocket， 代理," />
+  <meta name="keywords" content="rdma, manual," />
 
 
 
@@ -94,23 +94,18 @@
 
 
 
-<meta name="description" content="[TOC] 从毕业到现在，差不多已经工作三年了，在招商一直从事的是接入平台的开发，解决原有网关在可靠性、稳定性、效率、扩展性上的不足。为了锻炼自己的编码能力，多动手，现在想参照京东京麦TCP网关(链接：http://www.linkedkeeper.com/detail/blog.action?bid=1065 )，用erlang语言重写一遍，用来激励自己主动学习用吧。 关于京东京麦的资料介绍也比">
-<meta name="keywords" content="网关，tcp， http， websocket， 代理">
+<meta name="description" content="RDMA Glossary 2017年本人工作上需要，研究了近半年的rdma，通过对rdma的学习，很多概念上还是跟tcp都差不多的，触类旁通的。这系列的博客主要是翻译一些rdma的资料用来自我学习而已，个人建议，最好还是去读英文原版的学习资料比较好，虽然费点时间，但效果要好得多。这里我就主要翻译一下Mellanox公司的《RDMA Aware Programming user manual 1.">
+<meta name="keywords" content="rdma, manual">
 <meta property="og:type" content="article">
-<meta property="og:title" content="项目简介">
-<meta property="og:url" content="http://yoursite.com/2018/07/12/项目简介/index.html">
+<meta property="og:title" content="rdma glossary">
+<meta property="og:url" content="http://yoursite.com/2018/07/31/rdma-glossary/index.html">
 <meta property="og:site_name" content="胡宇辉">
-<meta property="og:description" content="[TOC] 从毕业到现在，差不多已经工作三年了，在招商一直从事的是接入平台的开发，解决原有网关在可靠性、稳定性、效率、扩展性上的不足。为了锻炼自己的编码能力，多动手，现在想参照京东京麦TCP网关(链接：http://www.linkedkeeper.com/detail/blog.action?bid=1065 )，用erlang语言重写一遍，用来激励自己主动学习用吧。 关于京东京麦的资料介绍也比">
+<meta property="og:description" content="RDMA Glossary 2017年本人工作上需要，研究了近半年的rdma，通过对rdma的学习，很多概念上还是跟tcp都差不多的，触类旁通的。这系列的博客主要是翻译一些rdma的资料用来自我学习而已，个人建议，最好还是去读英文原版的学习资料比较好，虽然费点时间，但效果要好得多。这里我就主要翻译一下Mellanox公司的《RDMA Aware Programming user manual 1.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1ft72fv1krvj30og06q3yu.jpg">
-<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1ft72fx20skj30tm0l440m.jpg">
-<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1ft72fsjpxaj30x00hm3zt.jpg">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1ft72fynnekj312y0iydhi.jpg">
-<meta property="og:updated_time" content="2018-07-20T03:14:26.000Z">
+<meta property="og:updated_time" content="2018-07-31T07:30:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="项目简介">
-<meta name="twitter:description" content="[TOC] 从毕业到现在，差不多已经工作三年了，在招商一直从事的是接入平台的开发，解决原有网关在可靠性、稳定性、效率、扩展性上的不足。为了锻炼自己的编码能力，多动手，现在想参照京东京麦TCP网关(链接：http://www.linkedkeeper.com/detail/blog.action?bid=1065 )，用erlang语言重写一遍，用来激励自己主动学习用吧。 关于京东京麦的资料介绍也比">
-<meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1ft72fv1krvj30og06q3yu.jpg">
+<meta name="twitter:title" content="rdma glossary">
+<meta name="twitter:description" content="RDMA Glossary 2017年本人工作上需要，研究了近半年的rdma，通过对rdma的学习，很多概念上还是跟tcp都差不多的，触类旁通的。这系列的博客主要是翻译一些rdma的资料用来自我学习而已，个人建议，最好还是去读英文原版的学习资料比较好，虽然费点时间，但效果要好得多。这里我就主要翻译一下Mellanox公司的《RDMA Aware Programming user manual 1.">
 
 
 
@@ -139,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/07/12/项目简介/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/31/rdma-glossary/"/>
 
 
 
 
 
-  <title>项目简介 | 胡宇辉</title>
+  <title>rdma glossary | 胡宇辉</title>
   
 
 
@@ -308,7 +303,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/12/项目简介/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/31/rdma-glossary/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CMS_huyuhui">
@@ -325,7 +320,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">项目简介</h1>
+          <h1 class="post-title" itemprop="name headline">rdma glossary</h1>
         
 
         <div class="post-meta">
@@ -337,8 +332,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-12T08:47:45+08:00">
-                2018-07-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-31T14:41:33+08:00">
+                2018-07-31
               </time>
             
 
@@ -360,8 +355,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/开源网关/" itemprop="url" rel="index">
-                    <span itemprop="name">开源网关</span>
+                  <a href="/categories/rdma/" itemprop="url" rel="index">
+                    <span itemprop="name">rdma</span>
                   </a>
                 </span>
 
@@ -397,19 +392,104 @@
       
 
       
-        <p>[TOC]</p>
-<p>从毕业到现在，差不多已经工作三年了，在招商一直从事的是接入平台的开发，解决原有网关在可靠性、稳定性、效率、扩展性上的不足。为了锻炼自己的编码能力，多动手，现在想参照京东京麦TCP网关(链接：<a href="http://www.linkedkeeper.com/detail/blog.action?bid=1065" target="_blank" rel="noopener">http://www.linkedkeeper.com/detail/blog.action?bid=1065</a> )，用erlang语言重写一遍，用来激励自己主动学习用吧。 关于京东京麦的资料介绍也比较少，权且就按照他们所描述的自我猜测来模拟实现吧。</p>
-<h2 id="什么是api网关？"><a href="#什么是api网关？" class="headerlink" title="什么是api网关？"></a>什么是api网关？</h2><p>网上说api网关的文章很多，大家可以自己去参考，我觉得这篇文章不错： <a href="https://mp.weixin.qq.com/s/RuN5RfQfksQZRPACloqHEg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/RuN5RfQfksQZRPACloqHEg</a> 。<br>我这三年工作的，其实也差不多是一个网关，不过功能没有文章中说的那么丰富，不同的业务场景和公司技术投入的前提下，能有效解决公司业务瓶颈就好了。所以参考做网关的话，能做到什么样就看自己的投入了，实现的过程中就是学习的过程，架构不是设计出来的，是在演变中实现出来的。</p>
-<h2 id="为什么需要网关？"><a href="#为什么需要网关？" class="headerlink" title="为什么需要网关？"></a>为什么需要网关？</h2><p>其实从刚毕业之初，我也没搞清楚，为什么需要一个网关来做一个数据通道，因为从学校，书本里我们基本都是接触到的是c/s模式，即client端通过tcp协议connect后端server，整个数据通道就已经打通了，即如下图所示：<br><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1ft72fv1krvj30og06q3yu.jpg" alt="client-serve"></p>
-<p>但是上诉直连的模式，仔细想想有很多需要改进的地方，这也是为什么需要一个接入系统的原因，主要分为以下几点：<br>1、一般来说，server服务器都是部署在公司内部机房的，处于安全考虑，很多情况下，其并不希望外部client知道它具体的ip，port或者部署模式。一般情况下，公司机房内部的server都会存在白名单，只允许白名单内的机器对其进行网络访问。</p>
-<p>2、抛却安全网络访问权限的限制，如果让server端直接对接外部成千上万的client连接过来的tcp连接，那有一个问题是逃不掉的，即优雅正确处理c10k问题（链接：<a href="https://segmentfault.com/a/1190000007240744" target="_blank" rel="noopener">https://segmentfault.com/a/1190000007240744</a> ）。这样一来，每个后台server就必须花费部分精力在处理同样的大量链接的情况，造成了公司开发人员的资源浪费。好的系统接入应该是只要求后台server关注于具体业务逻辑处理即可，如下图所示：<br><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1ft72fx20skj30tm0l440m.jpg" alt="n_client-1_serve"></p>
-<p>3、同样的，对于客户端来说，当后台server的功能细分后，即客户端享受的服务功能并非后台一个server就能提供的，那么client端则就需要去连接不同的后台server。如果每个server都有自己的一套接入方式，比如connect成功后，有一系列握手过程，例如邮件发送smtp等。这种情况客户端也就需要根据他需要享受的不同的服务去以不同的方式去创建不同的socket，这个工作量对于客户端来说，也是很痛苦的，如下图所示：<br><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1ft72fsjpxaj30x00hm3zt.jpg" alt="1_client_n_serve"></p>
-<p>4、不同协议的转发。比如说，client是采用http的协议发送数据包过来，而后端server是处理tcp协议的。那么原始直连的方式是解决不了不同协议的接入。这个概念就是代理、网关、隧道等区别，可自行查询其区别。</p>
-<p>既然直连模式有上诉一些痛点需要我们解决，这些痛点是我们可以加入一个接入网关来一定程度上得以解决的，如下图所示：<br><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1ft72fynnekj312y0iydhi.jpg" alt="uap"><br>通过上诉接入模式，server端的部署就可以对客户端屏蔽了，客户端完全无感知server的存在；同样的，客户端只需要做到他们按照统一接入网关规定的接入方式连上统一接入网关即可，不需要考虑其他的接入模式。所有的c10k问题，http接入，tcp接入，websocket接入等都可以在统一接入网关来做。或者更多的，例如流控，服务升降级，不同协议的互相转化等，数据包统计等功能。</p>
-<p>##网关需要做到什么？<br>加入网关后，就跟加入消息队列一样，带来了好处，同样也会带来不足之处，可以参考链接：<a href="https://mp.weixin.qq.com/s/KgdDnlr97-t7wZZFcJo2yA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/KgdDnlr97-t7wZZFcJo2yA</a> 。总的来说，就是加了一层访问，网络通讯就多了一次，未知的因素就多了一些。所以网关必须要做到，性能上有保障，网关一定要健壮，不能随意就dump掉，随时都可以提供服务，即要做到：高性能，高稳定性，可扩展等特性。</p>
-<p>##网关tcp协议内容<br>网关使用什么协议是需要针对不同的业务场景，最好由公司统一设计出一个统一的数据交换协议，基本模式都是header+body的模式，其中header中包含了网关需要的某些字段，body则是具体业务逻辑所需要关心的。我就准备随意从互联网上找一份协议模式来实现吧，其proto文件描述为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">message TcpProtocol </span><br><span class="line">&#123;</span><br><span class="line">    required string version         = 1;    //接口版本号</span><br><span class="line">    required string deviceId        = 2;    //设备uuid</span><br><span class="line">    required uint32 cmd             = 3;    //请求接口命令字</span><br><span class="line">    required uint64 seq             = 4;    //请求序列号，保障唯一性，建议使用uuid</span><br><span class="line">    required uint32 format          = 5;    //请求1，应答2，通知3，响应4</span><br><span class="line">    required uint32 flag            = 6;    //body部分的加密方式：1 rsa加密 2 aes_cbc加密</span><br><span class="line">    required string platform        = 7;    //mobile-ios mobile-android pc-windows pc-mac</span><br><span class="line">    required string platformVersion = 8;    //客户端版本号</span><br><span class="line">    required string token           = 9;    //客户端凭证</span><br><span class="line">    required string appKey          = 10;   //客户端key</span><br><span class="line">    required string timeStamp       = 11;   //时间戳</span><br><span class="line">    required string sign            = 12;   //签名 md5((body base64)++(timeStamp))</span><br><span class="line"></span><br><span class="line">    required uint32 bodyLen         = 13;   //body长度</span><br><span class="line">    optional bytes body             = 14;   //请求数据</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>接下来就准备开干吧，祝玩的愉快<br>&lt;未完待续&gt;</p>
+        <p>RDMA Glossary</p>
+<p>2017年本人工作上需要，研究了近半年的rdma，通过对rdma的学习，很多概念上还是跟tcp都差不多的，触类旁通的。这系列的博客主要是翻译一些rdma的资料用来自我学习而已，个人建议，最好还是去读英文原版的学习资料比较好，虽然费点时间，但效果要好得多。这里我就主要翻译一下Mellanox公司的《RDMA Aware Programming user manual 1.7》手册，结合平时用的libibverbs 和 librdmacm库进行翻译。</p>
+<p>申明： 本人学习rdma的时间也不长，如有错误之处，敬请谅解，欢迎加qq群一起探讨学习 215024757。</p>
+<p>对于rdma的学习资料，一般还是去infiniband的官网去找，其驱动代码都有MLNX_OFED，均可以在官网找到。  关于rdma的例子，github上有一个还不错的入门代码demo： <a href="https://github.com/tarickb/the-geek-in-the-corner" target="_blank" rel="noopener">https://github.com/tarickb/the-geek-in-the-corner</a> 或者 我本人在此基础上用于自我学习的改造例子<br><a href="https://github.com/CMShuyuhui/the-geek-in-the-corner" target="_blank" rel="noopener">https://github.com/CMShuyuhui/the-geek-in-the-corner</a> 。</p>
+<table>
+<thead>
+<tr>
+<th>关键词</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Access Layer</td>
+<td>用于访问互联网络(VPI,InfiniBand,Ethernet,FCoE)的底层操作系统基础设施。它包含了上层网络协议需要的所有基础传输服务。</td>
+</tr>
+<tr>
+<td>AH(Address Handle)</td>
+<td>用来描述UD QP模式下的远程端路径的对象。</td>
+</tr>
+<tr>
+<td>CA(Channel Adapter)</td>
+<td>InfiniBand链路层的终端设备，用于执行传输层相关函数。</td>
+</tr>
+<tr>
+<td>CI(Channel Interface)</td>
+<td>通过结合网络适配器、其他相关固件、软件驱动设备而实现的访问Verbs消费者的通道</td>
+</tr>
+<tr>
+<td>CM(Communication Manager)</td>
+<td>在RC、UC QP模式下用以建立、保持、释放链接的实体。Service ID Resolution Protocol协议允许UD服务定位QPs支持它们所需的服务。在每个终端节点的IB端口都会有这样一个CM。</td>
+</tr>
+<tr>
+<td>Compare &amp; Swap</td>
+<td>用于的读取远端QP64比特值，与本地比较值对比，若相等，则用替代值替换远端比特值的指令。</td>
+</tr>
+<tr>
+<td>CQ（Completion Queue）</td>
+<td>一个先进先出的队列，该队列保存着CQEs。</td>
+</tr>
+<tr>
+<td>CQE（Completion Queue Entry）</td>
+<td>隶属于CQ的条目，用来描述 已完成的WR的状态等信息。</td>
+</tr>
+<tr>
+<td>DMA（Direct Memory Access）</td>
+<td>直接内存访问，允许硬件越过cpu的干预，直接将数据存进／读取出机器内存。</td>
+</tr>
+<tr>
+<td>Fetch &amp; Add</td>
+<td>读取远端QP中64比特值，加上本地的被加值后，再保存至远端QP中的原子操作。</td>
+</tr>
+<tr>
+<td>GUID（Globally Unique IDentifier）</td>
+<td>64比特的数值，用来描述子网内设备的唯一标志码。</td>
+</tr>
+<tr>
+<td>GID（Global IDentifier）</td>
+<td>128比特的数值，用来描述网络适配器、路由器端口、广播组的唯一标志码。 GID是128比特有效的IPv6的地址，拥有IBA附加的属性和限制以促进有效发现、交流和路由。</td>
+</tr>
+<tr>
+<td>GRH（Global Routing Header）</td>
+<td>用来在不同子网间传输数据包的包头，同时也可用来传输组播信息。该包头基于IPv6协议。</td>
+</tr>
+<tr>
+<td>Newwork Adapter</td>
+<td>允许网络不同设备互相交流的硬件设备。</td>
+</tr>
+<tr>
+<td>Host</td>
+<td>运行着操作系统的计算机平台。</td>
+</tr>
+<tr>
+<td>IB</td>
+<td>InfiniBand网络</td>
+</tr>
+<tr>
+<td>Join operation</td>
+<td>IB端口必须通过显式发送一个请求到SA才能加入一个广播组，之后才能接收广播消息。</td>
+</tr>
+<tr>
+<td>lkey</td>
+<td>注册的MR中的一个数值，在WR内部使用，用以标注相应的内存区域和它对应的权限。</td>
+</tr>
+<tr>
+<td>LID（Local IDentifier）</td>
+<td>子网终端节点相关联的16比特的地址，在同一子网内每个LID都是唯一的。</td>
+</tr>
+<tr>
+<td>LLE（Low Latency Ethernet）</td>
+<td>在CEE（Converged Enhanced Ethernet）上的RDMA服务，允许在以太网上运行IB传输。</td>
+</tr>
+<tr>
+<td>NA（Network Adapter）</td>
+<td>用以终结一个链接，运行传输层相关功能函数的设备</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
@@ -456,7 +536,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/网关，tcp，-http，-websocket，-代理/" rel="tag"># 网关，tcp， http， websocket， 代理</a>
+            <a href="/tags/rdma-manual/" rel="tag"># rdma, manual</a>
           
         </div>
       
@@ -469,8 +549,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/29/得到学习笔记3/" rel="next" title="得到学习笔记3">
-                <i class="fa fa-chevron-left"></i> 得到学习笔记3
+              <a href="/2018/07/12/项目简介/" rel="next" title="项目简介">
+                <i class="fa fa-chevron-left"></i> 项目简介
               </a>
             
           </div>
@@ -478,10 +558,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/31/rdma-glossary/" rel="prev" title="rdma glossary">
-                rdma glossary <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -533,17 +609,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/huyuhui.jpg"
@@ -605,22 +672,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是api网关？"><span class="nav-number">1.</span> <span class="nav-text">什么是api网关？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么需要网关？"><span class="nav-number">2.</span> <span class="nav-text">为什么需要网关？</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
