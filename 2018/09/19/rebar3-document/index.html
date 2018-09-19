@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="rebar3," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="本文档为erlang rebar3的官方文档，所有内容都是官方doc上誊抄下来的，便于转为pdf，用于线下上下班路上无聊时学习的。如有任何侵权，请联系我：243818817@qq.com [TOC] Getting Started Backwards CompatibilityWe attempt very limited backwards compatibility with previous">
+<meta name="keywords" content="rebar3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rebar3_document">
+<meta property="og:url" content="http://yoursite.com/2018/09/19/rebar3-document/index.html">
+<meta property="og:site_name" content="胡宇辉">
+<meta property="og:description" content="本文档为erlang rebar3的官方文档，所有内容都是官方doc上誊抄下来的，便于转为pdf，用于线下上下班路上无聊时学习的。如有任何侵权，请联系我：243818817@qq.com [TOC] Getting Started Backwards CompatibilityWe attempt very limited backwards compatibility with previous">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-19T10:34:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="rebar3_document">
+<meta name="twitter:description" content="本文档为erlang rebar3的官方文档，所有内容都是官方doc上誊抄下来的，便于转为pdf，用于线下上下班路上无聊时学习的。如有任何侵权，请联系我：243818817@qq.com [TOC] Getting Started Backwards CompatibilityWe attempt very limited backwards compatibility with previous">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/19/rebar3-document/"/>
+
+
+
+
+
+  <title>rebar3_document | 胡宇辉</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+    <a href="https://github.com/CMShuyuhui"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">胡宇辉</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Done is better than perfect</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-something">
+          <a href="/something" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            有料
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/19/rebar3-document/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CMS_huyuhui">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/huyuhui.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="胡宇辉">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">rebar3_document</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-19T16:52:47+08:00">
+                2018-09-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ebook/" itemprop="url" rel="index">
+                    <span itemprop="name">ebook</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><em>本文档为erlang rebar3的官方文档，所有内容都是官方doc上誊抄下来的，便于转为pdf，用于线下上下班路上无聊时学习的。如有任何侵权，请联系我：<a href="mailto:243818817@qq.com" target="_blank" rel="noopener">243818817@qq.com</a></em></p>
+<p>[TOC]</p>
+<h1 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h1><hr>
+<font color="#dd0000" size="3">Backwards Compatibility</font><br><font color="#dd0000" size="3">We attempt very limited backwards compatibility with previous rebar versions’configurations and will try to call out important changes in the documentation.</font>
+
+<hr>
+<h2 id="Installing-Erlang"><a href="#Installing-Erlang" class="headerlink" title="Installing Erlang"></a>Installing Erlang</h2><p>Install Erlang as you usually would; rebar3 does not bundle it. People using Windows can get the binaries from erlang.org, and most linux or unix-like distributions can get those from package managers. OSX is fine with Homebrew.</p>
+<p>People wanting to run multiple versions or a source compilation can use either kerl , erln8, or the instructions from erlang.org.</p>
+<p>Debian and Ubuntu derivatives have a history of having broken up the Erlang standard release into sub-libraries packages that are not all installed by default and will end up with missing packages compared to other installs. Be sure to install the extra Erlang packages and development packages for everything to work fine, or switch to one of the methods for source installs.</p>
+<h2 id="Installing-Binary"><a href="#Installing-Binary" class="headerlink" title="Installing Binary"></a>Installing Binary</h2><p>Download a nightly binary here. Ensure it is executable (chmod +x) and simply copy to a directory in your $PATH.</p>
+<p>It is common to create a directory ~/bin/ to place commands like rebar3 and add it to your path with export PATH=~/bin/:$PATH in your ~/.bashrc, ~/.zshrc or equivalent.</p>
+<p>Windows users who want to use the code from PowerShell or cmd.exe (rather than a terminal emulator) must ensure that a rebar3.cmdfile is added:</p>
+<hr>
+<p><strong>Text</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">setlocal</span><br><span class="line">set rebarscript=%~f0</span><br><span class="line">escript.exe &quot;%rebarscript:.cmd=%&quot; %*</span><br></pre></td></tr></table></figure>
+<p>The source installation that follows creates the file automatically.</p>
+<h2 id="Installing-from-Source"><a href="#Installing-from-Source" class="headerlink" title="Installing from Source"></a>Installing from Source</h2><hr>
+<p><strong>shell</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://github.com/erlang/rebar3.git</span><br><span class="line">$ cd rebar3</span><br><span class="line">$ ./bootstrap</span><br></pre></td></tr></table></figure>
+<p>And now you have the script rebar3 and can copy it to somewhere in your $PATH as described in the previous section. Windows users should also include the rebar3.cmd for the util to work in PowerShell or cmd.exe.</p>
+<h2 id="Extracting-and-Upgrading"><a href="#Extracting-and-Upgrading" class="headerlink" title="Extracting and Upgrading"></a>Extracting and Upgrading</h2><p>An additional way to install and run rebar3 can be found under the local namespace. rebar3 local install will extract the contents of the escript to ~/.cache/rebar3/lib and create a shell script ~/.cache/rebar3/bin/rebar3:</p>
+<hr>
+<p><strong>shell</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ ./rebar3 local install</span><br><span class="line">===&gt; Extracting rebar3 libs to ~/.cache/rebar3/lib...</span><br><span class="line">===&gt; Writing rebar3 run script ~/.cache/rebar3/bin/rebar3...</span><br><span class="line">===&gt; Add to $PATH for use: export PATH=$PATH:~/.cache/rebar3/bin</span><br></pre></td></tr></table></figure>
+<p>Plus, rebar3 local upgrade will fetch the latest stable escript from s3 and install the same way:</p>
+<hr>
+<p><strong>shell</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ rebar3 local upgrade</span><br><span class="line">===&gt; Extracting rebar3 libs to ~/.cache/rebar3/lib...</span><br><span class="line">===&gt; Writing rebar3 run script ~/.cache/rebar3/bin/rebar3...</span><br><span class="line">===&gt; Add to $PATH for use: export PATH=$PATH:~/.cache/rebar3/bin</span><br></pre></td></tr></table></figure>
+<h2 id="Creating-a-New-Project"><a href="#Creating-a-New-Project" class="headerlink" title="Creating a New Project"></a>Creating a New Project</h2><hr>
+<p><strong>shell</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ rebar3 new release myrelease</span><br><span class="line">===&gt; Writing apps/myrelease/src/myrelease_app.erl</span><br><span class="line">===&gt; Writing apps/myrelease/src/myrelease_sup.erl</span><br><span class="line">===&gt; Writing apps/myrelease/src/myrelease.app.src</span><br><span class="line">===&gt; Writing rebar.config</span><br><span class="line">===&gt; Writing config/sys.config</span><br><span class="line">===&gt; Writing config/vm.args</span><br><span class="line">===&gt; Writing .gitignore</span><br><span class="line">===&gt; Writing LICENSE</span><br><span class="line">===&gt; Writing README.md</span><br></pre></td></tr></table></figure>
+<p>Continue on to Basic Usage to learn more on how to use rebar3.</p>
+<h1 id="Basic-Usage"><a href="#Basic-Usage" class="headerlink" title="Basic Usage"></a>Basic Usage</h1><p>Overview of using rebar3 for project building.</p>
+<hr>
+<font color="#dd0000" size="3">OTP Only</font><br><font color="#dd0000" size="3">Rebar3 only handles OTP-structured projects, consisting of applications and/or a release. Previous versions of rebar would build any Erlang source files it encountered in subdirectories and not require a project adhere to OTP standards.</font>
+
+<hr>
+<h2 id="New-App-or-Release"><a href="#New-App-or-Release" class="headerlink" title="New App or Release"></a>New App or Release</h2><p>There are two main ways to organize code with rebar3 projects: either as a single application, or as an umbrella project.</p>
+<p>Single application projects contain a lone top-level application at the root of the directory, with its Erlang source modules directly inside a src/ directory. This format is applicable to libraries to be published on github or in hex with the objective of making them shareable to the world, but can also be used with Releases, which allow to ship an Erlang runtime system that boots the application directly.</p>
+<p>Umbrella projects’ defining characteristic is that they can contain multiple top-level Erlang/OTP applications, usually within a top-level apps/ or lib/ directory. Each of these applications may contain its own rebar.config file. This format is applicable to only for releases with one or more top-level applications.</p>
+<p>Rebar3 comes with templates for creating either types of project, callable through the rebar3 new <code>&lt;template&gt;</code> <code>&lt;project-name&gt;</code>command. The <code>&lt;template&gt;</code> value can be any of:</p>
+<ul>
+<li><code>app:</code>a stateful OTP application with a supervision tree, as a single application project.</li>
+<li><code>lib:</code>a library OTP application (without supervision trees), useful for grouping together various modules, as a single application project.</li>
+<li><code>release:</code> an umbrella project ready to be released</li>
+<li><code>escript:</code> a special form of single application project that can be built as a runnable script.</li>
+<li><code>plugin:</code> structure for a rebar3 plugin.</li>
+</ul>
+<p>For example:</p>
+<hr>
+<p><strong>shell</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ rebar3 new app myapp</span><br><span class="line">===&gt; Writing myapp/src/myapp_app.erl</span><br><span class="line">===&gt; Writing myapp/src/myapp_sup.erl</span><br><span class="line">===&gt; Writing myapp/src/myapp.app.src</span><br><span class="line">===&gt; Writing myapp/rebar.config</span><br><span class="line">===&gt; Writing myapp/.gitignore</span><br><span class="line">===&gt; Writing myapp/LICENSE</span><br><span class="line">===&gt; Writing myapp/README.md</span><br></pre></td></tr></table></figure>
+<p>For more information on <strong>new</strong> and available options check the docs on <strong>commands</strong> and to learn how to create and use custom templates go to the <strong>templates tutorial</strong>.</p>
+<h2 id="Adding-Dependencies"><a href="#Adding-Dependencies" class="headerlink" title="Adding Dependencies"></a>Adding Dependencies</h2><p>Dependencies are listed in <code>rebar.config</code> file under the <code>deps</code> key:</p>
+<hr>
+<p><strong>Erlang</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;deps, [</span><br><span class="line">        &#123;cowboy, &quot;1.0.1&quot;&#125;, % package</span><br><span class="line">        &#123;cowboy, &#123;git, &quot;git://github.com/ninenines/cowboy.git&quot;, &#123;tag, &quot;1.0.1&quot;&#125;&#125;&#125; % alternatively, source</span><br><span class="line">        ]</span><br><span class="line">&#125;.</span><br></pre></td></tr></table></figure>
+<hr>
+<font color="#dd0000" size="3">Version in SCM Dep Ignored</font><br><font color="#dd0000" size="3">Note that while rebar3 supports the old format for a dependency to allow backwards compatibility, such as <code>{cowboy, &quot;.*&quot;, {git, &quot;git://github.com/ninenines/cowboy.git&quot;, {tag, &quot;1.0.1&quot;}}}</code>, the second element, in this case <code>&quot;.*&quot;</code>, is ignored.</font>
+
+<hr>
+<p>Now you can add the dep to one of your project’s application’s .app.src file under applications so that Erlang knows the dependency is required for yours to work:</p>
+<hr>
+<p><strong>Erlang</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;application, &lt;APPNAME&gt;,</span><br><span class="line"> [&#123;description, &quot;&quot;&#125;,</span><br><span class="line">  &#123;vsn, &quot;&lt;APPVSN&gt;&quot;&#125;,</span><br><span class="line">  &#123;registered, []&#125;,</span><br><span class="line">  &#123;modules, []&#125;,</span><br><span class="line">  &#123;applications, [</span><br><span class="line">                 kernel</span><br><span class="line">                 ,stdlib</span><br><span class="line">                 ,cowboy</span><br><span class="line">                 ]&#125;,</span><br><span class="line">  &#123;mod, &#123;&lt;APPNAME&gt;_app, []&#125;&#125;,</span><br><span class="line">  &#123;env, []&#125;</span><br><span class="line"> ]&#125;.</span><br></pre></td></tr></table></figure>
+<p>For more information on dependency handling view the <strong>dependency documentation</strong>.</p>
+<h2 id="Building"><a href="#Building" class="headerlink" title="Building"></a>Building</h2><p>Only one command, <code>compile</code>, is required to fetch dependencies and compile all applications.</p>
+<hr>
+<p><strong>Text</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ rebar3 compile</span><br><span class="line">==&gt; Verifying dependencies...</span><br><span class="line">==&gt; Fetching cowboy</span><br><span class="line">==&gt; Fetching ranch</span><br><span class="line">==&gt; Fetching cowlib</span><br><span class="line">==&gt; Compiling cowlib</span><br><span class="line">==&gt; Compiling ranch</span><br><span class="line">==&gt; Compiling cowboy</span><br><span class="line">==&gt; Compiling myapp</span><br></pre></td></tr></table></figure>
+<hr>
+<font color="#dd0000" size="3">Dependencies Always Fetched</font><br><font color="#dd0000" size="3"><br>Unlike previous rebar releases with rebar3 the dependencies are fetched and compiled if they are not found when running a command like compile. This is achieved through provider dependencies you can read about in the plugin tutorial.</font>
+
+<hr>
+<h2 id="Output-Format"><a href="#Output-Format" class="headerlink" title="Output Format"></a>Output Format</h2><p>Output for installing dependencies, building releases and any other output written to disk is found in the <code>_build</code>directory at the root of the project.</p>
+<hr>
+<p><strong>shell</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">_build/</span><br><span class="line">└── default</span><br><span class="line">  └── lib  </span><br><span class="line">    ├── cowboy</span><br><span class="line">    ├── cowlib</span><br><span class="line">    └── ranch</span><br></pre></td></tr></table></figure>
+<p>More about profiles and the _build directory can be found in the <strong>profiles documentation page</strong>.</p>
+<h2 id="Testing"><a href="#Testing" class="headerlink" title="Testing"></a>Testing</h2><p>Tests by default are expected to be found under the test/ directory, aside from eunit found within individual modules.</p>
+<p>Dependencies that are only needed for running tests can be placed in the test profile:</p>
+<hr>
+<p><strong>Erlang</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;profiles, [</span><br><span class="line">    &#123;test, [</span><br><span class="line">        &#123;deps, [</span><br><span class="line">            &#123;meck, &#123;git, &quot;git://github.com/eproxus/meck.git&quot;, &#123;tag, &quot;0.8.2&quot;&#125;&#125;&#125;</span><br><span class="line">        ]&#125;</span><br><span class="line">    ]&#125;</span><br><span class="line">]&#125;.</span><br></pre></td></tr></table></figure>
+<p>Now the first time rebar3 ct is run meck will be installed to _build/test/lib/. But it will not be added to rebar.lock.</p>
+<hr>
+<p><strong>shell</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">_build/</span><br><span class="line">   └── test</span><br><span class="line">     └── lib</span><br><span class="line">       └── meck</span><br></pre></td></tr></table></figure>
+<h2 id="Releases-and-Target-Systems"><a href="#Releases-and-Target-Systems" class="headerlink" title="Releases and Target Systems"></a>Releases and Target Systems</h2><p>Releases are built using <strong>relx</strong>.</p>
+<hr>
+<font color="#dd0000" size="3">Relx and Not Reltool.</font>
+
+<font color="#dd0000" size="3">Unlike previous rebar version, reltool is not provided with a rebar3 interface at all. However, if you still want to use reltool you can access it since it comes with Erlang/OTP.</font>
+
+
+<hr>
+<p>Creating a new project with a release structure and default relx config in the rebar.config file run:</p>
+<hr>
+<p><strong>shell</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ rebar3 new release myrel</span><br><span class="line">===&gt; Writing myrel/apps/myrel/src/myrel_app.erl</span><br><span class="line">===&gt; Writing myrel/apps/myrel/src/myrel_sup.erl</span><br><span class="line">===&gt; Writing myrel/apps/myrel/src/myrel.app.src</span><br><span class="line">===&gt; Writing myrel/rebar.config</span><br><span class="line">===&gt; Writing myrel/config/sys.config</span><br><span class="line">===&gt; Writing myrel/config/vm.args</span><br><span class="line">===&gt; Writing myrel/.gitignore</span><br><span class="line">===&gt; Writing myrel/LICENSE</span><br><span class="line">===&gt; Writing myrel/README.md</span><br></pre></td></tr></table></figure>
+<p>Looking in rebar.config we find a couple elements that were not there in our application example.</p>
+<hr>
+<p><strong>Erlang</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;relx, [&#123;release, &#123;myrel, &quot;0.0.1&quot;&#125;,</span><br><span class="line">         [myrel]&#125;,</span><br><span class="line"></span><br><span class="line">        &#123;dev_mode, true&#125;,</span><br><span class="line">        &#123;include_erts, false&#125;,</span><br><span class="line"></span><br><span class="line">        &#123;extended_start_script, true&#125;</span><br><span class="line">       ]</span><br><span class="line">&#125;.</span><br><span class="line"></span><br><span class="line">&#123;profiles, [</span><br><span class="line">    &#123;prod, [&#123;relx, [&#123;dev_mode, false&#125;,</span><br><span class="line">                    &#123;include_erts, true&#125;]&#125;</span><br><span class="line">     ]&#125;</span><br><span class="line">]&#125;.</span><br></pre></td></tr></table></figure>
+<p>This configuration provides some nice defaults for building a release with relx for development (default profile) and for production (prod profile). When building a release for production we’ll most likely want to create a target system (include erts) and definitely will not want the release to contain symlinks to apps (dev_mode false).</p>
+<hr>
+<p><strong>shell</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ rebar3 release</span><br><span class="line">===&gt; Verifying default dependencies...</span><br><span class="line">===&gt; Compiling myrel</span><br><span class="line">===&gt; Starting relx build process ...</span><br><span class="line">===&gt; Resolving OTP Applications from directories:          </span><br><span class="line">          _build/default/lib</span><br><span class="line">          /usr/lib/erlang/lib</span><br><span class="line">===&gt; Resolved myrel-0.1.0</span><br><span class="line">===&gt; Dev mode enabled, release will be symlinked</span><br><span class="line">===&gt; release successfully created!</span><br></pre></td></tr></table></figure>
+<hr>
+<font color="#dd0000" size="3">Relx dev_mode</font>
+
+<font color="#dd0000" size="3">Since the default profile’s config for the release sets dev_mode to true the applications for the release found under _build/rel/myrel/lib are symlinks to _build/lib and apps/myrel. So as you develop and recompile your app you do not need to recreate the release but simply restart the node or reload the modules.</font>
+
+<hr>
+<p>With the default rebar.config, creating a compressed archive of the release as a target system is as simple as setting the profile to prod and running tar:</p>
+<hr>
+<p><strong>shell</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ rebar3 as prod tar</span><br><span class="line">===&gt; Verifying default dependencies...</span><br><span class="line">===&gt; Compiling myrel</span><br><span class="line">===&gt; Starting relx build process ...</span><br><span class="line">===&gt; Resolving OTP Applications from directories:</span><br><span class="line">          .../myrel/apps</span><br><span class="line">          /usr/lib/erlang/lib</span><br><span class="line">===&gt; Resolved myrel-0.1.0</span><br><span class="line">===&gt; Including Erts from /usr/lib/erlang</span><br><span class="line">===&gt; release successfully created!</span><br><span class="line">===&gt; tarball myrel/_build/rel/myrel/myrel-0.1.0.tar.gz successfully created!</span><br></pre></td></tr></table></figure>
+<p>For more details go to the release section.</p>
+<h1 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h1><h2 id="Global-all-commands-configuration"><a href="#Global-all-commands-configuration" class="headerlink" title="Global (all-commands) configuration"></a>Global (all-commands) configuration</h2><p>Rebar3 supports some options that will impact the behaviour of the tool wholesale. Those are defined as OS environment variables, as follows:</p>
+<hr>
+<p><strong>shell</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">REBAR_PROFILE=&quot;term&quot;         # force a base profile</span><br><span class="line">HEX_CDN=&quot;https://...&quot;        # change the Hex endpoint for a private one</span><br><span class="line">REBAR_CONFIG=&quot;rebar3.config&quot; # changes the name of rebar.config files</span><br><span class="line">QUIET=1                      # only display errors</span><br><span class="line">DEBUG=1                      # show debug output</span><br><span class="line">                             # &quot;QUIET=1 DEBUG=1&quot; displays both errors and warnings</span><br><span class="line">REBAR_COLOR=&quot;low&quot;            # reduces amount of color in output if supported</span><br><span class="line">REBAR_CACHE_DIR              # override where rebar3 stores config and cache data</span><br><span class="line">http_proxy                   # standard proxy ENV variable is respected</span><br><span class="line">https_proxy                  # standard proxy ENV variable is respected</span><br></pre></td></tr></table></figure>
+<h2 id="Alias"><a href="#Alias" class="headerlink" title="Alias"></a>Alias</h2><p>Aliases allow to create new commands out of existing ones, as if they were run one after the other:</p>
+<hr>
+<p><strong>Erlang</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;alias, [&#123;check, [eunit, &#123;ct, &quot;--sys_config=config/app.config&quot;&#125;]&#125;]&#125;.</span><br></pre></td></tr></table></figure>
+<p>Arguments (as with a command line) can be passed by replacing Provider with {Provider, Args}.</p>
+<h2 id="Artifacts"><a href="#Artifacts" class="headerlink" title="Artifacts"></a>Artifacts</h2><p>Artifacts are a list of files that are required to exist after a successful compilation (including any compile hooks) other than Erlang modules. This is useful to let rebar3 figure out if a dependency with some non-Erlang artifacts was successfully built or not. Examples where this can be useful include identifying C code built for shared libraries, rendered templates, or that an escript was properly generated.</p>
+<p>If a dependency is found to already be built (meaning its .app file’s list of modules matches its .beam files and all its artifacts exist) it will not have the compilation provider or its hooks called on it during a subsequent run of rebar3.</p>
+<hr>
+<p><strong>Erlang</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;artifacts, [file:filename_all()]&#125;.</span><br></pre></td></tr></table></figure>
+<p>What the paths are relative to depends on if it is defined at the top level of an umbrella project or not. For example, let’s say we have a project my_project that contains an application my_app under <strong>apps/my_app/</strong> that we build an escript from. Then we want to tell rebar3 to not consider the configuration in <strong>my_project/rebar.config</strong>, since it is the top level rebar.config of an umbrella. The artifact will be relative to the profile_dir, which by default is <strong>_build/default/</strong>:</p>
+<hr>
+<p><strong>Erlang</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;escript_name, rebar3&#125;.</span><br><span class="line"></span><br><span class="line">&#123;provider_hooks, [&#123;post, [&#123;compile, escriptize&#125;]&#125;]&#125;.</span><br><span class="line"></span><br><span class="line">&#123;artifacts, [&quot;bin/rebar3&quot;]&#125;.</span><br></pre></td></tr></table></figure>
+<p>If instead it isn’t an umbrella but with my_app being the top level directory the artifact defined in rebar.config is relative to the application’s output directory, in this case <strong>_build/default/lib/my_app/</strong> but we can use a template to define it from <strong>profile_dir</strong> as well:</p>
+<hr>
+<p><strong>Erlang</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;escript_name, rebar3&#125;.</span><br><span class="line"></span><br><span class="line">&#123;provider_hooks, [&#123;post, [&#123;compile, escriptize&#125;]&#125;]&#125;.</span><br><span class="line"></span><br><span class="line">&#123;artifacts, [&quot;&#123;&#123;profile_dir&#125;&#125;/bin/rebar3&quot;]&#125;.</span><br></pre></td></tr></table></figure>
+<p>All available template key are listed in the table below.</p>
+<table>
+<thead>
+<tr>
+<th>Template key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>profile_dir</td>
+<td>The base output directory with the profile string appended, default: _build/default/.</td>
+</tr>
+<tr>
+<td>base_dir</td>
+<td>The base output directory, default: _build.</td>
+</tr>
+<tr>
+<td>out_dir</td>
+<td>The application’s output directory, default: _build/default/lib/<application>/.</application></td>
+</tr>
+</tbody>
+</table>
+<p>One more example would be using artifacts within an override, in this case for eleveldb:</p>
+<hr>
+<p><strong>Erlang</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;overrides,</span><br><span class="line"> [&#123;override, eleveldb, [&#123;artifacts, [&quot;priv/eleveldb.so&quot;]&#125;,</span><br><span class="line">                        ...</span><br><span class="line">                       ]</span><br><span class="line">  &#125;]&#125;.</span><br></pre></td></tr></table></figure>
+<p>The artifact is define on the application eleveldb so it is relative to the output directory, meaning the path used above is the same as if we used “<strong>/priv/eleveldb.so</strong>“.</p>
+<h2 id="Compilation"><a href="#Compilation" class="headerlink" title="Compilation"></a>Compilation</h2><p>Compiler options can be set with erl_opts, available options are listed in the Erlang compile module’s documentation.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;erl_opts, []&#125;.</span><br></pre></td></tr></table></figure>
+<p>Additionally it is possible to set platform specific options.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> &#123;erl_opts, [&#123;platform_define,</span><br><span class="line">               &quot;(linux|solaris|freebsd|darwin)&quot;,</span><br><span class="line">               &apos;HAVE_SENDFILE&apos;&#125;,</span><br><span class="line">              &#123;platform_define, &quot;(linux|freebsd)&quot;,</span><br><span class="line">                &apos;BACKLOG&apos;, 128&#125;,</span><br><span class="line">              &#123;platform_define, &quot;R13&quot;,</span><br><span class="line">                &apos;old_inets&apos;&#125;]</span><br><span class="line">&#125;.</span><br></pre></td></tr></table></figure>
+<p>A separate compile option is one to declare modules to compile before all others:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;erl_first_files, [&quot;src/mymodule.erl&quot;, &quot;src/mymodule.erl&quot;]&#125;.</span><br></pre></td></tr></table></figure>
+<p>And some other general options exist:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;validate_app_modules, true&#125;. % Make sure modules in .app match those found in code</span><br><span class="line">&#123;app_vars_file, undefined | Path&#125;. % file containing elements to put in all generated app files</span><br><span class="line">%% Paths the compiler outputs when reporting warnings or errors</span><br><span class="line">%% relative (default), build (all paths are in _build, default prior</span><br><span class="line">%% to 3.2.0, and absolute are valid options</span><br><span class="line">&#123;compiler_source_format, relative&#125;.</span><br></pre></td></tr></table></figure>
+<p>Other Erlang-Other Erlang-Other Erlang-related compilers are supported with their own configuration options: </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢您的赞赏,赚点辛苦奶粉钱</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat_pay.jpg" alt="CMS_huyuhui WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/ali_pay.jpg" alt="CMS_huyuhui Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/rebar3/" rel="tag"># rebar3</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/26/小孩出世/" rel="next" title="小孩出世">
+                <i class="fa fa-chevron-left"></i> 小孩出世
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/huyuhui.jpg"
+               alt="CMS_huyuhui" />
+          <p class="site-author-name" itemprop="name">CMS_huyuhui</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Getting-Started"><span class="nav-number">1.</span> <span class="nav-text">Getting Started</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Installing-Erlang"><span class="nav-number">1.1.</span> <span class="nav-text">Installing Erlang</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Installing-Binary"><span class="nav-number">1.2.</span> <span class="nav-text">Installing Binary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Installing-from-Source"><span class="nav-number">1.3.</span> <span class="nav-text">Installing from Source</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Extracting-and-Upgrading"><span class="nav-number">1.4.</span> <span class="nav-text">Extracting and Upgrading</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Creating-a-New-Project"><span class="nav-number">1.5.</span> <span class="nav-text">Creating a New Project</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Basic-Usage"><span class="nav-number">2.</span> <span class="nav-text">Basic Usage</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#New-App-or-Release"><span class="nav-number">2.1.</span> <span class="nav-text">New App or Release</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Adding-Dependencies"><span class="nav-number">2.2.</span> <span class="nav-text">Adding Dependencies</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Building"><span class="nav-number">2.3.</span> <span class="nav-text">Building</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Output-Format"><span class="nav-number">2.4.</span> <span class="nav-text">Output Format</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Testing"><span class="nav-number">2.5.</span> <span class="nav-text">Testing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Releases-and-Target-Systems"><span class="nav-number">2.6.</span> <span class="nav-text">Releases and Target Systems</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Configuration"><span class="nav-number">3.</span> <span class="nav-text">Configuration</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Global-all-commands-configuration"><span class="nav-number">3.1.</span> <span class="nav-text">Global (all-commands) configuration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Alias"><span class="nav-number">3.2.</span> <span class="nav-text">Alias</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Artifacts"><span class="nav-number">3.3.</span> <span class="nav-text">Artifacts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Compilation"><span class="nav-number">3.4.</span> <span class="nav-text">Compilation</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">胡宇辉CMS_huyuhui</span>
+</div>
+
+
+<div class="powered-by">
+  由  强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+</div>
+
+<div class="powered-by">
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/love.js"></script>
