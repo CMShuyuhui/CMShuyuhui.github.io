@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="rebar3," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="[TOC] #ReleasesReleases shouldn’t be a pain to build and run – especially since you have all the necessary pieces sitting right there! – and we’ve done our best to make that no longer the case. What a">
+<meta name="keywords" content="rebar3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rebar3_document6">
+<meta property="og:url" content="https://yoursite.com/2018/09/23/rebar3-document6/index.html">
+<meta property="og:site_name" content="胡宇辉">
+<meta property="og:description" content="[TOC] #ReleasesReleases shouldn’t be a pain to build and run – especially since you have all the necessary pieces sitting right there! – and we’ve done our best to make that no longer the case. What a">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-23T13:20:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="rebar3_document6">
+<meta name="twitter:description" content="[TOC] #ReleasesReleases shouldn’t be a pain to build and run – especially since you have all the necessary pieces sitting right there! – and we’ve done our best to make that no longer the case. What a">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://yoursite.com/2018/09/23/rebar3-document6/"/>
+
+
+
+
+
+  <title>rebar3_document6 | 胡宇辉</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+    <a href="https://github.com/CMShuyuhui"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">胡宇辉</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Done is better than perfect</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-something">
+          <a href="/something" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            有料
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yoursite.com/2018/09/23/rebar3-document6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CMS_huyuhui">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/huyuhui.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="胡宇辉">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">rebar3_document6</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-23T20:19:54+08:00">
+                2018-09-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ebook/" itemprop="url" rel="index">
+                    <span itemprop="name">ebook</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[TOC]</p>
+<p>#Releases<br>Releases shouldn’t be a pain to build and run – especially since you have all the necessary pieces sitting right there! – and we’ve done our best to make that no longer the case.</p>
+<p><strong>What are releases and target systems anyway?</strong></p>
+<p>A release is the set of applications needed for booting an Erlang VM and starting your project. This is described through a release resource file (.rel) which is used to generate a .script and .boot. The boot file is the binary form of the script file and is what is used by the Erlang Run Time System (ERTS) to start an Erlang node, sort of like booting an operating system. Even running erl on the command line is using a boot script.<br>A target system is an Erlang system capable of being booted on another machine (virtual or otherwise), often ERTS is bundled along with the target system.<br>For more information checkout the chapter on releases (though it relies on reltool) from Learn You Some Erlang.</p>
+<p>Reltool is out and relx is in. If you want to continue using reltool you can manually, it is still bundled with Erlang/OTP.</p>
+<p>##Getting Started<br>Add a relx section to your project’s rebar.config:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;relx, [&#123;release, &#123;&lt;release name&gt;, &lt;vsn&gt;&#125;,</span><br><span class="line">         [&lt;app&gt;]&#125;,</span><br><span class="line"></span><br><span class="line">        &#123;dev_mode, true&#125;,</span><br><span class="line">        &#123;include_erts, false&#125;,</span><br><span class="line"></span><br><span class="line">        &#123;extended_start_script, true&#125;]&#125;.</span><br></pre></td></tr></table></figure>
+<p>Running rebar3 release will build the release and provide a script for starting a node under <code>_build/&lt;profile&gt;/rel/&lt;release name&gt;/bin/&lt;release name&gt;</code>.</p>
+<p><code>&lt;release_name&gt;</code> must be an atom, same for each <code>&lt;app&gt;</code> in the list of applications to include in the release.</p>
+<p><code>&lt;vsn&gt;</code> can be one of:</p>
+<table>
+<thead>
+<tr>
+<th>Version type</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string()</td>
+<td>A string is used as is for the version. Example: `”0.1.0”</td>
+</tr>
+<tr>
+<td>semver</td>
+<td>Uses the latest git tag on the repo to construct the version.</td>
+</tr>
+<tr>
+<td>{cmd, string()}</td>
+<td>Uses the result of executing the contents of string() in a shell. Example to use a file VERSION: {cmd, “cat VERSION</td>
+<td>tr -d ‘[:space:]’”}</td>
+</tr>
+</tbody>
+</table>
+<p>You can add multiple release sections to your project’s rebar.config under relx.<br>You can either just specify different releases sharing the same configuration:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;relx, [&#123;release, &#123;&lt;release name&gt;, &quot;0.0.1&quot;&#125;,</span><br><span class="line">         [&lt;app&gt;]&#125;,</span><br><span class="line">        &#123;release, &#123;&lt;release name&gt;, &quot;0.1.0&quot;&#125;,</span><br><span class="line">         [&lt;app&gt;]&#125;,</span><br><span class="line"></span><br><span class="line">        &#123;dev_mode, true&#125;,</span><br><span class="line">        &#123;include_erts, false&#125;,</span><br><span class="line"></span><br><span class="line">        &#123;extended_start_script, true&#125;]&#125;.</span><br></pre></td></tr></table></figure>
+<p>Or you can also specify releases with independent configurations:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;relx, [&#123;release, &#123;&lt;release name&gt;, &quot;0.0.1&quot;&#125;,</span><br><span class="line">         [&lt;app&gt;],</span><br><span class="line">         [&#123;dev_mode, false&#125;,</span><br><span class="line">          &#123;include_erts, true&#125;]&#125;,</span><br><span class="line">        &#123;release, &#123;&lt;release name&gt;, &quot;0.1.0&quot;&#125;,</span><br><span class="line">         [&lt;app&gt;],</span><br><span class="line">         [&#123;dev_mode, true&#125;]&#125;</span><br><span class="line">       ]&#125;.</span><br></pre></td></tr></table></figure>
+<p>You can build specific releases using <code>rebar3 release -n &lt;release_name&gt;</code></p>
+<p>##Developing<br>While developing you’ll likely want all your changes to applications be immediately available in the release. relx provides dev_mode for this. Instead of copying the applications that make up the release to the release structure it creates symlinks, so compiling and restarting or loading the changed modules, is all that is necessary.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;relx, [...</span><br><span class="line">        &#123;dev_mode, true&#125;,</span><br><span class="line">        ...</span><br><span class="line">       ]</span><br><span class="line">&#125;.</span><br></pre></td></tr></table></figure>
+<p>##Configuration<br>By default relx will give a basic vm.args file that sets a node name and cookie. For a complete list of options and their use check the Erlang documentation.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">## Name of the node</span><br><span class="line">-name &#123;&#123;release_name&#125;&#125;@127.0.0.1</span><br><span class="line"></span><br><span class="line">## Cookie for distributed erlang</span><br><span class="line">-setcookie &#123;&#123;release_name&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>To provide a custom vm.args, usually placed in the config/ directory at the root of your project, add this line to the relx section of your rebar.config:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;vm_args, &quot;config/vm.args&quot;&#125;</span><br></pre></td></tr></table></figure>
+<p>##Application Configuration<br>For passing application environment variables there is sys.config:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;&lt;app_name&gt;, [...]&#125;</span><br><span class="line">].</span><br></pre></td></tr></table></figure>
+<p>The default sys.config is empty, so use your own simply add it to your relx section of rebar.config:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;sys_config, &quot;config/sys.config&quot;&#125;</span><br></pre></td></tr></table></figure>
+<p>##Dynamic Configuration<br>With OTP-21+ and rebar3 3.6+</p>
+<p>Starting with Erlang/OTP 21 and rebar3 3.6.0 the configuration options sys_config_src and vm_args_src are available for explicitly including templates that will be rendered at runtime.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;appname, [&#123;port, $&#123;PORT&#125;&#125;]&#125;</span><br><span class="line">].</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-name $&#123;NODE_NAME&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;relx, [&#123;release, &#123;&lt;release name&gt;, &quot;0.0.1&quot;&#125;,</span><br><span class="line">         [&lt;app&gt;]&#125;,</span><br><span class="line"></span><br><span class="line">        &#123;dev_mode, true&#125;,</span><br><span class="line">        &#123;include_erts, false&#125;,</span><br><span class="line"></span><br><span class="line">	      &#123;sys_config_src, &quot;config/sys.config.src&quot;&#125;,</span><br><span class="line">        &#123;vm_args_src, &quot;config/vm.args.src&quot;&#125;,</span><br><span class="line"></span><br><span class="line">        &#123;extended_start_script, true&#125;]&#125;.</span><br></pre></td></tr></table></figure>
+<p>Note that, unlike previous versions, if you use the _src variants you do not have to set RELX_REPLACE_OS_VARS in order for the start script to do the replacement, this will happen automatically if the .src files are present in the release.</p>
+<p>Before OTP-21 and rebar3 3.6</p>
+<p>By setting RELX_REPLACE_OS_VARS=true both vm.args and sys.config files may contain OS environment variables that will be replaced with the current value from the environment the node is started in. This means a vm.args and sys.config for a release that starts a web server listening on a port could look like:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-name $&#123;NODE_NAME&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line"> &#123;appname, [&#123;port, &quot;$&#123;PORT&#125;&quot;&#125;]&#125;</span><br><span class="line">].</span><br></pre></td></tr></table></figure>
+<p>And then be used to start multiple nodes of the same release with different name.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">export RELX_REPLACE_OS_VARS=true</span><br><span class="line"></span><br><span class="line">for i in `seq 1 10`;</span><br><span class="line">do</span><br><span class="line">    NODE_NAME=node_$i PORT=808$i _build/default/rel/&lt;release&gt;/bin/&lt;release&gt; foreground &amp;</span><br><span class="line">    sleep 1</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<h2 id="Overlays"><a href="#Overlays" class="headerlink" title="Overlays"></a>Overlays</h2><p>Overlays provide the ability to define files and templates to include in the target system. For example, custom scripts for managing your node or the Procfile needed for running on Heroku.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;relx, [</span><br><span class="line">    ...</span><br><span class="line">    &#123;overlay_vars, &quot;vars.config&quot;&#125;,</span><br><span class="line">    &#123;overlay, [&#123;mkdir, &quot;log/sasl&quot;&#125;,</span><br><span class="line">               &#123;template, &quot;priv/app.config&quot;, &quot;etc/app.config&quot;&#125;,</span><br><span class="line">               &#123;copy, &quot;Procfile&quot;, &quot;Procfile&quot;&#125;]&#125;</span><br><span class="line">]&#125;.</span><br></pre></td></tr></table></figure>
+<p>The supported actions are:</p>
+<ol>
+<li>mkdir to create a directory within the release</li>
+<li>copy to copy a file from a local directory to a location within the release</li>
+<li>template to behave the way copy does, but with variable expansion in it.</li>
+</ol>
+<p>Relx’s templating exposes variables along with the full power of a Mustache templating system (see mustache). You can look at the documentation there for the full syntax supported.</p>
+<p>There is a set of variables made available by default which are described in the next session, and custom variables can otherwise be declared in the file specified in {overlay_vars, “vars.config”}, which should have the following format:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">%% some variables</span><br><span class="line">&#123;key, value&#125;.</span><br><span class="line">&#123;other_key, other_val&#125;.</span><br><span class="line">%% includes variables from another file</span><br><span class="line">&quot;./some_file.config&quot;.</span><br></pre></td></tr></table></figure>
+<p>The default variables are defined below.</p>
+<p>Predefined variables</p>
+<ol>
+<li>log : The current log level in the format of (<code>&lt;logname&gt;:&lt;loglevel&gt;</code>)</li>
+<li>output_dir : The current output directory for the built release</li>
+<li>target_dir : The same as output_dir, exists for backwards compatibility</li>
+<li>overridden : The current list of overridden apps (a list of app names)</li>
+<li>goals : The list of user specified goals in the system</li>
+<li>lib_dirs : The list of library directories, both user specified and derived</li>
+<li>config_file : The list of config file used in the system</li>
+<li>providers : The list of provider names used for this run of relx</li>
+<li>sys_config : The location of the sys config file</li>
+<li>root_dir : The root dir of the current project</li>
+<li>default_release_name : The current default release name for the relx run</li>
+<li>default_release_version : The current default release version for the relx run</li>
+<li>default_release : The current default release for the relx run</li>
+<li>release_erts_version : The version of the Erlang Runtime System in use</li>
+<li>erts_vsn : The same as release_erts_version (for backwards compatibility)</li>
+<li>release_name : The currently executing release</li>
+<li>release_version : the currently executing version</li>
+<li>rel_vsn : Same as release_version. Exists for backwards compatibility</li>
+<li>release_applications : A list of applications included in the release</li>
+</ol>
+<p>Splitting configurations</p>
+<p>It is possible to split overlay files to deal with more complex situations. To explain this lets look at the a simplified example:</p>
+<p>We build our application and want to distinguish between production and developing builds by having the overlay variable build spell out either “prod” or “dev” so the app.config file could include it in it’s configuration and we can either enable or disable features.</p>
+<p>For this we build three overlay files:</p>
+<ol>
+<li>a dev.config - that is dev branch specific</li>
+<li>a prod.config - that is prod branch specific</li>
+<li>a base.config - that is not branch specific</li>
+</ol>
+<p>For dev builds we will use dev.config as overlay_vars and for prod we will be using prod.config.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">%%base.config</span><br><span class="line">&#123;data_dir, &quot;/data/yolo_app&quot;&#125;.</span><br><span class="line">&#123;version, &quot;1.0.0&quot;&#125;.</span><br><span class="line">&#123;run_user, &quot;root&quot;&#125;.</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">%%dev.config</span><br><span class="line">%% Include the base config</span><br><span class="line">&quot;./base.config&quot;.</span><br><span class="line">%% The build we have</span><br><span class="line">&#123;build, &quot;dev&quot;&#125;.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">%%prod.config</span><br><span class="line">%% Include the base config</span><br><span class="line">&quot;./base.config&quot;.</span><br><span class="line">%% The build we have</span><br><span class="line">&#123;build, &quot;prod&quot;&#125;.</span><br></pre></td></tr></table></figure>
+<p>##Deployable<br>To build a release capable of being copied to other nodes we must turn off dev_mode so applications are copied to the release lib dir instead of being symlinks.<br><code>$ rebar3 release -d false</code><br>Or create a profile that turns off dev_mode:<br><code>{profiles, [{prod, [{relx, [{dev_mode, false}]}]}]}.</code></p>
+<p><strong>Target System</strong><br>A target system can not have symlinks like those created when using dev_mode and often we want to include ERTS along with the system so it does not need to be previously installed on the target.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;profiles, [&#123;prod, [&#123;relx, [&#123;dev_mode, false&#125;</span><br><span class="line">                           ,&#123;include_erts, true&#125;]&#125;]&#125;]&#125;.</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">Now we can also build a compressed archive to copy to the target:</span><br></pre></td></tr></table></figure></p>
+<p>$ rebar3 as prod tar<br>===&gt; Verifying default dependencies…<br>===&gt; Compiling myrel<br>===&gt; Starting relx build process …<br>===&gt; Resolving OTP Applications from directories:<br>          …/myrel/apps<br>          /usr/lib/erlang/lib<br>===&gt; Resolved myrel-0.1.0<br>===&gt; Including Erts from /usr/lib/erlang<br>===&gt; release successfully created!<br>===&gt; tarball …/myrel/_build/rel/myrel/myrel-0.1.0.tar.gz successfully created!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Now a tarball myrel-0.1.0.tar.gz can be copied to another compatible system and booted:</span><br></pre></td></tr></table></figure>
+<p>$ mkdir myrel<br>$ mv myrel-0.1.0.tar.gz myrel/<br>$ cd myrel<br>$ tar -zxvf myrel-0.1.0.tar.gz<br>$ bin/myrel console<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**Without Erts**</span><br><span class="line"></span><br><span class="line">To use the ERTS and base applications like kernel and stdlib on the target, set include_erts and system_libs to false in the relx configuration tuple:</span><br></pre></td></tr></table></figure></p>
+<p>{include_erts, false},<br>{system_libs, false},<br>…<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">##Source Code Inclusion in Release</span><br><span class="line">By default the release will include source files of your applications, if present.</span><br><span class="line">If you don&apos;t want to include the source files, set include_src to false.</span><br><span class="line">`&#123;include_src, false&#125;`</span><br><span class="line"></span><br><span class="line">##Application exclusions</span><br><span class="line">The following allows you to remove specific applications from the output release.</span><br><span class="line">`&#123;exclude_apps, [app1, app2]&#125;`</span><br><span class="line">##Module exclusions</span><br><span class="line">The following directive allows you to remove application modules from the output release.</span><br></pre></td></tr></table></figure></p>
+<p>{exclude_modules, [<br>    {app1, [app1_mod1, app1_mod2]},<br>    {app2, [app2_mod1, app2_mod2]}<br>]}.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">##Cross Compiling</span><br><span class="line">If you wish to include an Erlang Run Time System that is not the version you are using to run rebar3, for example you are building on MacOSX but wish to include an ERTS that was built for a version of GNU/Linux, you can supply a path instead of a boolean for include_erts and provide a path for system_libs, still within the relx configuration tuple:</span><br></pre></td></tr></table></figure></p>
+<p>{include_erts, “/path/to/erlang”},<br>{system_libs, “/path/to/erlang”},<br>…<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Using these paths with profiles can yield easier ways to set up cross-compiling.</span><br><span class="line"></span><br><span class="line">##Hooks</span><br><span class="line">It is possible to define hooks on specific operations of the extended start script, the operations are start, stop, install_upgrade, pre and post hooks for each of these operations are available.</span><br><span class="line"></span><br><span class="line">The hooks can either be builtin (ie. they are already included in the release) or custom (scripts written by the user for custom functionality), the builtin scripts offer pre-packaged functionality, they are:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1. pid : Writes the beam pid to a configurable file location(/var/run/&lt;rel_name&gt;.pid by default).</span><br><span class="line">2. wait_for_vm_start : Waits for the vm to start (ie. when it can be pinged).</span><br><span class="line">3. wait_for_process : Waits for a configurable name to appear in the Erlang process registry.</span><br></pre></td></tr></table></figure></p>
+<p>{extended_start_script_hooks, [<br>  {pre_start, [{custom, “hooks/pre_start”}]},<br>  {post_start, [<br>    {pid, “/tmp/foo.pid”},<br>    {wait_for_process, some_process},<br>    {custom, “hooks/post_start”}<br>  ]},<br>  {pre_stop, [<br>    {custom, “hooks/pre_stop”}]},<br>    {post_stop, [{custom, “hooks/post_stop”}]},<br>  ]},<br>  {post_stop, [{custom, “hooks/post_stop”}]}<br>]}.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">## Extensions</span><br><span class="line">The extended start script that is generated comes with a builtin set of commands that allows you to manage your release, these are start, stop, restart, etc.</span><br><span class="line"></span><br><span class="line">Sometimes it&apos;s useful to expose some custom commands that are specific to your application. For example if you&apos;re running a game server it would be convenient to just call bin/gameserver games that outputs useful information.</span><br><span class="line"></span><br><span class="line">Extended start script extensions allow you to create a custom shell script that gets appended to the list of commands available to your start script. The extension shell script can take arguments and has access to all shell variables defined in the start script itself. You begin by defining the extension in your rebar.config, for example:</span><br></pre></td></tr></table></figure></p>
+<p>% start script extensions<br>{extended_start_script_extensions, [<br>   {status, “extensions/status”}<br>]}.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Here you are adding the status script extension that will invoke an extensions/status shell script.</span><br><span class="line">This path is relative to the location of the start script on the generated release so you probably will want to use a overlay to place it at the correct location:</span><br><span class="line">`&#123;copy, &quot;scripts/extensions/status&quot;, &quot;bin/extensions/status&quot;&#125;,`</span><br><span class="line"></span><br><span class="line">The extension script itself is standard shell script, the game server example described could be implemented in the following way:</span><br></pre></td></tr></table></figure></p>
+<p>#!/bin/bash</p>
+<p>case $1 in<br>    help)<br>        echo “bin/gameserver status”<br>        ;;<br>    *)<br>        ;;<br>esac</p>
+<h1 id="get-the-status-tuple-from-gameserver"><a href="#get-the-status-tuple-from-gameserver" class="headerlink" title="get the status tuple from gameserver"></a>get the status tuple from gameserver</h1><p>Status=$(relx_nodetool eval “pool_debug:status(json).”)</p>
+<h1 id="now-print-it-out"><a href="#now-print-it-out" class="headerlink" title="now print it out"></a>now print it out</h1><p>code=”Json = binary_to_list($Status),<br>      io:format(\”~p~n\”, [Json]),<br>      halt().”<br>echo $(erl -boot no_dot_erlang -sasl errlog_type error -noshell -eval “$code”)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## Booting, Upgrade and Inspecting</span><br><span class="line">The extended start script that comes with relx and is set to be used by rebar3&apos;s release template, &#123;extended_start_script, true&#125;, provides a few ways of starting and connecting to your release.</span><br><span class="line"></span><br><span class="line">For local development you&apos;ll like use console. In production you&apos;ll want start or foreground.</span><br><span class="line"></span><br><span class="line">start creates a pipe that can be connected to later with the command attach. The Erlang VM calls fsync on every line of output in this mode, so foreground might be better for your use cases.</span><br><span class="line"></span><br><span class="line">To open a console with a node started with foreground use remote_console.</span><br><span class="line"></span><br><span class="line">**Appup generation**</span><br><span class="line">For a detailed workflow including version increments and appup generation checkout Richard Jones relflow tool built around rebar3.</span><br><span class="line"></span><br><span class="line">**Deploying an upgrade**</span><br><span class="line">For the basic release upgrade after install of a release assume we have a release named myrel with a version 0.0.1 and 0.0.2:</span><br><span class="line"></span><br><span class="line">1. Installing: Installing a release on a running system will unpack and upgrade the version: bin/myrel install 0.0.1</span><br><span class="line">2. Listing: you can inspect what versions are currently available: bin/myrel versions</span><br><span class="line">3. Upgrading: If the version is already unpacked you can simply call upgrade to upgrade to the version: bin/myrel upgrade 0.0.2</span><br><span class="line">4. Downgrading: To downgrade to the previous version use the downgrade command: bin/myrel downgrade 0.0.1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#Plugins</span><br><span class="line">Plugins can be installed locally to a project and globally. To install a plugin locally, specify it under plugins in your project&apos;s rebar.config. Globally installed plugins are configured in ~/.config/rebar3/rebar.config and automatically installed when you use a rebar3 command in your project.</span><br><span class="line"></span><br><span class="line">##Including Plugins</span><br><span class="line">Plugins required for building an application should be included under plugins in the same format as dependencies are listed in deps. They are built under the directory `_build/&lt;profile&gt;/plugins/` and are listed in the output of rebar3 help, available to use as tasks and in provider_hooks:</span><br></pre></td></tr></table></figure></p>
+<p>{plugins, [{rebar_erl_vsn, “~&gt; 0.1”}]}.<br>{provider_hooks, [{pre, [{compile, {default, erl_vsn}}]}]}.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">The above configuration will result in erl_vsn task being run before the compile task. This plugin adds defines to the compile configuration, such as if running on an Erlang version above 17 it will include &#123;d, &apos;maps&apos;&#125; in erl_opts during compilation.</span><br><span class="line">##Project Plugins and Overriding Commands</span><br><span class="line">Some plugins work best if they are able to override the available commands. However, this isn&apos;t something that plugins should be able to do when the project they are included in is used as a dependency. project_plugins defines plugins that will only be available when the the project is being built directly by rebar3 commands, as in running rebar3 from the top level directory of the application/project.</span><br><span class="line"></span><br><span class="line">For example the cuttlefish plugin is only necessary when building a release, so not fetching it and having it available per application dependency makes sense. It also works best if it works the same as building a release or tarball. So when included in project_plugins:</span><br></pre></td></tr></table></figure></p>
+<p>%%rebar.config<br>{project_plugins, [rebar3_cuttlefish]}.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Running rebar3 release or rebar3 tar will be running the rebar3_cuttlefish providers instead of the built in providers.</span><br><span class="line"></span><br><span class="line">Additionally there are cases you only need a plugin for development. Say you have protobufs and commit the generated modules to the repo and include in the hex package, then there is no need for the protobuf plugin to be available when the application is a dependency and is only needed for development purposes. Before project_plugins it was common to see a dev profile with plugins added under it, but this then required running rebar3 as dev protobuf and dealing with another profile under _build. With project plugins the config can instead be:</span><br><span class="line"></span><br><span class="line">`&#123;project_plugins, [rebar3_gpb_plugin]&#125;.`</span><br><span class="line">Now we need only run rebar3 protobuf. We do not include any hooks because we will be committing the generated code to the repository and the plugin will not be fetched if this project is used as a dependency.</span><br><span class="line"></span><br><span class="line">##Upgrading Plugins</span><br><span class="line">Plugins work a bit like dependencies (although they are currently not being version-locked); they will not be automatically updated unless you ask for them to be.</span><br><span class="line"></span><br><span class="line">1. You can upgrade project-local plugins by calling rebar3 plugins upgrade &lt;plugin_name&gt;.</span><br><span class="line">2. You can upgrade global plugins by calling rebar3 as global plugins upgrade &lt;plugin_name&gt;, which invokes a hidden global profile used specifically to switch the upgrade context for plugins.</span><br><span class="line"></span><br><span class="line">If you are using hex packages as plugins and you do not see the version you expected, remember to use call rebar3 update to get a fresh Hex index. Once again, since plugins are not locked as part of the lock file, it might be a good idea to always specify a version for them.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">##Available Plugins</span><br><span class="line">Auto-Compile and Load</span><br><span class="line">Auto-Test</span><br><span class="line">Hex Package Management</span><br><span class="line">Port Compiler</span><br><span class="line">Run Release</span><br><span class="line">Alias</span><br><span class="line">QuickCheck</span><br><span class="line">PropEr</span><br><span class="line">Diameter</span><br><span class="line">ErlyDTL</span><br><span class="line">Neotoma</span><br><span class="line">Protocol buffers</span><br><span class="line">Appup</span><br><span class="line">Vendoring Dependencies</span><br><span class="line">Elixir Dependencies</span><br><span class="line"></span><br><span class="line">##Auto Compile and Load</span><br><span class="line">For the auto plugin it is suggested to place the entry in the global rebar3 config which should be made as ~/.config/rebar3/rebar.config.</span><br><span class="line">`&#123;plugins, [rebar3_auto]&#125;.`</span><br><span class="line">Running rebar3 auto will start the shell the same as running rebar3 shell but will be listening for file changes in your project&apos;s application source directories. When a file is change it will message the rebar3 agent to run compile and reload modules.</span><br><span class="line"></span><br><span class="line">##Auto-Test</span><br><span class="line">For the autotest plugin it is suggested to place the entry in the global rebar3 config which should be made as ~/.config/rebar3/rebar.config.</span><br><span class="line">`&#123;plugins, [&#123;rebar3_autotest, &quot;0.1.1&quot;&#125;]&#125;.`</span><br><span class="line"></span><br><span class="line">Running rebar3 as test autotest will start eunit once and set watches for your source, header and test-files, so that it reruns eunit on changes on one of the files.</span><br><span class="line"></span><br><span class="line">##Hex Package Management</span><br><span class="line">For the hex plugin it is suggested to place the entry in the global rebar3 config which should be made as ~/.config/rebar3/rebar.config.</span><br><span class="line">`&#123;plugins, [rebar3_hex]&#125;.`</span><br><span class="line">For usage go to the Hex Package Management section and the Publishing Packages tutorial. To view the package go to hex.pm and to open issues Github</span><br><span class="line"></span><br><span class="line">##Port Compiler</span><br><span class="line">This plugin is provides the old rebar interface to building C and C++ code to rebar3. The package can be found on hex.pm and issues on Github.</span><br><span class="line"></span><br><span class="line">In your project&apos;s rebar.config add the pc plugin and calls to it in provider_hooks for compile and clean:</span><br></pre></td></tr></table></figure></p>
+<p>{plugins, [pc]}.</p>
+<p>{provider_hooks,<br> [<br>  {pre,<br>   [<br>    {compile, {pc, compile}},<br>    {clean, {pc, clean}}<br>   ]<br>  }<br> ]<br>}.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Configuration variables available:</span><br></pre></td></tr></table></figure></p>
+<p>%% Supported configuration variables:<br>%%<br>%% <em> port_specs - Erlang list of tuples of the forms<br>%%                {ArchRegex, TargetFile, Sources, Options}<br>%%                {ArchRegex, TargetFile, Sources}<br>%%                {TargetFile, Sources}<br>%%<br>%% </em> port_env - Erlang list of key/value pairs which will control<br>%%              the environment when running the compiler and linker.<br>%%              Variables set in the surrounding system shell are taken<br>%%              into consideration when expanding port_env.<br>%%<br>%%              By default, the following variables are defined:<br>%%              CC       - C compiler<br>%%              CXX      - C++ compiler<br>%%              CFLAGS   - C compiler<br>%%              CXXFLAGS - C++ compiler<br>%%              LDFLAGS  - Link flags<br>%%              ERL_CFLAGS  - default -I paths for erts and ei<br>%%              ERL_LDFLAGS - default -L and -lerl_interface -lei<br>%%              DRV_CFLAGS  - flags that will be used for compiling<br>%%              DRV_LDFLAGS - flags that will be used for linking<br>%%              EXE_CFLAGS  - flags that will be used for compiling<br>%%              EXE_LDFLAGS - flags that will be used for linking<br>%%              ERL_EI_LIBDIR - ei library directory<br>%%              DRV_CXX_TEMPLATE      - C++ command template<br>%%              DRV_CC_TEMPLATE       - C command template<br>%%              DRV_LINK_TEMPLATE     - C Linker command template<br>%%              DRV_LINK_CXX_TEMPLATE - C++ Linker command template<br>%%              EXE_CXX_TEMPLATE      - C++ command template<br>%%              EXE_CC_TEMPLATE       - C command template<br>%%              EXE_LINK_TEMPLATE     - C Linker command template<br>%%              EXE_LINK_CXX_TEMPLATE - C++ Linker command template<br>%%<br>%%              Note that if you wish to extend (vs. replace) these variables,<br>%%              you MUST include a shell-style reference in your definition.<br>%%              e.g. to extend CFLAGS, do something like:<br>%%<br>%%              {port_env, [{“CFLAGS”, “$CFLAGS -MyOtherOptions”}]}<br>%%<br>%%              It is also possible to specify platform specific options<br>%%              by specifying a triplet where the first string is a regex<br>%%              that is checked against Erlang’s system architecture string.<br>%%              e.g. to specify a CFLAG that only applies to x86_64 on linux<br>%%              do:<br>%%<br>%%              {port_env, [{“x86_64.*-linux”, “CFLAGS”,<br>%%                           “$CFLAGS -X86Options”}]}<br>%%<br>%%              Cross-arch environment variables to configure toolchain:<br>%%              GET_ARCH to set the tool chain name to use<br>%%              GET_ARCH_WORDSIZE (optional - to determine word size)”<br>%%              word size is 32<br>%%              GET_ARCH_VSN (optional - “<br>%%              l version of CC/CXX is requested),<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">##Run Release</span><br><span class="line">rebar3 run will start the release console, instead of having to run _build/default/rel/&lt;release&gt;/bin/&lt;release&gt; console. Found at Github and hex.pm.</span><br><span class="line">`&#123;plugins, [rebar3_run]&#125;.`</span><br><span class="line"></span><br><span class="line">##Alias</span><br><span class="line">The alias plugin has been added to rebar3 starting with version 3.5.0. See http://rebar3.org/v3/docs/configuration#section-alias for instructions.</span><br><span class="line"></span><br><span class="line">For prior versions, the plugin for aliasing a single command to run multiple tasks can be found at Github and hex.pm.</span><br></pre></td></tr></table></figure></p>
+<p>{plugins, [rebar_alias]}.</p>
+<p>{alias, [{check, [eunit, {ct, “–sys_config=config/app.config”}]}]}.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Arguments (as with a command line) can be passed by replacing Provider with &#123;Provider, Args&#125;.</span><br><span class="line"></span><br><span class="line">##Quickcheck</span><br><span class="line">A rebar3 plugin to enable the execution of Erlang QuickCheck properties. Found on Github and hex.pm.</span><br><span class="line">`&#123;plugins, [rebar3_eqc]&#125;.`</span><br><span class="line"></span><br><span class="line">Config options for the Quickcheck go under eqc_opts, for example &#123;eqc_opts, [&#123;numtests, 500&#125;]&#125;.:</span><br><span class="line"></span><br><span class="line">|Config Option	|Type|	Description|</span><br><span class="line">|----|----|----|</span><br><span class="line">|numtests|integer|Number of test executions, default 100.|</span><br><span class="line">|testing_time|integer|Time in seconds to execute property. If both are&lt;br&gt; specified, the testing_time setting is ignored.|</span><br><span class="line"></span><br><span class="line">Similarly configuration can be passed on the command line:</span><br><span class="line"></span><br><span class="line">|Option	|Type|	Description|</span><br><span class="line">|----|----|----|</span><br><span class="line">|-n|integer|Number of test executions, default 100.|</span><br><span class="line">|-t|integer|Time in seconds to execute property. If both are specified, &lt;br&gt;the testing_time setting is ignored.|</span><br><span class="line">|-p|string|Property to execute. This can be either module:property or&lt;br&gt; property and the plugin will determine the module.|</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">##PropEr</span><br><span class="line">PropEr is a free alternative to Quviq Quickcheck. The plugin is available on hex as a package or github</span><br></pre></td></tr></table></figure></p>
+<p>%% the plugin itself<br>{plugins, [rebar3_proper]}.</p>
+<p>%% The PropEr dependency is still required to compile the test cases<br>{profiles,<br>    [{test, [<br>        {deps, [{proper, “1.1.1-beta”}]}<br>    ]}<br>]}.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">All of PropEr&apos;s configuration options can be passed in rebar.config under &#123;proper_opts, Options&#125; or as command line arguments:</span><br><span class="line"></span><br><span class="line">|rebar.config key|	Command Line|	Description|</span><br><span class="line">|----|----|----|</span><br><span class="line">|&#123;dir, String&#125;|-d, --dir|directory where the property tests are&lt;br&gt; located (defaults to &quot;test&quot;)</span><br><span class="line">|&#123;module, [Modules]&#125;|-m, --module|name of one or more modules to test </span><br><span class="line">|&#123;properties, [PropNames]&#125;||-p, --prop|name of properties to test within a specified module|</span><br><span class="line">|&#123;numtests, N&#125;|-n, --numtests|number of tests to run when testing a given property|</span><br><span class="line">|`verbose | quiet`|-v, --verbose|Whether each property tested shows its &lt;br&gt;output or not (defaults to true/verbose)|</span><br><span class="line">|`&#123;cover, true | false&#125;`|-c, --cover|generate cover data (default: false)|</span><br><span class="line">|long_result|--long_result||enables long-result mode, displaying counter-examples&lt;br&gt; on failure rather than just false|</span><br><span class="line">|&#123;start_size, N&#125;|--start_size|specifies the initial value of the size parameter|</span><br><span class="line">|&#123;max_size, N&#125;|--max_size|specifies the maximum value of the size parameter|</span><br><span class="line">|&#123;max_shrinks, N&#125;|--max_shrinks|specifies the maximum number of times a failing&lt;br&gt; test case should be shrunk before returnin|</span><br><span class="line">|noshrink|--noshrink|instructs PropEr to not attempt to shrink any failing test cases|</span><br><span class="line">|&#123;constraint_tries, N&#125;|--constraint_tries|specifies the maximum number of tries before the generator&lt;br&gt; subsystem gives up on producing an instance that &lt;br&gt;satisfies a ?SUCHTHAT constraint|</span><br><span class="line">|&#123;spec_timeout, Millisecs&#125;|--spec_timeout|duration, in milliseconds, after which PropEr considers&lt;br&gt; an input to be failing|</span><br><span class="line">|any_to_integer|--any_to_integer|converts instances of the any() type to integers in &lt;br&gt;order to speed up execution|</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">##Diameter</span><br><span class="line">The rebar3_diameter_compiler plugin compiles diameter .dia files in rebar3 projects.</span><br><span class="line">`&#123;plugins, [rebar3_diameter_compiler]&#125;.`</span><br><span class="line"></span><br><span class="line">Add hooks to automatically compile and clean the diameter dictionaries:</span><br></pre></td></tr></table></figure></p>
+<p>{provider_hooks, [<br>    {pre, [<br>        {compile, {diameter, compile}},<br>        {clean, {diameter, clean}}<br>    ]}<br>]}.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Configuration options:</span><br><span class="line"></span><br><span class="line">|Config Option	|Type|	Description|</span><br><span class="line">|----|----|----|</span><br><span class="line">|dia_opts|list|Options from diameter_make:codec/2 &lt;br&gt;supported with exception of inherits.|</span><br><span class="line">|dia_first_files|list|Files in sequence to compile first.|</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">##ErlyDTL</span><br><span class="line">The erlydtl compiler has been moved to a separate plugin.</span><br></pre></td></tr></table></figure></p>
+<p>{plugins, [<br>    {rebar3_erlydtl_plugin, “.*”,<br>     {git, “<a href="https://github.com/tsloughter/rebar3_erlydtl_plugin.git&quot;" target="_blank" rel="noopener">https://github.com/tsloughter/rebar3_erlydtl_plugin.git&quot;</a>, {branch, “master”}}}<br>]}.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Config options go in a list under erlydtl_opts in rebar.config:</span><br><span class="line"></span><br><span class="line">|Config Option	|Type|	Description|</span><br><span class="line">|----|----|----|</span><br><span class="line">|doc_root|string|Where to find templates to compile.&lt;br&gt; &quot;priv/templates&quot; by d efault.|</span><br><span class="line">|compiler_options|proplist|Template compilation options to pass&lt;br&gt; to erlydtl. Descriptions here.|</span><br><span class="line">|out_dir|string|Where to put compiled template beam files &quot;ebin&quot; by default.|</span><br><span class="line">|source_ext|string|The file extension the template sources have &quot;.dtl&quot; by default.|</span><br><span class="line">|module_ext|string|Characters to append to the template&apos;s module &lt;br&gt;name &quot;_dtl&quot; by default.|</span><br><span class="line">|recursive|boolean|Boolean that determines if doc_root(s) need &lt;br&gt;to be scanned recursively for matching&lt;br&gt; template file names. &apos;true&apos; by default.|</span><br><span class="line"></span><br><span class="line">##Neotoma</span><br><span class="line">Plugin for building PEG files using Sean Cribbs neotoma app. This plugin is published to Hex so can be added to your project with:</span><br><span class="line">`&#123;plugins, [rebar3_neotoma_plugin]&#125;.`</span><br><span class="line">The compile function is under the neotoma namespace. To automatically before the Erlang compiler add the pre_hook to rebar.config:</span><br></pre></td></tr></table></figure></p>
+<p>{provider_hooks, [<br>    {pre, [{compile, {neotoma, compile}}]}<br>]}.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">##Protocol Buffers</span><br><span class="line">Plugin for building .proto files using Tomas Abrahamsson&apos;s gpb. This plugin is published to Hex so can be added to your project with:</span><br><span class="line"></span><br><span class="line">`&#123;plugins, [rebar3_gpb_plugin]&#125;.`</span><br><span class="line">The compile function is under the protobuf namespace. To automatically build before the Erlang compiler add the provider pre hook to rebar.config:</span><br></pre></td></tr></table></figure></p>
+<p>{provider_hooks, [<br>    {pre, [{compile, {protobuf, compile}}]}<br>]}.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Full documentation available in the plugin&apos;s README</span><br><span class="line"></span><br><span class="line">##Appup</span><br><span class="line">Plugin for generating, compiling and validating .appup.src files. This plugin is published to Hex so can be added to your project with:</span><br><span class="line">`&#123;plugins, [rebar3_appup_plugin]&#125;.`</span><br><span class="line"></span><br><span class="line">The compile and clean functions are under the appup namespace. To automatically build before the Erlang compiler add the provider pre hook to rebar.config:</span><br></pre></td></tr></table></figure></p>
+<p>{provider_hooks, [<br>    {post, [{compile, {appup, compile}},<br>            {clean, {appup, clean}}]}<br>]}.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">To compare two releases and generate the .appup with the necessary instructions to execute the release upgrade run:</span><br></pre></td></tr></table></figure></p>
+<p>git checkout <from version=""><br>rebar3 release<br>git checkout <to version=""><br>rebar3 release<br>rebar3 appup generate<br>rebar3 relup tar<br><code>`</code></to></from></p>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>previous</td>
+<td>optional</td>
+<td>Path location of the previous release to compare with</td>
+</tr>
+<tr>
+<td>current</td>
+<td>optional</td>
+<td>Path location of the current release to compare with,<br> defaults to <code>_build/&lt;profile&gt;/rel/&lt;app_name&gt;</code></td>
+</tr>
+<tr>
+<td>target_dir</td>
+<td>optional</td>
+<td>Location of where to generate the .appup file.</td>
+</tr>
+<tr>
+<td>previous_version</td>
+<td>optional</td>
+<td>Version to update from</td>
+</tr>
+</tbody>
+</table>
+<p>Full documentation available in the plugin’s README</p>
+<p>##Vendoring dependencies<br>Plugin for storing vendored dependencies and applying the vendored deps to your local project.<br><code>{plugins, [rebar3_vendor]}.</code><br>To store the fetched dependencies under ./deps/ for committing:<br><code>rebar3 vendor store</code></p>
+<p>To take the vendored dependencies from ./deps/ and place them under the build directory in the appropriate place:<br><code>rebar3 vendor apply</code></p>
+<p>##Elixir Dependencies<br>Elixir dependencies can be supported and added to a project via the rebar3_elixir_compile plugin.</p>
+<p>Full example and configuration instructions are provided on the plugin’s README page.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢您的赞赏,赚点辛苦奶粉钱</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat_pay.jpg" alt="CMS_huyuhui WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/ali_pay.jpg" alt="CMS_huyuhui Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/rebar3/" rel="tag"># rebar3</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/21/rebar3-document5/" rel="next" title="rebar3_document5">
+                <i class="fa fa-chevron-left"></i> rebar3_document5
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/huyuhui.jpg"
+               alt="CMS_huyuhui" />
+          <p class="site-author-name" itemprop="name">CMS_huyuhui</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overlays"><span class="nav-number">1.</span> <span class="nav-text">Overlays</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#get-the-status-tuple-from-gameserver"><span class="nav-number"></span> <span class="nav-text">get the status tuple from gameserver</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#now-print-it-out"><span class="nav-number"></span> <span class="nav-text">now print it out</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">胡宇辉CMS_huyuhui</span>
+</div>
+
+
+<div class="powered-by">
+  由  强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+</div>
+
+<div class="powered-by">
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/love.js"></script>
