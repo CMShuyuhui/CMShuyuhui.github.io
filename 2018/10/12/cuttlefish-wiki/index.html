@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="erlang， cuttlefish," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="[TOC]本文档为cuttlefish的官方wiki，所有内容都是cuttlefish github wiki上誊抄下来的，便于转为pdf，用于线下上下班路上无聊时学习的。如有任何侵权，请联系我：243818817@qq.com #Home ##Welcome to the Cuttlefish wiki!  this cuttlefish is putting her tentacle up i">
+<meta name="keywords" content="erlang， cuttlefish">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cuttlefish wiki">
+<meta property="og:url" content="https://yoursite.com/2018/10/12/cuttlefish-wiki/index.html">
+<meta property="og:site_name" content="胡宇辉">
+<meta property="og:description" content="[TOC]本文档为cuttlefish的官方wiki，所有内容都是cuttlefish github wiki上誊抄下来的，便于转为pdf，用于线下上下班路上无聊时学习的。如有任何侵权，请联系我：243818817@qq.com #Home ##Welcome to the Cuttlefish wiki!  this cuttlefish is putting her tentacle up i">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-12T06:44:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="cuttlefish wiki">
+<meta name="twitter:description" content="[TOC]本文档为cuttlefish的官方wiki，所有内容都是cuttlefish github wiki上誊抄下来的，便于转为pdf，用于线下上下班路上无聊时学习的。如有任何侵权，请联系我：243818817@qq.com #Home ##Welcome to the Cuttlefish wiki!  this cuttlefish is putting her tentacle up i">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://yoursite.com/2018/10/12/cuttlefish-wiki/"/>
+
+
+
+
+
+  <title>cuttlefish wiki | 胡宇辉</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+    <a href="https://github.com/CMShuyuhui"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">胡宇辉</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Done is better than perfect</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-something">
+          <a href="/something" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            有料
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yoursite.com/2018/10/12/cuttlefish-wiki/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CMS_huyuhui">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/huyuhui.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="胡宇辉">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">cuttlefish wiki</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-12T13:32:01+08:00">
+                2018-10-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ebook/" itemprop="url" rel="index">
+                    <span itemprop="name">ebook</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[TOC]<br>本文档为cuttlefish的官方wiki，所有内容都是cuttlefish github wiki上誊抄下来的，便于转为pdf，用于线下上下班路上无聊时学习的。如有任何侵权，请联系我：<a href="mailto:243818817@qq.com" target="_blank" rel="noopener">243818817@qq.com</a></p>
+<p>#Home</p>
+<p>##Welcome to the Cuttlefish wiki!</p>
+<blockquote>
+<p>this cuttlefish is putting her tentacle up in solidarity with sea creatures the world over</p>
+</blockquote>
+<p>Cuttlefish is a library for Erlang applications that wish to walk the fine line between erlang <strong>app.configs</strong> and a sysctl-like syntax. The name is a pun on the pronunciation of ‘sysctl’ and babblefish. Also, jokes are better explained.</p>
+<p>This wiki is divided into sections based on what type of cuttlefish user you are:</p>
+<pre><code>1. Application User
+    1.1 Cuttlefish for Application Users
+2. Erlang Developer
+    2.1 Cuttlefish for Erlang Developers
+    2.2 Datatypes
+    2.3 Unit Testing A Schema
+    2.4 Cuttlefish Developer&apos;s API
+3. Builder/Packager of Erlang Applications
+    3.1 Cuttlefish for node_package users
+    3.2 Cuttlefish for non node_package users
+</code></pre><p>##Cuttlefish for Application Users<br>If you’re a user of an erlang application that supports cuttlefish conf files, welcome!</p>
+<p>Cuttlefish is a pun on the pronunciation of ‘sysctl’. As someone configuring an application, you might be familiar with ‘sysctl’ and it’s with that in mind that we designed Cuttlefish.</p>
+<p>Here are the simple rules of the syntax:</p>
+<ul>
+<li>Everything you need to know about a single setting is on one line</li>
+<li>Lines are structured Key = Value</li>
+<li>Any line starting with # is a comment, and will be ignored.</li>
+</ul>
+<p>The author of your particular application will have included a Cuttlefish schema as part of their application. That schema defines what keys can be defined and what the datatypes for those values can be. They also define how they map to the traditional <code>app.config</code> of an Erlang application. Honestly, Cuttlefish exists so you don’t have to worry about <code>app.configs</code> anymore. Leave that to Erlang developers who actually like that syntax!</p>
+<p>With that said, you probably know about app.configs from previous versions of the Erlang application you’re dealing with. In that case, note that until you port your <code>app.config</code> to a <code>.conf</code> file, Cuttlefish will see your <code>app.config</code> sitting where it’s supposed to, and use that instead.</p>
+<p>There may be settings that an Erlang developer chooses not to expose via Cuttlefish, and in that scenario, you have the ability to add an advanced.config file to the same directory your <code>.conf</code> file lives in. This will allow you to override anything Cuttlefish does with a specific Erlang term, if you wind up missing that kind of thing.</p>
+<p>##Cuttlefish for Erlang Developers</p>
+<blockquote>
+<p>Note: If you are looking for information in how to “wire” Cuttlefish to your application, consult <a href="">Cuttlefish-for-node_package-users</a> or Cuttlefish for non-node_package users.</p>
+</blockquote>
+<p>As an Erlang developer, you’re probably used to application:set_env and app.config files. The good news for you is that you can keep on coding that way! The… additional news is that people who are using your application may not understand that syntax so easily. So how can you help? I’m glad you asked!</p>
+<h3 id="Write-Cuttlefish-Schemas"><a href="#Write-Cuttlefish-Schemas" class="headerlink" title="Write Cuttlefish Schemas!"></a>Write Cuttlefish Schemas!</h3><p>You have a new job. You get to choose which knobs you expose to users! You can choose to name these things anything you want, so where you previously might have been confined to including a dependency’s application name, you are now not.</p>
+<p>You can define datatypes for these settings, and you can explain to Cuttlefish how a simple name-value pair becomes part of a complex hierarchy of Erlang terms!</p>
+<p>###Want to see how?<br>As the Erlang developer, you are the person responsible for being the ambassador of your setting to the world. Here’s how it looks in ASCII art:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">┌--------------------┐                                                                      ┌--------------------┐</span><br><span class="line">| &lt;app&gt;.conf         |                                                                      | app.config         |</span><br><span class="line">|--------------------|       &#123;mapping,                       &#123;translation,                  | -------------------|</span><br><span class="line">| my.setting = value | ---&gt;   &quot;my.setting&quot;,            ---&gt;   &quot;&lt;dependency&gt;.setting&quot;,  ---&gt; | [&#123;&lt;dependency&gt;, [  |</span><br><span class="line">| ...                |        &quot;&lt;dependency&gt;.setting&quot;,         fun(Conf) -&gt;                  |    &#123;setting, value&#125;|</span><br><span class="line">|                    |        []&#125;.                              %% erlang fun               |  ]&#125;, ... ].        |</span><br><span class="line">└--------------------┘                                        end&#125;.                         └--------------------┘</span><br></pre></td></tr></table></figure>
+<p>###The Schema<br>There are three types of Schema elements in Cuttlefish: <code>mapping</code>, <code>translation</code> and <code>validator</code>. It’s easy to tell the difference! They’re all tuples, and the first element is an atom: <code>mapping</code>, <code>translation</code>, or <code>validator</code>. You’re welcome.</p>
+<p>####Mappings<br><strong>@ - Annotations</strong><br>Mappings are the only schema element type that support annotations and there are two available: <code>@doc</code> and <code>@see</code>.</p>
+<p><strong>@doc</strong>: If you write a multiline @doc it will be included in your generated <code>.conf</code> file. These docs will be available programatically. We chose to make it an annotation because as Erlangers, you already know and love <code>@doc</code> AND we didn’t want you to worry about multiline strings and an array of strings as a member of a proplist. This just seemed cleaner.</p>
+<p><strong>@see</strong>: If you already wrote an <code>@doc</code> for a setting, but you were describing how multiple settings work together, you can just specify an @see to that mappings name. It’s just a pointer to additional documentation.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">%% @doc &apos;a.x&apos; and &apos;a.y&apos; set the start coordinate</span><br><span class="line">&#123;mapping, &quot;a.x&quot;, &quot;app.a.x&quot;, []&#125;.</span><br><span class="line"></span><br><span class="line">%% @see a.x</span><br><span class="line">&#123;mapping, &quot;a.y&quot;, &quot;app.a.y&quot;, []&#125;.</span><br></pre></td></tr></table></figure>
+<p><strong>Note</strong>: Cuttlefish has a bit of fun with these when generating your default <code>.conf</code> file. It will include the documentation inline if you have a <code>@doc</code>. If you also have a <code>@see</code>, it will include references to those other settings. If it only has an @see, it will include the <code>@doc</code> of the mapping you specified in the <code>@see</code>.</p>
+<p><strong>Elements of the mapping tuple</strong><br>Aside from documentation, there is plenty going on with mappings, but the basic form is as follows:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">%% &#123;mapping, string(), string(), proplist()&#125;</span><br><span class="line">Mapping = &#123;mapping, ConfKey, ErlangConfMapping, Attributes&#125;.</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>element(1, Mapping) = mapping</code></li>
+<li><code>element(2, Mapping) = ConfKey</code> - the string key that you want this setting to have in the .conf file</li>
+<li><code>element(3, Mapping) = ErlangConfMapping</code> - the nested location of the thing in the app.config that this field represents</li>
+<li><code>element(4, Mapping) = Attributes</code> - other helpful things we’ll go into right… about… now!</li>
+</ul>
+<p>Attributes is a proplist, and let’s assume you know how those work. Here are the keys in that proplist that we work with:</p>
+<ul>
+<li><code>default</code> - This is the default value for the setting. When a <code>.conf</code> file is generated, a line will be added to set the setting to this value. Additionally, if no value is specified in the <code>.conf</code> file, the value specified in the default attribute will be used when generating the <code>app.config</code> file.</li>
+<li><code>new_conf_value</code> - If this is defined, then when you generate a <code>.conf</code> file, this value will be used for the default setting. This causes the default attribute to be overridden when generating a <code>.conf</code> file, but has no effect on what default value is used when generating <code>app.config</code>.</li>
+<li><code>commented</code> - If this is defined, then when you generate a <code>.conf</code> file the documentation for this setting appears, along with the setting, but the setting is commented out and that comment includes this value.</li>
+<li><code>datatype</code> - This is the datatype for the field. For a list of those, check Datatypes.</li>
+<li><code>hidden</code> - If this atom is present or set to true, this value will be in the generated <code>app.config</code>, but not the generated <code>.conf</code> file. It still can be overridden in the <code>.conf</code> file, you just have to know about it. It’s a way of adding “undocumented knobs”.</li>
+<li><code>include_default</code> - If there is a substitutable value in the ConfKey, in the generated <code>.conf</code> file, this value is substituted. (don’t worry if that last one didn’t make so much sense now, I’ll explain more below)</li>
+<li><code>validators</code> - the list of names for validators for this mapping.</li>
+<li><code>merge</code> - is the only thing included just as an atom. It specifies that this is supplemental to an existing mapping, not a replacement mapping. The default behavior is to replace an existing mapping with this newer one</li>
+</ul>
+<p>The best way to get it, is to take a look at some examples. Let’s start with Riak’s ring_size.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">%% example of super basic mapping</span><br><span class="line">%% @doc Default ring creation size.  Make sure it is a power of 2,</span><br><span class="line">%% e.g. 16, 32, 64, 128, 256, 512 etc</span><br><span class="line">&#123;mapping, &quot;ring_size&quot;, &quot;riak_core.ring_creation_size&quot;, [</span><br><span class="line">  &#123;datatype, integer&#125;,</span><br><span class="line">  &#123;commented, 64&#125;</span><br><span class="line">]&#125;.</span><br></pre></td></tr></table></figure>
+<p>First of all, comments before the @doc annotation are ignored, so feel free to put Schema specific comments in here as you see fit. Everything after the @doc in the comments, is part of the documentation. Cuttlefish will treat this documentation as:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &quot;Default ring creation size.  Make sure it is a power of 2,&quot;,</span><br><span class="line">  &quot;e.g. 16, 32, 64, 128, 256, 512 etc&quot;</span><br><span class="line">].</span><br></pre></td></tr></table></figure>
+<p>Then, we can also see from <code>element(1)</code> that this is a mapping. <code>element(2)</code> says that it’s represented by “ring_size” in the <code>riak.conf</code> file. element(3) says that it’s “riak_core.ring_creation_size” in the <code>app.config</code>. We also know from the attibutes that it is an integer, and that it will appear in the generated <code>riak.conf</code> file with a value of 64. It just so happens that the default is also 64, but that’s specified in riak_core’s app.src.</p>
+<p>Let’s talk about <code>element(3)</code> here for a minute. What that means is that there’s an <code>app.config</code> out there that looks like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;riak_core, [</span><br><span class="line">    &#123;ring_creation_size, X&#125;</span><br><span class="line">  ]&#125;</span><br><span class="line">].</span><br></pre></td></tr></table></figure>
+<p>and that we’re concerned with X.</p>
+<p><strong>An important note on Cuttlefish’s Philosophy</strong><br>Here at cuttlefish, one thing we’re really disturbed by is this idea of a “magic number”. A magic number is a setting that we’re not actually sure where the default value comes from. In the above example it comes from riak_core’s app.src file, but they can come from anywhere, even the dreaded <code>application:get_env/3</code>.</p>
+<p>We encourage every mapping in a cuttlefish schema to set an explicit default. In that case your application has a single location for default values, and it generates a complete <code>app.config</code>.</p>
+<p>Now, if life were as simple as 1:1 mappings like this, we’d be done. But it’s not, and so we need to introduce translations.</p>
+<p>####Lost in Translations<br>Actually, they’re pretty easy.<br>A translation looks like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">%% &#123;translation, string(), fun((proplist()) -&gt; term())&#125;</span><br><span class="line">Translation = &#123;translation, ErlangConfMapping, TranslationFunction&#125;.</span><br></pre></td></tr></table></figure>
+<p>Let’s break it down:</p>
+<ul>
+<li><code>element(1, Translation) = translation</code></li>
+<li><code>element(2, Translation) = ErlangConfMapping</code> this is the same as the corresponding ErlangConfMapping in the mapping above. This is how we tie back to a mapping</li>
+<li><code>element(2, Translation) = TranslationFunction</code> this is a fun() that takes in a proplist representing the <code>.conf</code> file and returns an erlang term. This erlang term will be the value of the ErlangConfMapping.</li>
+</ul>
+<p>Ok, that does sound more confusing than it should. Let’s take a look at one, you’ll like it better in practice.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">%% @doc How Riak will repair out-of-sync keys. Some features require</span><br><span class="line">%% this to be set to &apos;active&apos;, including search.</span><br><span class="line">%%</span><br><span class="line">%% * active: out-of-sync keys will be repaired in the background</span><br><span class="line">%% * passive: out-of-sync keys are only repaired on read</span><br><span class="line">%% * active-debug: like active, but outputs verbose debugging</span><br><span class="line">%%   information</span><br><span class="line">&#123;mapping, &quot;anti_entropy&quot;, &quot;riak_kv.anti_entropy&quot;, [</span><br><span class="line">  &#123;datatype, &#123;enum, [active, passive, &apos;active-debug&apos;]&#125;&#125;,</span><br><span class="line">  &#123;default, active&#125;</span><br><span class="line">]&#125;.</span><br><span class="line"></span><br><span class="line">&#123;translation,</span><br><span class="line"> &quot;riak_kv.anti_entropy&quot;,</span><br><span class="line"> fun(Conf) -&gt;</span><br><span class="line">    Setting = cuttlefish:conf_get(&quot;anti_entropy&quot;, Conf),</span><br><span class="line">    case Setting of</span><br><span class="line">      active -&gt; &#123;on, []&#125;;</span><br><span class="line">      &apos;active-debug&apos; -&gt; &#123;on, [debug]&#125;;</span><br><span class="line">      passive -&gt; &#123;off, []&#125;;</span><br><span class="line">      _Default -&gt; &#123;on, []&#125;</span><br><span class="line">    end</span><br><span class="line">  end</span><br><span class="line">&#125;.</span><br></pre></td></tr></table></figure>
+<p>See what’s happening? First of all, you need a mapping. If you don’t have one, don’t bother writing a translation for it. It will not get run. It will also not get run if you have a mapping for it, but you don’t have a value for it. That value can be a default in the mapping or set in your <code>.conf</code> file. The mapping we defined for “anti_entropy” says that it’s an enum with values “active”, “passive”, and “active-debug”. The configuration in the <code>app.config</code> is more complicated. Basically, it works like this:</p>
+<ul>
+<li><code>active - {on, []}</code></li>
+<li><code>passive - {off, []}</code></li>
+<li><code>active-debug - {on, [debug]}</code></li>
+</ul>
+<p>It’s a relatively simple translation, but we want to spare non-Erlangers from this very Erlangy syntax. So, we give them the values “active”, “passive”, and “active-debug” and the translation “translates” (not just a clever nickname!) them into the erlang value we expect.</p>
+<p><strong>Translations and the Conf proplist</strong></p>
+<p>You may have noticed that the translation fun takes an argument Conf. Conf is a cool proplist and needs to get its “props”. Here are some fun facts about Conf:</p>
+<p>By the time Conf gets to this function, a lot has happened since it was a .conf file. First of all, if you omitted a variable in your .conf file, but it had a default, that default value is in Conf.</p>
+<p>Conf is a proplist, but its keys are no longer in the form “a.b.c”. For “easier” erlang processing (pattern matching, etc), the keys come in the form [“a”, “b”, “c”]. The values are also different. As you might imagine, in the .conf file, they’re all just strings. If you specified a datatype in the mapping, it will be transformed into that erlang type by the time it gets here.</p>
+<p>There are convenience functions in the cuttlefish module for accessing these. They allow you to pass variables in with either “a.b.c” or [“a”, “b”, “c”] notation. For more on that, see the cuttlefish_variable module.</p>
+<p>See the <a href="">Cuttlefish Developer’s API</a> page for more.</p>
+<p><strong>The Curious Case of Lager Config</strong></p>
+<p>There are other cases when multiple values turn into a single app.config complex data structure. Take lager as an example.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">%% complex lager example</span><br><span class="line">%% @doc location of the console log</span><br><span class="line">&#123;mapping, &quot;log.console.file&quot;, &quot;lager.handlers&quot;, [</span><br><span class="line">  &#123;default, &quot;./log/console.log&quot;&#125;</span><br><span class="line">]&#125;.</span><br><span class="line"></span><br><span class="line">%% *gasp* notice the same @mapping!</span><br><span class="line">%% @doc location of the error log</span><br><span class="line">&#123;mapping, &quot;log.error.file&quot;, &quot;lager.handlers&quot;, [</span><br><span class="line">  &#123;default, &quot;./log/error.log&quot;&#125;</span><br><span class="line">]&#125;.</span><br><span class="line"></span><br><span class="line">%% *gasp* notice the same @mapping!</span><br><span class="line">%% @doc turn on syslog</span><br><span class="line">&#123;mapping, &quot;log.syslog&quot;, &quot;lager.handlers&quot;, [</span><br><span class="line">  &#123;default, off&#125;,</span><br><span class="line">  &#123;datatype, enum&#125;,</span><br><span class="line">  &#123;enum, [on, off]&#125;</span><br><span class="line">]&#125;.</span><br><span class="line"></span><br><span class="line">&#123; translation,</span><br><span class="line">  &quot;lager.handlers&quot;,</span><br><span class="line">  fun(Conf) -&gt;</span><br><span class="line">    SyslogHandler = case cuttlefish:conf_get(&quot;log.syslog&quot;, Conf) of</span><br><span class="line">      on -&gt;  &#123;lager_syslog_backend, [&quot;riak&quot;, daemon, info]&#125;;</span><br><span class="line">      _ -&gt; undefined</span><br><span class="line">    end,</span><br><span class="line">    ErrorHandler = case cuttlefish:conf_get(&quot;log.error.file&quot;, Conf) of</span><br><span class="line">      undefined -&gt; undefined;</span><br><span class="line">      ErrorFilename -&gt; &#123;lager_file_backend, [&#123;file, ErrorFilename&#125;, &#123;level, error&#125;]&#125;</span><br><span class="line">    end,</span><br><span class="line">        ConsoleHandler = case cuttlefish:conf_get(&quot;log.console.file&quot;, Conf) of</span><br><span class="line">          undefined -&gt; undefined;</span><br><span class="line">          ConsoleFilename -&gt; &#123;lager_file_backend, [&#123;file, ConsoleFilename&#125;, &#123;level, info&#125;]&#125;</span><br><span class="line">        end,</span><br><span class="line">        lists:filter(fun(X) -&gt; X =/= undefined end, [SyslogHandler, ErrorHandler, ConsoleHandler])</span><br><span class="line">  end</span><br><span class="line">&#125;.</span><br></pre></td></tr></table></figure>
+<p>We define three mappings here, that have different values in the riak.conf file, but represent a complex list of lager handlers in the app.config. The solution is to have them all map to the same ErlangConfMapping, which references lager.handlers. When we create a translation for that, we’re basically saying that “The return value of this function will be the value of {lager, [{handers, X}]}”. that was a weird way of saying it, but the generated app.config looks like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;lager,</span><br><span class="line">     [</span><br><span class="line">      &#123;handlers,</span><br><span class="line">          [&#123;lager_syslog_backend,[&quot;riak&quot;,daemon,info]&#125;,</span><br><span class="line">           &#123;lager_file_backend,[&#123;file,&quot;/var/log/error.log&quot;&#125;,&#123;level,error&#125;]&#125;,</span><br><span class="line">           &#123;lager_file_backend,[&#123;file,&quot;/var/log/console.log&quot;&#125;,&#123;level,info&#125;]&#125;]&#125;,</span><br><span class="line">          ]&#125;,</span><br></pre></td></tr></table></figure>
+<p><strong>Lists and Proplists and $names, oh my!</strong></p>
+<p>Sometimes you’ll find yourself needing to map elements of a list or proplist. Consider the way we configure HTTP listeners for Riak.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;riak_core,</span><br><span class="line">    [</span><br><span class="line">      &#123;http,</span><br><span class="line">        [</span><br><span class="line">          &#123;&quot;127.0.0.1&quot;,8098&#125;,</span><br><span class="line">          &#123;&quot;10.0.0.1&quot;,80&#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>We got really aggressive with the line breaks here, to illustrate that riak_core.http is a list of {IP, Port} tuples. Now, say for some reason, you wanted 10 of these listeners. We’re not here to judge you, we’re here to help. What we didn’t want to do was introduce some kind of list data structure on the right hand side of our .conf file. Instead we took a “list element per line” approach. We wanted to give you a syntax that was something like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">listener.http.internal = 127.0.0.1:8098</span><br><span class="line">listener.http.external = 10.0.0.1:80</span><br></pre></td></tr></table></figure>
+<p>But wait, what’s the deal with this “internal”/“external” business? Well, the mapping is defined with a wildcard. Think of it like a match group in a regex.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">%% HTTP Listeners</span><br><span class="line">%% @doc listener.http.&lt;name&gt; is an IP address and TCP port that the Riak</span><br><span class="line">%% HTTP interface will bind.</span><br><span class="line">&#123;mapping, &quot;listener.http.$name&quot;, &quot;riak_api.http&quot;, [</span><br><span class="line">  &#123;default, &#123;&quot;127.0.0.1&quot;, 8098&#125;&#125;,</span><br><span class="line">  &#123;datatype, ip&#125;,</span><br><span class="line">  &#123;include_default, &quot;internal&quot;&#125;</span><br><span class="line">]&#125;.</span><br><span class="line"></span><br><span class="line">&#123;translation,</span><br><span class="line"> &quot;riak_api.http&quot;,</span><br><span class="line">  fun(Conf) -&gt;</span><br><span class="line">      HTTP = cuttlefish_variable:filter_by_prefix(&quot;listener.http&quot;, Conf),</span><br><span class="line">      [ IP || &#123;_, IP&#125; &lt;- HTTP]</span><br><span class="line">  end</span><br><span class="line">&#125;.</span><br></pre></td></tr></table></figure>
+<p>See the <code>$name</code>? it can be anything! Then the translation is “smart” enough to parse all the listner.http.* config keys and create the list of {IP, Port}s for the “riak_core.http” section. (TODO: in the future, we’ll add the ability to refer back to $name as a variable, but for now, we didn’t need to because in this case, name was a throwaway).</p>
+<p>Also, notice the <code>{datatype, ip}</code>, that is smart enough to turn “IP:Port” into {IP, Port}. Don’t worry, it works for IPv6 too. More on <a href="">Datatypes</a>.</p>
+<p><strong>More about include_default</strong></p>
+<p>This is the perfect place to talk about ‘include_default’. If there’s a wildcard in the ConfKey, we don’t want to include that wildcard in the default generated <code>.conf</code> file, so we need an example. The value from include_default provides that sample. So, the generated <code>.conf</code> looks like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## listener.http.&lt;name&gt; is an IP address and TCP port that the Riak</span><br><span class="line">## HTTP interface will bind.</span><br><span class="line">listener.http.internal = 127.0.0.1:8098</span><br></pre></td></tr></table></figure>
+<p><strong>So, $names don’t matter?</strong></p>
+<blockquote>
+<p>What’s in a $name? That which we call internal by any other name would still bind internally; so HTTP would, were it not HTTP called.</p>
+</blockquote>
+<p>Not so fast, Billy! Sometimes it does matter. Let’s look at the userlist in Riak Control:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">%% @doc If auth is set to &apos;userlist&apos; then this is the</span><br><span class="line">%% list of usernames and passwords for access to the</span><br><span class="line">%% admin panel.</span><br><span class="line">&#123;mapping, &quot;riak_control.user.$username.password&quot;, &quot;riak_control.userlist&quot;, [</span><br><span class="line">  &#123;default, &quot;pass&quot;&#125;,</span><br><span class="line">  &#123;include_default, &quot;user&quot;&#125;</span><br><span class="line">]&#125;.</span><br><span class="line"></span><br><span class="line">&#123;translation,</span><br><span class="line">&quot;riak_control.userlist&quot;,</span><br><span class="line">fun(Conf) -&gt;</span><br><span class="line">  UserList = lists:filter(</span><br><span class="line">    fun(&#123;K, _V&#125;) -&gt;</span><br><span class="line">       cuttlefish_variable:is_fuzzy_match(K, string:tokens(&quot;riak_control.user.$username.password&quot;, &quot;.&quot;))</span><br><span class="line">    end,</span><br><span class="line">    Conf),</span><br><span class="line">  Users = [ &#123;Username, Password&#125; || &#123;[_, _, Username, _], Password&#125; &lt;- UserList ],</span><br><span class="line">  case Users of</span><br><span class="line">      [] -&gt;</span><br><span class="line">          throw(unset);</span><br><span class="line">      _ -&gt; Users</span><br><span class="line">  end</span><br><span class="line"></span><br><span class="line">end&#125;.</span><br></pre></td></tr></table></figure>
+<p>Right now, we’re leaving it up to the translation fun to tokenize the string and extract the username, but it shouldn’t have to. We should provide helpers for this, and we will.</p>
+<p>####Validators</p>
+<p>You can write validator functions to perform advanced validation for mappings. Let’s take the ring size in riak as an example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;validator, &quot;ring_size&quot;, &quot;not a power of 2 greater than 1&quot;,</span><br><span class="line"> fun(Size) -&gt;</span><br><span class="line">  Size &gt; 1 andalso (Size band (Size-1) =:= 0)</span><br><span class="line"> end&#125;.</span><br></pre></td></tr></table></figure>
+<p>What we’re saying here is that ring_size has to be an integer that’s a power of 2 and greater than 1.</p>
+<p>So how does this get triggered?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">%% @doc Number of partitions in the cluster (only valid when first</span><br><span class="line">%% creating the cluster). Must be a power of 2, minimum 8 and maximum</span><br><span class="line">%% 1024.</span><br><span class="line">&#123;mapping, &quot;ring_size&quot;, &quot;riak_core.ring_creation_size&quot;, [</span><br><span class="line">  &#123;datatype, integer&#125;,</span><br><span class="line">  &#123;default, 64&#125;,</span><br><span class="line">  &#123;validators, [&quot;ring_size^2&quot;, &quot;ring_size_max&quot;, &quot;ring_size_min&quot;]&#125;,</span><br><span class="line">  &#123;commented, 64&#125;</span><br><span class="line">]&#125;.</span><br><span class="line"></span><br><span class="line">%% ring_size validators</span><br><span class="line">&#123;validator, &quot;ring_size_max&quot;, &quot;2048 and larger are supported, but considered advanced config&quot;,</span><br><span class="line"> fun(Size) -&gt;</span><br><span class="line">  Size =&lt; 1024</span><br><span class="line"> end&#125;.</span><br><span class="line"></span><br><span class="line">&#123;validator, &quot;ring_size^2&quot;, &quot;not a power of 2&quot;,</span><br><span class="line"> fun(Size) -&gt;</span><br><span class="line">  (Size band (Size-1) =:= 0)</span><br><span class="line"> end&#125;.</span><br><span class="line"></span><br><span class="line">&#123;validator, &quot;ring_size_min&quot;, &quot;must be at least 8&quot;,</span><br><span class="line"> fun(Size) -&gt;</span><br><span class="line">  Size &gt;= 8</span><br><span class="line"> end&#125;.</span><br></pre></td></tr></table></figure>
+<p>In the end, we went with three different validators. The validators property of a mapping specifies which validators get run for a field.They can be reused on multiple mappings, and you can add as many as you want.</p>
+<p>####I like Eunit!<br>Me too. It’d be pretty crazy to just write a bunch of Erlang and expect it to just work in your application. So we decided to give you a module of unit test helper functions: cuttlefish_unit. Please see the <a href="">Unit Testing A Schema</a> page.</p>
+<p>##Datatypes</p>
+<p>###normal datatypes<br>As of January 2014, Cuttlefish supports the following datatypes:</p>
+<p><strong>integer</strong><br><code>integer</code> is exactly what it sounds like.</p>
+<p><strong>{enum, Enum = [atom()|string()]}</strong></p>
+<p><code>enum</code> is great! You know the fixed set of options for a setting, so use this one. Those fixed options are provided in the second element of the enum tuple.</p>
+<p>If you wish to map atoms or strings to some other value, use tuples instead:</p>
+<p><code>{enum, Enum = [{atom()|string(), term()}]}</code></p>
+<p><strong>ip</strong></p>
+<p>The <code>ip</code> datatype exists currently as an IP/Port combo. You can specify it as a default as either a string (e.g. “127.0.0.1:8098”) or a tuple ({“127.0.0.1”, 8098})</p>
+<p><strong>string</strong></p>
+<p><code>string</code> is the default datatype. Everything in a <code>.conf</code> file is a string anyway, so we’re guaranteed a successful conversion.</p>
+<p><strong>atom</strong></p>
+<p>it works alot like string, but outputs an erlang atom to your generated <code>app.config</code>.</p>
+<p><strong>flag</strong></p>
+<p>Flags are pretty cool. We got sick of writing the same boolean translation over and over again. Flags make this easier. They are for variables that have 2 possible values, and can be specified in three formats:</p>
+<p><code>flag</code> The trivial case: “on” in your conf file becomes true in your app.config. “off” becomes false</p>
+<p><code>{flag, On, Off}</code> Say you don’t like “on” and “off”. You can change those strings to anything you want here.</p>
+<p><code>{flag, {On, OnVal}, {Off, OffVal}}</code> Say the two values you’re mapping to aren’t true and/or false you can change those with OnVal/OffVal</p>
+<p><strong>{duration, BaseUnit = f | w | d | h | m | s | ms }</strong></p>
+<p><code>durations</code> are fixed intervals of time, the largest unit of which will be a one week. Anything larger will have to be expressed in terms of weeks, since larger units (month, year) are of variable duration. durations manifest in <code>.conf</code> files as strings like this: <code>1w2d</code>.</p>
+<p>The following units are supported:</p>
+<ul>
+<li>f - fortnight</li>
+<li>w - week</li>
+<li>d - day</li>
+<li>h - hour</li>
+<li>m - minute</li>
+<li>s - second</li>
+<li>ms - millisecond</li>
+</ul>
+<p>You can use any combination of these. I’m not sure why you’d want to specify <code>1w13ms</code>, but you can.</p>
+<p>Did I mention you can use floats here? <code>0.5d</code>? no probalo.</p>
+<p><code>duration</code> will convert automatically to BaseUnit in your app.config. If you want it to be seconds instead of milliseconds, just use the datatype <code>{duration, s}</code>. It will round up to the nearest second, so <code>1ms = 999ms = 1s</code>. Confused? You won’t be, after this week’s episode of…Soap.</p>
+<p><strong>bytesize</strong></p>
+<p>In your <code>app.config</code>, these will end up as bytes in integers, so 1KB = 1024.</p>
+<p><code>bytesize</code> will work pretty much like duration but with three differences.</p>
+<ul>
+<li>The units will are MB, KB, and GB</li>
+<li>If no unit is specified, it’s just bytes</li>
+<li>You will only be able to use ONE unit. e.g. no 4gb3kb &lt;- that makes no sense!</li>
+</ul>
+<p>Note: lowercase units (i.e. gb, mb, and kb) are ok, but mixed case are not. That’s to avoid confusion with Megabits</p>
+<p><strong>file and directory</strong></p>
+<p>file and directory are effectively strings. In the future they could allow for included validators like <code>valid path</code> and <code>exists</code>. Some files may need to exist, some may not. some may need to be writable.</p>
+<p>###Extended Datatypes<br>Sometimes you need a composite of two datatypes. Take a look at this example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">%% @doc This option specifies how many of each type of fsm may exist</span><br><span class="line">%% concurrently.  This is for overload protection and is a new</span><br><span class="line">%% mechanism that obsoletes 1.3&apos;s health checks. Note that this number</span><br><span class="line">%% represents two potential processes, so erlang.process_limit in</span><br><span class="line">%% vm.args should be at least 3X more. Setting this value to infinite</span><br><span class="line">%% disables fsm overload protection.</span><br><span class="line">&#123;mapping, &quot;max_concurrent_requests&quot;, &quot;riak_kv.fsm_limit&quot;, [</span><br><span class="line">  &#123;default, 50000&#125;,</span><br><span class="line">  &#123;datatype, [integer, &#123;atom, infinite&#125;]&#125;,</span><br><span class="line">  &#123;level, advanced&#125;</span><br><span class="line">]&#125;.</span><br><span class="line"></span><br><span class="line">&#123;translation, &quot;riak_kv.fsm_limit&quot;,</span><br><span class="line"> fun(Conf) -&gt;</span><br><span class="line">  TheLimit = cuttlefish:conf_get(&quot;max_concurrent_requests&quot;, Conf),</span><br><span class="line">  case TheLimit of</span><br><span class="line">      infinite -&gt; undefined;</span><br><span class="line">      Int when is_integer(Int) -&gt; Int;</span><br><span class="line">      _ -&gt;</span><br><span class="line">          %% This would have been caught earlier in datatype validation</span><br><span class="line">          cuttlefish:invalid(&quot;should be an integer&quot;)</span><br><span class="line">  end</span><br><span class="line"> end</span><br><span class="line">&#125;.</span><br></pre></td></tr></table></figure>
+<p>Look at that datatype! We’re saying this can be any integer OR the atom ‘infinite’. Under the hood, riak_kv treats ‘undefined’ as ‘infinite’, so we take care of that in the translation.</p>
+<p><strong>NOTE</strong> when providing a default, it must be satisfied by the head of the datatypes list.</p>
+<p>##Unit Testing A Schema<br>It’s a great time to be an Engineer. You can test things before you build and ship them. Yay! Let’s talk about the cuttlefish_unit module.</p>
+<p><strong>Setup</strong><br>To generate an <code>app.config</code> in an eunit test. Use the <code>cuttlefish_unit:generated_template_config/3</code>. The three arguments are:</p>
+<p><strong>List Of Schema Files</strong><br>This is the list of schema files you’re testing. If you’ve followed our conventional approach, you’ve stored <code>myappname.schema</code> in your priv directory. to access it, set this argument to <code>[&quot;../priv/myappname.schema&quot;]</code>. If it gets too big and you need multiple files, just append to this list.</p>
+<p><strong>Expected Processed Conf</strong><br>This is in the same syntax and the Conf proplist that translations expect. See <a href="">Translations and the Conf Proplist</a></p>
+<p><strong>Mustache Context</strong><br>If you’re using rebar’s mustache templates to substitute values into your schema, please include them in a proplist for this argument.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">        &#123;handoff_port, &quot;8099&quot;&#125;,</span><br><span class="line">        &#123;ring_state_dir , &quot;./ring&quot;&#125;,</span><br><span class="line">        &#123;platform_bin_dir , &quot;./bin&quot;&#125;,</span><br><span class="line">        &#123;platform_data_dir, &quot;./data&quot;&#125;,</span><br><span class="line">        &#123;platform_etc_dir , &quot;./etc&quot;&#125;,</span><br><span class="line">        &#123;platform_lib_dir , &quot;./lib&quot;&#125;,</span><br><span class="line">        &#123;platform_log_dir , &quot;./log&quot;&#125;</span><br><span class="line">].</span><br></pre></td></tr></table></figure>
+<p>If you have a mapping like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;mapping, &quot;a.b&quot;, &quot;app.b&quot;, [</span><br><span class="line">	&#123;default, &#123;&#123;handoff_port&#125;&#125; &#125;</span><br><span class="line">]&#125;.</span><br></pre></td></tr></table></figure>
+<p>then <code></code> would turn into “8099”.</p>
+<p><strong>NOTE</strong>: for some unidentifiable reason, if you don’t put a space between the second and third }s, the whole thing explodes. This is a mustache issue, deal with it.</p>
+<p><strong>OTHER NOTE</strong>: these substitutions are made with rebar’s mustache module. If you’re running eunit outside of rebar, these won’t work.</p>
+<p><strong>Free Assertions (who doesn’t want those?)</strong></p>
+<p><code>Config</code> is the return from <code>cuttlefish_unit:generated_template_config/3</code>.</p>
+<p><strong>assert_config</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cuttlefish_unit:assert_config(Config, &quot;riak_core.default_bucket_props.n_val&quot;, 3),</span><br></pre></td></tr></table></figure>
+<p>Assert that Config (which is a valid app.config) that has the nested value 3, like so:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[&#123;riak_core, [</span><br><span class="line">		&#123;default_bucket_props, [</span><br><span class="line">			&#123;n_val, 3&#125;</span><br><span class="line">			]&#125;</span><br><span class="line">	]&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p><strong>assert_not_configured</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cuttlefish_unit:assert_not_configured(Config, &quot;riak_core.ssl.certfile&quot;),</span><br></pre></td></tr></table></figure>
+<p>Asserts that there is no value configured in the Config (app.config). This is different from the atom undefined.<br><strong>assert_error</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cuttlefish_unit:assert_error(Config),</span><br></pre></td></tr></table></figure>
+<p>Asserts that this config is an error state.<br><strong>assert_error_in_phase</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cuttlefish_unit:assert_error_in_phase(Config, Phase),</span><br></pre></td></tr></table></figure>
+<p>There are several phases to generating with cuttlefish: add_defaults, transform_datatypes, validation, apply_translations</p>
+<p><strong>assert_error_message</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cuttlefish_unit:assert_error_message(Config, Message),</span><br></pre></td></tr></table></figure>
+<p>Asserts an error state, and that one of the errors is the message Message</p>
+<p><strong>assert_valid_config</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cuttlefish_unit:assert_valid_config(Config)</span><br></pre></td></tr></table></figure>
+<p>It’s basically the opposite of <code>assert_error/1</code>.</p>
+<p>##Cuttlefish Developer’s API</p>
+<p>These are functions that are useful in writing translations</p>
+<p><strong>cuttlefish</strong></p>
+<p><strong>cuttlefish:conf_get/2</strong></p>
+<p>Extract a specific value from <code>Conf</code>. If it’s not set, it throws a not_found, which cuttlefish knows how to wrap in an error. If you don’t like that behavior and want to use a default, choose the 3 arity version below. Example</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Conf = [</span><br><span class="line">	&#123;[&quot;a&quot;, &quot;b&quot;], 4&#125;</span><br><span class="line">],</span><br><span class="line"></span><br><span class="line">cuttlefish:conf_get(&quot;a.b&quot;, Conf), %% returns 4</span><br><span class="line">cuttlefish:conf_get(&quot;a.c&quot;, Conf), %% throws &apos;not_found&apos;</span><br></pre></td></tr></table></figure>
+<p><strong>cuttlefish:conf_get/3</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Conf = [</span><br><span class="line">	&#123;[&quot;a&quot;, &quot;b&quot;], 4&#125;</span><br><span class="line">],</span><br><span class="line"></span><br><span class="line">cuttlefish:conf_get(&quot;a.b&quot;, Conf, undefined), %% returns 4</span><br><span class="line">cuttlefish:conf_get(&quot;a.c&quot;, Conf, undefined), %% returns &apos;undefined&apos;</span><br></pre></td></tr></table></figure>
+<p><strong>cuttlefish:unset/0</strong><br>When writing a translation and you get to a point where you don’t want a value written to the app.config, just call cuttlefish:unset() and we’ll take it from there.</p>
+<p><strong>cuttlefish:invalid/1</strong></p>
+<p>When you can’t generate a valid config value, and you know it, call this function with an error message and cuttlefish will report it properly.</p>
+<p><strong>cuttlefish_variable</strong></p>
+<p><strong>cuttlefish_variable:tokenize/1</strong></p>
+<p>This is pretty much <code>string:tokens(Key, &quot;.&quot;)</code> but it skips escaped dots.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">string:tokens(&quot;a.b\\.c.d&quot;, &quot;.&quot;), %% returns [&quot;a&quot;, &quot;b\\&quot;, &quot;c&quot;, &quot;d&quot;]</span><br><span class="line">cuttlefish_variable:tokenize(&quot;a.b\\.c.d&quot;, &quot;.&quot;), %% returns [&quot;a&quot;, &quot;b.c&quot;, &quot;d&quot;]</span><br></pre></td></tr></table></figure>
+<p><strong>cuttlefish_variable:fuzzy_matches/2</strong></p>
+<p>If you’ve used a <code>$name</code> in your mapping, you can get a list of all possible values of $name.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Conf = [</span><br><span class="line">	&#123;[&quot;a&quot;, &quot;b1&quot;, &quot;c&quot;], 4&#125;,</span><br><span class="line">	&#123;[&quot;a&quot;, &quot;b1&quot;, &quot;d&quot;], 4&#125;,</span><br><span class="line">	&#123;[&quot;a&quot;, &quot;b2&quot;, &quot;c&quot;], 4&#125;,</span><br><span class="line">],</span><br><span class="line"></span><br><span class="line">cuttlefish_variable:fuzzy_matches([&quot;a&quot;, &quot;$name&quot;, &quot;c&quot;], Conf), %% returns [&#123;&quot;$name&quot;, &quot;b1&quot;&#125;, &#123;&quot;$name&quot;, &quot;b2&quot;&#125;].</span><br></pre></td></tr></table></figure>
+<p>Unfortunately, if you ran the same function on [“a”, “$name”, “d”] you’d only return [{“$name”, “b1”}]. [<a href="https://github.com/basho/cuttlefish/issues/99]" target="_blank" rel="noopener">https://github.com/basho/cuttlefish/issues/99]</a> is an open issue to fix this.</p>
+<p><strong>cuttlefish_variable:filter_by_prefix/2</strong></p>
+<p>Basically, this is “give me everything that starts with X”.</p>
+<p>Example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">%% HTTP Listeners</span><br><span class="line">%% @doc listener.http.&lt;name&gt; is an IP address and TCP port that the Riak</span><br><span class="line">%% HTTP interface will bind.</span><br><span class="line">&#123;mapping, &quot;listener.http.$name&quot;, &quot;riak_api.http&quot;, [</span><br><span class="line">  &#123;default, &#123;&quot;127.0.0.1&quot;, 8098&#125;&#125;,</span><br><span class="line">  &#123;datatype, ip&#125;,</span><br><span class="line">  &#123;include_default, &quot;internal&quot;&#125;</span><br><span class="line">]&#125;.</span><br><span class="line"></span><br><span class="line">&#123;translation,</span><br><span class="line"> &quot;riak_api.http&quot;,</span><br><span class="line">  fun(Conf) -&gt;</span><br><span class="line">      HTTP = cuttlefish_variable:filter_by_prefix(&quot;listener.http&quot;, Conf),</span><br><span class="line">      [ IP || &#123;_, IP&#125; &lt;- HTTP]</span><br><span class="line">  end</span><br><span class="line">&#125;.</span><br></pre></td></tr></table></figure>
+<p>##Builder/Packager of Erlang Applications</p>
+<p>###Cuttlefish for node_package users</p>
+<p><code>https://github.com/basho/node_package</code> has built-in optional support for cuttlefish. To integrate cuttlefish into your node_package application, you will need to perform the following steps:</p>
+<ul>
+<li>Add Cuttlefish to rebar.config</li>
+<li>Enable the Cuttlefish rebar plugin</li>
+<li>Inform reltool.config about schema files</li>
+<li>Enable Cuttlefish in vars.config</li>
+</ul>
+<p><strong>rebar.config</strong></p>
+<p>You’ll need to add cuttlefish as a dependency, which will look something like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;cuttlefish, &quot;.*&quot;, &#123;git, &quot;git://github.com/basho/cuttlefish&quot;, &#123;branch, &quot;master&quot;&#125;&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>and you’ll also need to teach it about the cuttlefish_rebar_plugin, like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;plugin_dir, &quot;deps/cuttlefish/src&quot;&#125;.</span><br><span class="line">&#123;plugins, [cuttlefish_rebar_plugin]&#125;.</span><br></pre></td></tr></table></figure>
+<p><strong>reltool.config</strong></p>
+<p>You’ll need to tell reltool.config about any schema files you want included. You’ll also need to tell reltool.config the priority of those files. Add them to your <code>{overlay, [...]}</code> section, like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">%% Cuttlefish Schema Files have a priority order. </span><br><span class="line">%% Anything in a file prefixed with 00- will override</span><br><span class="line">%% anything in a file with a higher numbered prefix.</span><br><span class="line">&#123;template, &quot;files/riak.schema&quot;, &quot;lib/00-riak.schema&quot;&#125;,</span><br><span class="line">&#123;template, &quot;../deps/&lt;dependency_name&gt;/priv/&lt;schema_name&gt;.schema&quot;, &quot;lib/02-&lt;dependency&gt;.schema&quot;&#125;,</span><br><span class="line">&#123;template, &quot;files/vm.args&quot;, &quot;etc/vm.args&quot;&#125;,</span><br></pre></td></tr></table></figure>
+<p>The priority is defined as “alphabetical order”. which means, if the file is named A.schema, everything in it overrides things in B.schema if there’s a conflict. As the reltool.config author, you can determine schema priority by renaming schema files in the template tuple.</p>
+<p>Why would you do this? Say we provided a <code>riak_core.schema</code> (and we plan to!), say you like all our setting names for your riak_core application, except one. You could override that one in your own schema! Freedom! Choices! Options! See what I do for you?</p>
+<p><strong>vars.config</strong></p>
+<p>Everything you’ve done until now will be for naught if you don’t add cuttlefish to your vars.config. Here’s how!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;cuttlefish,         &quot;on&quot;&#125;.</span><br><span class="line">&#123;cuttlefish_conf,    &quot;&lt;whatever_you_want_your_default_config_file_to_be_called&gt;.conf&quot;&#125;.</span><br></pre></td></tr></table></figure>
+<p>That’s it! Truth be told, it could be {cuttlefish, “anything!”}, as all we’re checking is that this is not undefined.</p>
+<p><strong>Switching to Cuttlefish</strong></p>
+<p>Say you’re using app.config, like everyone is… when your first cuttlefish compliant version ships, it won’t blow away existing app.configs, and if an app.config is present, cuttlefish will short circuit and just use that.</p>
+<p>###Cuttlefish for non node_package users<br>Basically you’ve to follow the steps outlined in the <a href="">Cuttlefish for node_package users guide</a>, but there are some additions since you don’t get the free changes to your startup scripts.</p>
+<p>First of you need to make sure the cuttlefish binary (aka escript) gets copied over to your release, you can do this by adding this line to your reltool.config in overlay section:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;copy, &quot;../deps/cuttlefish/cuttlefish&quot;, &quot;bin/cuttlefish&quot;&#125;,</span><br></pre></td></tr></table></figure>
+<p>If you want to have a custom named <code>.conf</code> file you also need to put a rebar.config into the <code>rel/</code> folder containing the like:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;cuttlefish_filename, &quot;sniffle.conf&quot;&#125;.</span><br></pre></td></tr></table></figure>
+<p>Then what you have to do is to adjust your startup scripts to honor the configuration options of cuttlefish and make the fish generate your configs. If you’re using rebar generated releases the file should be in <code>rel/files/&lt;your app&gt;</code></p>
+<p>So lets look at the parts that need to change. (extra from the node_package code for cuttlefish)</p>
+<p>The code extracting the node name, since at this point cuttlefish has not generated a vm.args file the original code would fail. To handle it gracefully it checks first for the old stile vm.args then proceeds to use the cuttlefish config.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Extract the target node name from node.args</span><br><span class="line">NAME_ARG=`grep -e &apos;-[s]*name&apos; $RUNNER_ETC_DIR/vm.args`</span><br><span class="line">if [ -z &quot;$NAME_ARG&quot; ]; then</span><br><span class="line">    echo &quot;vm.args needs to have either -name or -sname parameter.&quot;</span><br><span class="line">    exit 1</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p>has to change to:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># Extract the target node name from node.args</span><br><span class="line">NAME_ARG=`egrep &apos;^\-name&apos; $RUNNER_ETC_DIR/vm.args 2&gt; /dev/null`</span><br><span class="line">if [ -z &quot;$NAME_ARG&quot; ]; then</span><br><span class="line">    NODENAME=`egrep &apos;^[ \t]*nodename[ \t]*=[ \t]*&apos; $RUNNER_ETC_DIR/&#123;&#123;cuttlefish_conf&#125;&#125; 2&gt; /dev/null | tail -n 1 | cut -d = -f 2`</span><br><span class="line">    if [ -z &quot;$NODENAME&quot; ]; then</span><br><span class="line">        echo &quot;vm.args needs to have a -name parameter.&quot;</span><br><span class="line">        echo &quot;  -sname is not supported.&quot;</span><br><span class="line">        exit 1</span><br><span class="line">    else</span><br><span class="line">        NAME_ARG=&quot;-name $&#123;NODENAME# *&#125;&quot;</span><br><span class="line">    fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p>Same goes for the code that extracts the cookie:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Extract the target cookie</span><br><span class="line">COOKIE_ARG=`grep -e &apos;-setcookie&apos; $RUNNER_ETC_DIR/vm.args`</span><br><span class="line">if [ -z &quot;$COOKIE_ARG&quot; ]; then</span><br><span class="line">    echo &quot;vm.args needs to have a -setcookie parameter.&quot;</span><br><span class="line">    exit 1</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p>becomes</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># Extract the target cookie</span><br><span class="line">COOKIE_ARG=`grep -e &apos;-setcookie&apos; $RUNNER_ETC_DIR/vm.args`</span><br><span class="line">if [ -z &quot;$COOKIE_ARG&quot; ]; then</span><br><span class="line">#TODO: change &#123;&#123;cuttlefish_conf&#125;&#125; to something more senisble!</span><br><span class="line">    COOKIE=`egrep &apos;^[ \t]*distributed_cookie[ \t]*=[ \t]*&apos; $RUNNER_ETC_DIR/&#123;&#123;cuttlefish_conf&#125;&#125; 2&gt; /dev/null | cut -d = -f 2`</span><br><span class="line">    if [ -z &quot;$COOKIE&quot; ]; then</span><br><span class="line">        echo &quot;vm.args needs to have a -setcookie parameter.&quot;</span><br><span class="line">        exit 1</span><br><span class="line">    else</span><br><span class="line">        COOKIE_ARG=&quot;-setcookie $COOKIE&quot;</span><br><span class="line">    fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p>That’s it for the preconfiguration, now one thing is left: make cuttlefish generate your files and properly pass them to the VM when started. For this we look at the console section where you find something like this to create the erlexec command line.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CMD=&quot;$BINDIR/erlexec -boot $RUNNER_BASE_DIR/releases/$APP_VSN/$BOOTFILE -embedded -config $RUNNER_ETC_DIR/app.config -args_file $RUNNER_ETC_DIR/vm.args -- $&#123;1+&quot;$@&quot;&#125;&quot;</span><br></pre></td></tr></table></figure>
+<p>Since we don’t have a app.conf and vm.args when using cuttlefish we need to change this a bit around and add some code to generate our files.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if CUTTLEFISH_CONFIG=$($RUNNER_BASE_DIR/bin/cuttlefish -e $RUNNER_ETC_DIR -d &#123;&#123;db_path&#125;&#125;/generated.configs -s $RUNNER_BASE_DIR/share/schema/ -c $RUNNER_ETC_DIR/&#123;&#123;cuttlefish_conf&#125;&#125;)</span><br><span class="line">        then</span><br><span class="line">            CONFIG_FILES=&quot;$CUTTLEFISH_CONFIG&quot;</span><br><span class="line">        else</span><br><span class="line">            echo &quot;Cuttlefish failed! Oh no!: $CUTTLEFISH_CONFIG&quot;</span><br><span class="line">            CONFIG_FILES=&quot;-config $RUNNER_ETC_DIR/app.config -args_file $RUNNER_ETC_DIR/vm.args&quot;</span><br><span class="line">        fi</span><br><span class="line">        CMD=&quot;$BINDIR/erlexec -boot $RUNNER_BASE_DIR/releases/$APP_VSN/$BOOTFILE -embedded $CONFIG_FILES -- $&#123;1+&quot;$@&quot;&#125;&quot;</span><br></pre></td></tr></table></figure>
+<p>Please note that your schema folder might be different, so you might need to replace <code>$RUNNER_BASE_DIR/share/schema/</code> with whatever place you specified in the <code>reltool.conf</code> as a destination for the <code>.schema</code> files.</p>
+<p>That’s it, happy cuttling!</p>
+<p><strong>Note</strong>: distributed_cookie and nodename in the snippets above are defined as mappings in your schema files and should be adjusted for your desired naming scheme.</p>
+<p><strong>Generating a default conf file</strong></p>
+<p>You can manually generate a default .conf file from your schemas at any time with the following snippet.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;_, Mappings, _&#125; = cuttlefish_schema:files(filelib:wildcard(&quot;path/to/*.schema&quot;)).</span><br><span class="line">ok = cuttlefish_conf:generate_file(Mappings, &quot;path/to/generated.conf&quot;).</span><br></pre></td></tr></table></figure>
+<p>This is usually handled by the cuttlefish_rebar_plugin, but if you’re not using that then this will help.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢您的赞赏,赚点辛苦奶粉钱</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat_pay.jpg" alt="CMS_huyuhui WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/ali_pay.jpg" alt="CMS_huyuhui Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/erlang，-cuttlefish/" rel="tag"># erlang， cuttlefish</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/23/rebar3-document6/" rel="next" title="rebar3_document6">
+                <i class="fa fa-chevron-left"></i> rebar3_document6
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/huyuhui.jpg"
+               alt="CMS_huyuhui" />
+          <p class="site-author-name" itemprop="name">CMS_huyuhui</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Write-Cuttlefish-Schemas"><span class="nav-number">1.</span> <span class="nav-text">Write Cuttlefish Schemas!</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">胡宇辉CMS_huyuhui</span>
+</div>
+
+
+<div class="powered-by">
+  由  强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+</div>
+
+<div class="powered-by">
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/love.js"></script>
