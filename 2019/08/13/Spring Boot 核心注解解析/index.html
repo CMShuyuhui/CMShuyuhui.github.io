@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="SpringBoot," />
 
 
 
@@ -94,21 +94,21 @@
 
 
 
-<meta name="description" content="[TOC] Spring Boot 核心注解解析 Spring Boot方式的项目已经逐步成为Java应用开发领域的主流框架，开发者不仅可以创建生产级的Spring应用，还能轻松通过一些注解配置与目前比较火热的微服务框架SpringCloud集成。Spring Boot极大地简化了项目的配置，最大化地实现了“约定大于配置”的原则，然后虽然开发方便了，但也很容易让人云里雾里，特别是各种注解很容易让人">
-<meta name="keywords" content="erlang,golang,c&#x2F;c++,oepn-falcon,cowboy,elk,beego,rdma">
+<meta name="description" content="[TOC] Spring Boot方式的项目已经逐步成为Java应用开发领域的主流框架，开发者不仅可以创建生产级的Spring应用，还能轻松通过一些注解配置与目前比较火热的微服务框架SpringCloud集成。Spring Boot极大地简化了项目的配置，最大化地实现了“约定大于配置”的原则，然后虽然开发方便了，但也很容易让人云里雾里，特别是各种注解很容易让人“知其然而不知其所以然”，因此，要想用">
+<meta name="keywords" content="SpringBoot">
 <meta property="og:type" content="article">
-<meta property="og:title" content="胡宇辉">
+<meta property="og:title" content="Spring Boot 核心注解解析">
 <meta property="og:url" content="https://yoursite.com/2019/08/13/Spring Boot 核心注解解析/index.html">
 <meta property="og:site_name" content="胡宇辉">
-<meta property="og:description" content="[TOC] Spring Boot 核心注解解析 Spring Boot方式的项目已经逐步成为Java应用开发领域的主流框架，开发者不仅可以创建生产级的Spring应用，还能轻松通过一些注解配置与目前比较火热的微服务框架SpringCloud集成。Spring Boot极大地简化了项目的配置，最大化地实现了“约定大于配置”的原则，然后虽然开发方便了，但也很容易让人云里雾里，特别是各种注解很容易让人">
+<meta property="og:description" content="[TOC] Spring Boot方式的项目已经逐步成为Java应用开发领域的主流框架，开发者不仅可以创建生产级的Spring应用，还能轻松通过一些注解配置与目前比较火热的微服务框架SpringCloud集成。Spring Boot极大地简化了项目的配置，最大化地实现了“约定大于配置”的原则，然后虽然开发方便了，但也很容易让人云里雾里，特别是各种注解很容易让人“知其然而不知其所以然”，因此，要想用">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1g5y04orc2gj312d03gt90.jpg">
 <meta property="og:image" content="https://yoursite.com/2019/08/13/Spring%20Boot%20核心注解解析/media/2.png">
 <meta property="og:image" content="https://yoursite.com/2019/08/13/Spring%20Boot%20核心注解解析/media/3.png">
-<meta property="og:updated_time" content="2019-08-13T05:48:22.000Z">
+<meta property="og:updated_time" content="2019-08-13T05:58:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="胡宇辉">
-<meta name="twitter:description" content="[TOC] Spring Boot 核心注解解析 Spring Boot方式的项目已经逐步成为Java应用开发领域的主流框架，开发者不仅可以创建生产级的Spring应用，还能轻松通过一些注解配置与目前比较火热的微服务框架SpringCloud集成。Spring Boot极大地简化了项目的配置，最大化地实现了“约定大于配置”的原则，然后虽然开发方便了，但也很容易让人云里雾里，特别是各种注解很容易让人">
+<meta name="twitter:title" content="Spring Boot 核心注解解析">
+<meta name="twitter:description" content="[TOC] Spring Boot方式的项目已经逐步成为Java应用开发领域的主流框架，开发者不仅可以创建生产级的Spring应用，还能轻松通过一些注解配置与目前比较火热的微服务框架SpringCloud集成。Spring Boot极大地简化了项目的配置，最大化地实现了“约定大于配置”的原则，然后虽然开发方便了，但也很容易让人云里雾里，特别是各种注解很容易让人“知其然而不知其所以然”，因此，要想用">
 <meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1g5y04orc2gj312d03gt90.jpg">
 
 
@@ -144,7 +144,7 @@
 
 
 
-  <title> | 胡宇辉</title>
+  <title>Spring Boot 核心注解解析 | 胡宇辉</title>
   
 
 
@@ -324,7 +324,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">Spring Boot 核心注解解析</h1>
         
 
         <div class="post-meta">
@@ -336,7 +336,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-13T13:23:05+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-13T13:57:01+08:00">
                 2019-08-13
               </time>
             
@@ -346,6 +346,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringBoot/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringBoot</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -375,7 +397,6 @@
 
       
         <p>[TOC]</p>
-<p>Spring Boot 核心注解解析</p>
 <p>Spring Boot方式的项目已经逐步成为Java应用开发领域的主流框架，开发者不仅可以创建生产级的Spring应用，还能轻松通过一些注解配置与目前比较火热的微服务框架SpringCloud集成。Spring Boot极大地简化了项目的配置，最大化地实现了“约定大于配置”的原则，然后虽然开发方便了，但也很容易让人云里雾里，特别是各种注解很容易让人“知其然而不知其所以然”，因此，要想用好Spring Boot就必须对其提供的各类功能注解有一个全面而清晰地认识和理解。因此特意去各大博客摘录了一些常用注解的解释，大家一起学习吧。。。</p>
 <p>#1. @Configuration</p>
 <p>从Spring3.0，@Configuration用于定义配置类，可替换xml配置文件，被注解的类内部包含有一个或多个被@Bean注解的方法，这些方法将会被AnnotationConfigApplicationContext或AnnotationConfigWebApplicationContext类进行扫描，并用于构建bean定义，初始化Spring容器。</p>
@@ -460,6 +481,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SpringBoot/" rel="tag"># SpringBoot</a>
+          
+        </div>
       
 
       
@@ -557,7 +584,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -568,7 +595,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
