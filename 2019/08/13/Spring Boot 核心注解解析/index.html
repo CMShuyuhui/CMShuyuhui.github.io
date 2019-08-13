@@ -94,22 +94,22 @@
 
 
 
-<meta name="description" content="Spring Boot 核心注解解析 [TOC] Spring Boot方式的项目已经逐步成为Java应用开发领域的主流框架，开发者不仅可以创建生产级的Spring应用，还能轻松通过一些注解配置与目前比较火热的微服务框架SpringCloud集成。Spring Boot极大地简化了项目的配置，最大化地实现了“约定大于配置”的原则，然后虽然开发方便了，但也很容易让人云里雾里，特别是各种注解很容易让人">
+<meta name="description" content="[TOC] Spring Boot 核心注解解析 Spring Boot方式的项目已经逐步成为Java应用开发领域的主流框架，开发者不仅可以创建生产级的Spring应用，还能轻松通过一些注解配置与目前比较火热的微服务框架SpringCloud集成。Spring Boot极大地简化了项目的配置，最大化地实现了“约定大于配置”的原则，然后虽然开发方便了，但也很容易让人云里雾里，特别是各种注解很容易让人">
 <meta name="keywords" content="erlang,golang,c&#x2F;c++,oepn-falcon,cowboy,elk,beego,rdma">
 <meta property="og:type" content="article">
 <meta property="og:title" content="胡宇辉">
-<meta property="og:url" content="https://yoursite.com/2019/08/13/2019-08-13/index.html">
+<meta property="og:url" content="https://yoursite.com/2019/08/13/Spring Boot 核心注解解析/index.html">
 <meta property="og:site_name" content="胡宇辉">
-<meta property="og:description" content="Spring Boot 核心注解解析 [TOC] Spring Boot方式的项目已经逐步成为Java应用开发领域的主流框架，开发者不仅可以创建生产级的Spring应用，还能轻松通过一些注解配置与目前比较火热的微服务框架SpringCloud集成。Spring Boot极大地简化了项目的配置，最大化地实现了“约定大于配置”的原则，然后虽然开发方便了，但也很容易让人云里雾里，特别是各种注解很容易让人">
+<meta property="og:description" content="[TOC] Spring Boot 核心注解解析 Spring Boot方式的项目已经逐步成为Java应用开发领域的主流框架，开发者不仅可以创建生产级的Spring应用，还能轻松通过一些注解配置与目前比较火热的微服务框架SpringCloud集成。Spring Boot极大地简化了项目的配置，最大化地实现了“约定大于配置”的原则，然后虽然开发方便了，但也很容易让人云里雾里，特别是各种注解很容易让人">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://yoursite.com/2019/08/13/2019-08-13/media/1.png">
-<meta property="og:image" content="https://yoursite.com/2019/08/13/2019-08-13/media/2.png">
-<meta property="og:image" content="https://yoursite.com/2019/08/13/2019-08-13/media/3.png">
-<meta property="og:updated_time" content="2019-08-13T05:43:44.000Z">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1g5y04orc2gj312d03gt90.jpg">
+<meta property="og:image" content="https://yoursite.com/2019/08/13/Spring%20Boot%20核心注解解析/media/2.png">
+<meta property="og:image" content="https://yoursite.com/2019/08/13/Spring%20Boot%20核心注解解析/media/3.png">
+<meta property="og:updated_time" content="2019-08-13T05:48:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="胡宇辉">
-<meta name="twitter:description" content="Spring Boot 核心注解解析 [TOC] Spring Boot方式的项目已经逐步成为Java应用开发领域的主流框架，开发者不仅可以创建生产级的Spring应用，还能轻松通过一些注解配置与目前比较火热的微服务框架SpringCloud集成。Spring Boot极大地简化了项目的配置，最大化地实现了“约定大于配置”的原则，然后虽然开发方便了，但也很容易让人云里雾里，特别是各种注解很容易让人">
-<meta name="twitter:image" content="https://yoursite.com/2019/08/13/2019-08-13/media/1.png">
+<meta name="twitter:description" content="[TOC] Spring Boot 核心注解解析 Spring Boot方式的项目已经逐步成为Java应用开发领域的主流框架，开发者不仅可以创建生产级的Spring应用，还能轻松通过一些注解配置与目前比较火热的微服务框架SpringCloud集成。Spring Boot极大地简化了项目的配置，最大化地实现了“约定大于配置”的原则，然后虽然开发方便了，但也很容易让人云里雾里，特别是各种注解很容易让人">
+<meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1g5y04orc2gj312d03gt90.jpg">
 
 
 
@@ -138,7 +138,7 @@
 
 
 
-  <link rel="canonical" href="https://yoursite.com/2019/08/13/2019-08-13/"/>
+  <link rel="canonical" href="https://yoursite.com/2019/08/13/Spring Boot 核心注解解析/"/>
 
 
 
@@ -307,7 +307,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yoursite.com/2019/08/13/2019-08-13/">
+    <link itemprop="mainEntityOfPage" href="https://yoursite.com/2019/08/13/Spring Boot 核心注解解析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CMS_huyuhui">
@@ -374,10 +374,11 @@
       
 
       
-        <p>Spring Boot 核心注解解析</p>
-<p>[TOC]</p>
+        <p>[TOC]</p>
+<p>Spring Boot 核心注解解析</p>
 <p>Spring Boot方式的项目已经逐步成为Java应用开发领域的主流框架，开发者不仅可以创建生产级的Spring应用，还能轻松通过一些注解配置与目前比较火热的微服务框架SpringCloud集成。Spring Boot极大地简化了项目的配置，最大化地实现了“约定大于配置”的原则，然后虽然开发方便了，但也很容易让人云里雾里，特别是各种注解很容易让人“知其然而不知其所以然”，因此，要想用好Spring Boot就必须对其提供的各类功能注解有一个全面而清晰地认识和理解。因此特意去各大博客摘录了一些常用注解的解释，大家一起学习吧。。。</p>
-<p>#1. @Configuration<br>从Spring3.0，@Configuration用于定义配置类，可替换xml配置文件，被注解的类内部包含有一个或多个被@Bean注解的方法，这些方法将会被AnnotationConfigApplicationContext或AnnotationConfigWebApplicationContext类进行扫描，并用于构建bean定义，初始化Spring容器。</p>
+<p>#1. @Configuration</p>
+<p>从Spring3.0，@Configuration用于定义配置类，可替换xml配置文件，被注解的类内部包含有一个或多个被@Bean注解的方法，这些方法将会被AnnotationConfigApplicationContext或AnnotationConfigWebApplicationContext类进行扫描，并用于构建bean定义，初始化Spring容器。</p>
 <p>注意：@Configuration注解的配置类有如下要求：</p>
 <p>@Configuration不可以是final类型；<br>@Configuration不可以是匿名类；<br>嵌套的configuration必须是静态类。</p>
 <p>##一、用@Configuration加载spring</p>
@@ -387,7 +388,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">    xmlns:context=&quot;http://www.springframework.org/schema/context&quot; xmlns:jdbc=&quot;http://www.springframework.org/schema/jdbc&quot;  </span><br><span class="line">    xmlns:jee=&quot;http://www.springframework.org/schema/jee&quot; xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;</span><br><span class="line">    xmlns:util=&quot;http://www.springframework.org/schema/util&quot; xmlns:task=&quot;http://www.springframework.org/schema/task&quot; xsi:schemaLocation=&quot;</span><br><span class="line">        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd</span><br><span class="line">        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd</span><br><span class="line">        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd</span><br><span class="line">        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd</span><br><span class="line">        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd</span><br><span class="line">        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd</span><br><span class="line">        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd&quot; default-lazy-init=&quot;false&quot;&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
 <p>主方法进行测试：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">package com.dxz.demo.configuration;</span><br><span class="line"></span><br><span class="line">import org.springframework.context.ApplicationContext;</span><br><span class="line">import org.springframework.context.annotation.AnnotationConfigApplicationContext;</span><br><span class="line"></span><br><span class="line">public class TestMain &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        // @Configuration注解的spring容器加载方式，用AnnotationConfigApplicationContext替换ClassPathXmlApplicationContext</span><br><span class="line">        ApplicationContext context = new AnnotationConfigApplicationContext(TestConfiguration.class);</span><br><span class="line"></span><br><span class="line">        // 如果加载spring-context.xml文件：</span><br><span class="line">        // ApplicationContext context = new</span><br><span class="line">        // ClassPathXmlApplicationContext(&quot;spring-context.xml&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>从运行主方法结果可以看出，spring容器已经启动了：<br><img src="media/1.png" alt="1"></p>
+<p>从运行主方法结果可以看出，spring容器已经启动了：<br><img src="https://ws3.sinaimg.cn/large/006tNc79gy1g5y04orc2gj312d03gt90.jpg" alt="1"></p>
 <p>###1.2、@Configuration启动容器+@Bean注册Bean<br>@Bean标注在方法上(返回某个实例的方法)，等价于spring的xml配置文件中的<bean>，作用为：注册bean对象</bean></p>
 <p>bean类：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">package com.dxz.demo.configuration;</span><br><span class="line"></span><br><span class="line">public class TestBean &#123;</span><br><span class="line"></span><br><span class="line">    private String username;</span><br><span class="line">    private String url;</span><br><span class="line">    private String password;</span><br><span class="line"></span><br><span class="line">    public void sayHello() &#123;</span><br><span class="line">        System.out.println(&quot;TestBean sayHello...&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;username:&quot; + this.username + &quot;,url:&quot; + this.url + &quot;,password:&quot; + this.password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void start() &#123;</span><br><span class="line">        System.out.println(&quot;TestBean 初始化。。。&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void cleanUp() &#123;</span><br><span class="line">        System.out.println(&quot;TestBean 销毁。。。&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
